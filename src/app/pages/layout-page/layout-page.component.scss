@@ -1,0 +1,21 @@
+.main-page{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1420px;
+    margin: 0 auto;
+    flex-direction: column;
+    position: relative;
+}
+
+.main-page-content{
+    // height: 80%;
+}
+
+.footer{
+    position: relative;
+    width: 100%;
+    margin-top: auto;
+}
