@@ -32,6 +32,13 @@ export const routes: Routes = [
             (m) => m.PricePageModule,
           )
       },
+      {
+        path: 'contacts',
+        loadChildren: () =>
+          import('./pages/contacts-page/contacts-page.module').then(
+            (m) => m.ContactsPageModule,
+          )
+      },
 ];
 
 const config: ExtraOptions = {
