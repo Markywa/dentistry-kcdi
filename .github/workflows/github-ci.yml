@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - master
+    Dockerfile location: /docker/Dockerfile
   pull_request:
     branches:
       - master
+    Dockerfile location: /docker/Dockerfile
 
 jobs:
   build:
