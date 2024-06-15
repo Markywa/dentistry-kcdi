@@ -1,0 +1,49 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 30px;
+    &__item{
+        padding: 12px 30px 12px 30px;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &-call{
+            font-size: 20px;
+            font-weight: 600;
+            padding: 0 52px 0 52px;
+        }
+        &_custom{
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 48px 0 48px;
+        }
+        &-rout{
+            gap: 52px;
+            display: flex;
+            height: 100%;
+            &__button{
+                font-size: 15px;
+                height: 100%;
+                font-weight: 600;
+                white-space: nowrap;
+                position:relative;
+                overflow:hidden; 
+                text-decoration: none;
+                align-items: center;
+                display: flex;
+            }
+        }
+    }
+}
+
+.active{
+    border-bottom: 1px solid var(--topMenuItemSelected);
+    height: calc(100% + 1px);
+}
+

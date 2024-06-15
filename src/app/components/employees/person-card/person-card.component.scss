@@ -1,0 +1,122 @@
+.container-wrap{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    height: 450px;
+    width: 100%;
+}
+
+.container{
+    background-color: var(--thirdBackgroundColor);
+    padding: 30px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 49%;
+    height: 100%;
+    &__image{ 
+        width: 49%;
+        height: 100%;
+        border-radius: 16px;
+        object-fit: cover;
+    }
+    &-header{
+        &__top{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            &-text{
+                color: var(--secondaryFontColor);
+                font-weight: 500;
+            }
+            &-rating{
+                display: flex;
+                flex-direction: row;
+                gap: 5px;
+            }
+        }
+        &__name{
+            margin: 10px 0 10px 0;
+        }
+        &__experience{
+
+        }
+    }
+
+    &-content{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        &__text{
+            color: var(--secondaryFontColor);
+            font-weight: 500;
+        }
+        &__button{
+            background-color: var(--primaryButtonBgColor);
+            padding: 26px;
+            width: 100%;
+            border-radius: 16px;
+            color: var(--primaryFontColor);
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            border: none;
+            &::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: -100%;
+                width: 100%;
+                height: 250%; 
+                width: 5%;
+                background: rgba(255, 255, 255, 0.5);
+                transform: translateY(-50%) rotate(30deg); /* Rotate the line */
+                transition: all 1.8s ease;
+                }
+                &:hover::after {
+                left: 250%;
+                }
+        }
+    }
+}
+
+.toggleContentLeft{
+    animation-name: toggleContentLeft;
+    animation-duration: 0.25s;
+    animation-fill-mode: both;
+}
+
+@keyframes toggleContentLeft {
+    0% {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+        
+    }
+    100% {
+        transform: translate3d(-5%, 0, 0);
+        opacity:  0;
+    }
+}
+
+.toggleContentRight{
+    animation-name: toggleContentRight;
+    animation-duration: 0.25s;
+    animation-fill-mode: both;
+}
+
+@keyframes toggleContentRight {
+    0% {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+        
+    }
+    100% {
+        transform: translate3d(5%, 0, 0);
+        opacity:  0;
+    }
+}
+

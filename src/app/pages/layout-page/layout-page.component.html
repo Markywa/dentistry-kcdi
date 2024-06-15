@@ -1,7 +1,15 @@
-<div class="main-page">
-    <app-top-menu></app-top-menu>
-    <div class="main-page-content">
+<div class="main-page" >
+    <app-top-menu class="main-page__header"></app-top-menu>
+    <div class="main-page__content" [@slideInAnimation]="isOpen">
         <ng-content select="[content]"></ng-content>
     </div>
-    <app-footer class="footer"></app-footer>
+    <app-footer [isSendForm]="isSendForm" class="footer"></app-footer>
 </div>
+
+    <app-modal
+        [opened]="openModal$ | async">
+        <ng-container modal-content>
+            <app-callback class="modal"></app-callback>
+        </ng-container>
+    </app-modal>
+

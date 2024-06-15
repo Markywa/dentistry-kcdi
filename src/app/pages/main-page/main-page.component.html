@@ -1,0 +1,43 @@
+<app-layout-page>
+    <ng-container content>
+        <div class="container">
+            <div class="container-header">
+                <div class="container-header__title">
+                    <h1 class="container-header__title_big text_color">Твоя улыбка наша забота</h1>
+                </div>
+                <div  class="container-header__description">
+                    <span class="container-header__description-item text_color title">{{'+7(999) 999-99-99'}}</span>
+                    <span class="container-header__description-item text_color title">{{'Адрес'}}</span>
+                    <span class="container-header__description-item text_color">{{'г. Красноярск, ул. Мира, д. 115а'}}</span>
+                    <span class="container-header__description-item text_color title">{{'Часы работы:'}}</span>
+                    <span class="container-header__description-item text_color">{{'Пн-пт: 8:00-21:00'}}</span>
+                </div>
+            </div>
+            
+            <div class="container-content">
+                <div class="welcome-area">
+                    <img class="welcome-area__image" src="assets/images/welcome-image.png" alt="">
+                    <div class="welcome-area__advantages">
+                        <div class="welcome-area__advantages-item" appScrollFade position="out" [delation]="0.1">
+                            <h3 class="welcome-area__advantages-item_title invert-text_color">Преимузество 1</h3>
+                            <span class="welcome-area__advantages-item_text invert-text_color">Описание преимущества в 1-2х предлодениях</span>
+                        </div>
+                        <div class="welcome-area__advantages-item" appScrollFade position="out" [delation]="0.1">
+                            <h3 class="welcome-area__advantages-item_title invert-text_color">Преимузество 2</h3>
+                            <span class="welcome-area__advantages-item_text invert-text_color">Описание преимущества в 1-2х предлодениях</span>
+                        </div>
+                        <div class="welcome-area__advantages-item" appScrollFade position="out" [delation]="0.1">
+                            <h3 class="welcome-area__advantages-item_title invert-text_color">Преимузество 3</h3>
+                            <span class="welcome-area__advantages-item_text invert-text_color">Описание преимущества в 1-2х предлодениях</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="description">
+                    <app-about-clinic></app-about-clinic>
+                    <app-employees></app-employees>
+                    <app-services></app-services>
+                </div>
+            </div>    
+        </div>
+    </ng-container>
+</app-layout-page>

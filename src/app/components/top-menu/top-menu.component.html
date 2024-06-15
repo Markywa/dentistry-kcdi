@@ -1,0 +1,19 @@
+<div class="header">
+    <div class="header__item">
+        <svg-icon src="assets/icons/kcdi-logo.svg"></svg-icon>
+    </div>
+    <div class="header__item_custom">
+            <div class="header__item-rout">
+                <ng-container *ngFor="let item of buttons">
+                    <a 
+                    class="header__item-rout__button btn-transparent"
+                    [ngClass]="{
+                        'active': item.isActive
+                    }"
+                    [routerLink]="item.link"
+                    >{{item.name}}</a>
+                </ng-container>
+            </div>
+    </div>
+    <button class="header__item header__item-call btn-transparent" (click)="openCallbackModal()">Заказать звонок</button>
+</div>

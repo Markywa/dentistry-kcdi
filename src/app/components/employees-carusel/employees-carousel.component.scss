@@ -1,0 +1,50 @@
+.container{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+.specialist-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    &__image{
+        &_text{
+            position: absolute;
+            padding: 8px 24px 8px 24px;
+            border-radius: 16px;
+            background-color: rgba($color: #EEEEEE, $alpha: 0.5);
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+        &-block{
+            display: flex;
+            position: relative;
+            &_image {
+                width: 420px;
+                height: 490px;
+                border-radius: 16px;
+                object-fit: cover;
+            }
+            
+        }
+    }
+    &__legend{
+        padding-top: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 15px;
+        &-name{
+            text-align: center;
+            font-weight: 600;
+            font-size: 30px;
+        }
+        &-job{
+            text-align: center;
+            font-weight: 400;
+            font-size: 15px;
+        }
+    }
+}
