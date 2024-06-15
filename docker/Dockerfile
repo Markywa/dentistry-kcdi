@@ -12,7 +12,7 @@ RUN mkdir -p /var/www
 ADD ./docker/nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=front-builder /opt/front/static /var/www
 ADD ./docker/version /opt
-# ADD ./docker/revision /opt
+ADD ./docker/revision /opt
 EXPOSE 80
 
 # Используем базовый образ Node.js
