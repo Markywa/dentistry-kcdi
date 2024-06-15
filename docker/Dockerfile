@@ -1,9 +1,9 @@
-FROM node:16.16-alpine AS front-builder
+FROM node:20.14 AS front-builder
 
 WORKDIR /opt/front
 ADD ./package.json /opt/front
 ADD ./package-lock.json /opt/front
-RUN npm ci --legacy-peer-deps
+RUN npm ci
 COPY ./ /opt/front
 RUN npm run build:prod
 

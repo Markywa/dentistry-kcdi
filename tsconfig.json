@@ -23,9 +23,6 @@
       "dom"
     ]
   },
-  "include": [
-    "src/popmotion.d.ts"  // Добавьте этот путь
-  ],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
