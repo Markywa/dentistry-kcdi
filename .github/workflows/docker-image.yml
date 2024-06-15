@@ -22,15 +22,19 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      - name: Set dynamic tag
+        id: vars
+        run: echo "TAG=$(date +%s)" >> $GITHUB_ENV
+
       - name: Build the Docker image
-        run: docker build . --file docker/Dockerfile --tag dentistry-kcdi:$(date +%s)
+        run: docker build . --file docker/Dockerfile --tag dentistry-kcdi:${{ env.TAG }}
 
       - name: Tag the Docker image
         run: |
           docker tag dentistry-kcdi:$(date +%s) markyvva/dentistry-kcdi:latest
-          docker tag dentistry-kcdi:$(date +%s) markyvva/dentistry-kcdi:$(date +%Y%m%d%H%M%S)
+          docker tag dentistry-kcdi:$(date +%s) markyvva/dentistry-kcdi:${{ env.TAG }}
 
       - name: Push the Docker image
         run: |
           docker push markyvva/dentistry-kcdi:latest
-          docker push markyvva/dentistry-kcdi:$(date +%Y%m%d%H%M%S)
+          docker push markyvva/dentistry-kcdi:${{ env.TAG }}
