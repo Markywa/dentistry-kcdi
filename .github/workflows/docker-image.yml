@@ -24,7 +24,7 @@ jobs:
 
       - name: Set dynamic tag
         id: vars
-        run: echo "TAG=$(date +%s)" >> $GITHUB_ENV
+        run: echo "TAG=1.0.0" >> $GITHUB_ENV
 
       - name: Build the Docker image
         run: docker build . --file docker/Dockerfile --tag dentistry-kcdi:${{ env.TAG }}
