@@ -34,11 +34,14 @@ COPY . .
 RUN npm run build -- --configuration production
 
 # Используем базовый образ для сервера nginx
-ADD ./docker/nginx.conf /etc/nginx/conf.d/default.conf
+FROM nginx:alpine
 
 # Копируем билд приложения в корневую директорию nginx
-COPY --from=0 /app/dist/dentistry-kcdi /usr/share/nginx/html
+ADD ./docker/nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=front-builder /opt/front/static /var/www
 
 # Экспонируем порт
 EXPOSE 80
 
+# Запуск nginx
+CMD ["nginx", "-g", "daemon off;"]
