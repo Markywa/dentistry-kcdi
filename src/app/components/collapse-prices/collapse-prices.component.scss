@@ -1,0 +1,57 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    &__header{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border-bottom: 2px solid var(--thirdBackgroundColor);
+        align-items: center;
+        padding-bottom: 10px;
+        cursor: pointer;
+        &-text{
+            font-size: 30px;
+            font-weight: 500;
+        }
+    }
+    &__content{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        &-item{
+            width: 55%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            &-price {
+                white-space: nowrap; /* предотвращает перенос цены на следующую строку */
+              }
+            &-name {
+                flex: 1;
+              }
+        }
+    }
+}
+
+.rotate{
+    transform: rotate(90deg);
+}
+
+  .dots {
+    flex: 1;
+    position: relative;
+    margin: 0 10px; /* расстояние между текстом и точками */
+  }
+  
+  .dots::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px; /* высота линии */
+    border-top: 1px dotted black; /* стиль линии */
+    position: absolute;
+    bottom: 0;
+    transform: translateY(-100%);
+  }
+  

@@ -8,11 +8,16 @@ import { PricesPageComponent } from "./prices-page.component";
 import { PricesPageRoutingModule } from "./prices-page-routing.module";
 import { PricesDescriptionComponent } from "../../components/prices-description/prices-description.component";
 import { SignUpConsultationModule } from "../../components/sign-up-consultation/sign-up-consultation.module";
+import { CollapsePricesComponent } from "../../components/collapse-prices/collapse-prices.component";
+import { CollapseModule } from "../../directive/collapse/collapse.module";
+import { PricesComponent } from "../../components/prices/prices.component";
 
 @NgModule({
     declarations: [
         PricesPageComponent,
-        PricesDescriptionComponent
+        PricesDescriptionComponent,
+        CollapsePricesComponent,
+        PricesComponent
     ],
     exports: [PricesPageComponent],
     imports: [
@@ -23,6 +28,7 @@ import { SignUpConsultationModule } from "../../components/sign-up-consultation/
         AngularSvgIconModule,
         ScrollFadeDirectiveModule,
         SignUpConsultationModule,
+        CollapseModule,
     ],
 })
 

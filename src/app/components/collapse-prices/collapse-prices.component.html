@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="container__header" appCollapse [isCollapsed]="isCollapsed" (click)="isCollapsed = !isCollapsed">
+        <span class="container__header-text invert-text_color" >{{price.name}}</span>
+        <svg-icon src="assets/icons/jackdaw.svg" 
+        [ngClass]="{
+            'rotate': !isCollapsed
+        }"
+        ></svg-icon>
+    </div>
+    
+    <ul class="container__content" [@collapseExpand]="isCollapsed ? 'collapsed' : 'expanded'">
+        <ng-container *ngFor="let item of price.prices">
+            <li class="container__content-item">
+                <span class="container__content-item-text invert-text_color">
+                    {{item.name}}
+                </span>
+                <div class="dots"></div>
+                <span class="container__content-item-price invert-text_color">
+                    {{item.price}} руб
+                </span>
+            </li>
+        </ng-container>
+    </ul>
+</div>
