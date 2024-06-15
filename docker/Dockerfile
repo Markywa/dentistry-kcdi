@@ -15,7 +15,7 @@
 # # ADD ./docker/revision /opt
 # EXPOSE 80
 
-Используем базовый образ Node.js
+# Используем базовый образ Node.js
 FROM node:20.14
 
 # Создаем рабочую директорию
