@@ -3,7 +3,7 @@ FROM node:20.14 AS front-builder
 WORKDIR /app
 ADD ./package.json /opt/front
 ADD ./package-lock.json /opt/front
-RUN npm ci
+RUN npm install
 COPY ./ /opt/front
 RUN npm run build -- --configuration production
 
