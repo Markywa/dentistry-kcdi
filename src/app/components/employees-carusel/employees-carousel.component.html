@@ -1,0 +1,16 @@
+<div class="container">
+    <ng-container *ngFor="let employee of employeesList">
+        <div class="specialist-container" appScrollFade position="out">
+            <div class="specialist-container__image-block">
+                <img class="specialist-container__image-block_image" [src]="employee.photo" alt="">
+                <div class="specialist-container__image_text">
+                    <span class="invert-text_color">Стаж {{employee.experience}}</span>
+                </div>
+            </div>
+            <div class="specialist-container__legend">
+                <span class="specialist-container__legend-name invert-text_color">{{employee.name}}</span>
+                <span class="specialist-container__legend-job invert-text_color">{{employee.job}}</span>
+            </div>
+        </div>
+    </ng-container>
+</div>

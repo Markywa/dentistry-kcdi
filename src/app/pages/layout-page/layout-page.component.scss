@@ -2,20 +2,30 @@
     height: 100vh;
     width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
     max-width: 1420px;
     margin: 0 auto;
     flex-direction: column;
     position: relative;
 }
 
-.main-page-content{
-    // height: 80%;
+.main-page{
+    &__content{
+        width: 100%;     
+        flex: 1   
+    }
+    &__header{
+        width: 100%;
+        position: relative;
+    }
 }
 
 .footer{
     position: relative;
     width: 100%;
     margin-top: auto;
+}
+
+.modal{
+    display: flex;
+    justify-content: center;
 }

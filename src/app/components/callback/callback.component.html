@@ -1,0 +1,32 @@
+<div class="container">
+    <svg-icon class="container-close" src="assets/icons/exit.svg" (click)="closeModal()"></svg-icon>
+
+    <form 
+        class="container-content"
+        action="submit" 
+        [formGroup]="signUpForm" 
+        (ngSubmit)="sendForm()" 
+    >
+        <h3 class="container-content__header invert-text_color">Заказать звонок</h3>
+        <span class="container-content__description invert-text_color">Напишите свой номер телефона, и наш менеджер свяжется с Вами в ближайшее время</span>
+        <div class="container-content__item">
+            <svg-icon class="container-content__item-icon" src="assets/icons/person.svg"></svg-icon>
+            <input formControlName="name" placeholder="Ваше имя..." class="container-content__input" type="text">
+            
+        </div>
+        <div class="container-content__item">
+            <svg-icon class="container-content__item-icon" src="assets/icons/phone.svg"></svg-icon>
+            <input formControlName="phone_number" [maskito]="options" placeholder="Ваш телефон..." class="container-content__input"  type="text">
+        </div>
+        <button class="container-content__button" type="submit">Записаться</button>
+    </form>
+    <div class="drawer" #drawer>
+        <!-- Контент шторки -->
+         <ng-container *ngIf="isSend">
+            <div class="drawer__content">
+                <h1 class="drawer__title invert-text_color">Спасибо</h1>
+                <p class="drawer__description invert-text_color">Наш менеджер скоро свяжется с Вами для уточнения данных</p>
+            </div>
+        </ng-container>
+    </div>
+</div>

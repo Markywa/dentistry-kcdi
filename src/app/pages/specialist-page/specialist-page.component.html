@@ -1,0 +1,25 @@
+<app-layout-page>
+    <ng-container content>
+        <div class="container">
+            <div class="container-header">
+                <div class="container-header__title">
+                    <h1 class="container-header__title_big text_color">Специалисты</h1>
+                </div>
+                <div  class="container-header__description">
+                    <span class="container-header__description-item text_color title">{{'+7(999) 999-99-99'}}</span>
+                    <span class="container-header__description-item text_color title">{{'Адрес'}}</span>
+                    <span class="container-header__description-item text_color">{{'г. Красноярск, ул. Мира, д. 115а'}}</span>
+                    <span class="container-header__description-item text_color title">{{'Часы работы:'}}</span>
+                    <span class="container-header__description-item text_color">{{'Пн-пт: 8:00-21:00'}}</span>
+                </div>
+            </div>
+            
+            <div class="container-content">
+                <div class="description">
+                    <app-employees-team></app-employees-team>
+                    <app-employees-carousel></app-employees-carousel>
+                </div>
+            </div>   
+        </div>
+    </ng-container>
+</app-layout-page>

@@ -1,0 +1,25 @@
+<div class="container-wrap">
+    <img class="container__image slide-tr" [src]="currentSpecialist.photo" alt="" appScrollFade position="left" [delation]="0" #image>
+    <div class="container"  appScrollFade position="right" [delation]="0.1" #card>
+        <div class="container-header">
+            <div class="container-header__top">
+                <span class="container-header__top-text">{{currentPage}}/{{specialistList.length}}</span>
+                <div class="container-header__top-rating">
+                      <span class="container-header__top-text">{{'4.5'}}</span>
+                      <svg-icon src="assets/icons/rate.svg"></svg-icon>  
+                </div>
+            </div>
+            <h3 class="container-header__name">{{currentSpecialist.name}}</h3>
+            <span class="container-header__experience">Опыт работы {{currentSpecialist.experience}}</span>
+        </div>
+    
+        <div class="container-content">
+            <span class="container-content__text">
+                {{currentSpecialist.about}}
+            </span>
+            <button class="container-content__button">
+                Записаться на прием
+            </button>
+        </div>
+    </div>
+</div>

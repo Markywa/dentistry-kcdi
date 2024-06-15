@@ -1,20 +1,36 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
-import { AngularSvgIconModule } from 'angular-svg-icon';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export const routes: Routes = [
       {
         path: '',
-        redirectTo: 'kcdi24',
+        redirectTo: 'main',
         pathMatch: 'full',
+        data: {animation: 'slideInAnimation'}
       },
       {
-        path: 'kcdi24',
+        path: 'main',
         loadChildren: () =>
           import('./pages/main-page/main-page.module').then(
             (m) => m.MainPageModule,
-          ),
+          )
+      },
+      {
+        path: 'specialist',
+        loadChildren: () =>
+          import('./pages/specialist-page/specialist-page.module').then(
+            (m) => m.SpecialistPageModule,
+          )
+      },
+      {
+        path: 'prices',
+        loadChildren: () =>
+          import('./pages/prices-page/prices-page.module').then(
+            (m) => m.PricePageModule,
+          )
       },
 ];
 
@@ -27,8 +43,10 @@ const config: ExtraOptions = {
 
 @NgModule({
     imports: [
+        HttpClientModule,
+        BrowserModule,
+        BrowserAnimationsModule,
         RouterModule.forRoot(routes, config),
-        
     ],
     exports: [RouterModule],
   })

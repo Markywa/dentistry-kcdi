@@ -2,6 +2,8 @@
 @import url('./assets/styles/themes.scss');
 @import url('./assets/styles/buttons-transparent.scss');
 @import url('./assets/styles/fonts.scss');
+@import url('./assets/styles/global-styles.scss');
+@import url('./assets/styles/animations.scss');
 
 *{
     box-sizing: border-box;
@@ -12,4 +14,13 @@ html, body {
     margin: 0;
     background-color: var(--primaryBackgroundColor);
     box-sizing: border-box;
+}
+
+router-outlet {
+    display: block;
+    position: relative;
+  }
+
+.modal-open{
+    overflow: hidden;
 }

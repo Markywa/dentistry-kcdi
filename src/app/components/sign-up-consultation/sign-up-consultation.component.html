@@ -1,0 +1,64 @@
+<div class="divider" *ngIf="!alternate"></div>
+<div class="content"
+[ngClass]="{
+    'content-alternate': alternate,
+    'content': !alternate
+}">
+
+    <ng-container *ngIf="!alternate">
+        <h1 class="content__header invert-text_color" appScrollFade position="down" [delation]="0.1">Запишитесь на бесплатную консультацию</h1>
+        <span h1 class="content__description invert-text_color" appScrollFade position="down" [delation]="0.1">Наши специалисты сделают диагностику Вашей ротовой полости и составят план лечения</span>
+    </ng-container>
+
+    <ng-container *ngIf="alternate">
+        <h1 class="content__header-alternate invert-text_color">Записаться на бесплатную консультацию</h1>
+    </ng-container>
+
+    <form 
+        [ngClass]="{
+            'content-controls_wrap-alternate': alternate,
+            'content-controls_wrap': !alternate
+        }"
+        action="submit" 
+        [formGroup]="signUpForm" 
+        (ngSubmit)="sendForm()" 
+        >
+        <div class="content-controls__input_wrap">
+            <div class="content-controls__item">
+                <svg-icon class="content-controls__item-icon" src="assets/icons/person.svg"></svg-icon>
+                <input formControlName="name" placeholder="Ваше имя..." class="content-controls__input" type="text">
+                
+            </div>
+            <div class="content-controls__item">
+                <svg-icon class="content-controls__item-icon" src="assets/icons/phone.svg"></svg-icon>
+                <input formControlName="phone_number" [maskito]="options" placeholder="Ваш телефон..." class="content-controls__input"  type="text">
+            </div>
+        </div>
+        <div>
+            <textarea rows="5" formControlName="client_problem" placeholder="Опишите вашу проблему..." class="content-controls__input"  type="textarea"></textarea>
+        </div>
+        <div class="content-controls__input_wrap">
+            <div class="content-controls__item">
+                <select formControlName="specialist" aria-placeholder="Выбор специалиста" class="content-controls__input">
+                    <option value="" disabled selected hidden class="content-controls__input-placeholder">Выбор специалиста</option>
+                    <ng-container *ngFor="let specialist of specialistList">
+                        <option [value]="specialist.id">{{specialist.name}}</option>
+                    </ng-container>
+                </select>
+                <div class="arrow"></div>
+            </div>
+            <button class="content-controls__button" type="submit">Записаться</button>
+        </div>
+        
+    </form>
+    <div class="drawer" #drawer>
+        <!-- Контент шторки -->
+         <ng-container *ngIf="isSend">
+            <div class="drawer__content">
+                <h1 class="drawer__title invert-text_color">Спасибо</h1>
+                <p class="drawer__description invert-text_color">Наш менеджер скоро свяжется с Вами для уточнения данных и записи на приём</p>
+            </div>
+        </ng-container>
+    </div>
+</div>
+

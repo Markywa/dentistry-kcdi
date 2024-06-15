@@ -1,0 +1,19 @@
+<div class="container">
+    <span class="container-footnote" appScrollFade position="down" [delation]="0.1">Наши эксперты</span>
+    <div class="container-header">
+        <h1 class="container-header__title" appScrollFade position="down" [delation]="0.1">Команда</h1>
+        <div class="container-header__controls">
+            <button class="container-header__controls-button" (click)="previousPage()"><svg-icon src="assets/icons/arrow-left.svg"></svg-icon></button>
+            <button class="container-header__controls-button" (click)="nextPage()"><svg-icon src="assets/icons/arrow-right.svg"></svg-icon></button>
+        </div>
+    </div>
+    <div class="container-content">
+            <ng-container *ngIf="specialistList.length">
+                <app-person-card 
+                    [specialistList]="specialistList"
+                    [currentPage]="selectedPage"
+                    >
+                </app-person-card>
+            </ng-container>
+    </div>
+</div>

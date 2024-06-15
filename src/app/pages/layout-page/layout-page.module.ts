@@ -5,15 +5,23 @@ import { AngularSvgIconModule, provideAngularSvgIcon } from "angular-svg-icon";
 import { HttpClientModule } from "@angular/common/http";
 import { FooterModule } from "../../components/footer/footer.module";
 import { TopMenuModule } from "../../components/top-menu/top-menu.module";
+import { ModalComponent } from "../../components/modal/modal.component";
+import { CallbackComponent } from "../../components/callback/callback.component";
+import { MaskitoDirective } from "@maskito/angular";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
-    declarations:[LayoutPageComponent],
+    declarations:[LayoutPageComponent, ModalComponent, CallbackComponent],
     exports:[LayoutPageComponent],
     imports: [CommonModule,
         AngularSvgIconModule,
         HttpClientModule,
         FooterModule,
         TopMenuModule,
+        AngularSvgIconModule,
+        MaskitoDirective,
+        FormsModule,
+        ReactiveFormsModule,
     ],
     providers: [provideAngularSvgIcon()],
 })

@@ -1,0 +1,29 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+    &__block{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 50px;
+        &-title{
+            font-size: 90px;
+            line-height: 90px;
+            font-weight: 500;
+            margin: 0;
+        }
+        &-textarea{
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            font-size: 20px;
+            line-height: 24px;
+            font-weight: 400;
+            width: 80%;
+        }
+        &-icon{
+            padding-right: 15px;
+        }
+    }
+}

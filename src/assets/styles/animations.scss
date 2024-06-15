@@ -1,0 +1,253 @@
+.noVisible{
+    opacity: 0;
+}
+
+// всплывание снизу вверх
+
+@keyframes slideInUp {
+    0%{
+        transform: translate3d(0, 25%, 0);
+        opacity: 0;
+        visibility: visible;
+    }
+    
+    30%{
+        opacity: 0.2;
+    }
+
+    60%{
+        opacity: 0.4;
+    }
+
+    90%{
+        opacity: 0.9;
+    }
+
+   100% {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+  }
+  
+  .slideInUp {
+    animation-name: slideInUp;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    z-index: 10;
+  }
+
+  //
+
+  // всплывание слева по диагонали
+
+  @keyframes slideInLeftDiagonal {
+    0%{
+        transform: translate3d(-15%, 15%, 0);
+        opacity: 0;
+        visibility: visible;
+    }
+    
+    30%{
+        opacity: 0.2;
+    }
+
+    60%{
+        opacity: 0.4;
+    }
+
+    90%{
+        opacity: 0.9;
+    }
+
+   100% {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+  }
+  
+  .slideInLeftDiagonal {
+    animation-name: slideInLeftDiagonal;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    z-index: 10;
+  }
+
+  //
+
+  // всплывание справа по диагонали
+
+  @keyframes slideInRightDiagonal {
+    0%{
+        transform: translate3d(15%, 15%, 0);
+        opacity: 0;
+        visibility: visible;
+    }
+    
+    30%{
+        opacity: 0.2;
+    }
+
+    60%{
+        opacity: 0.4;
+    }
+
+    90%{
+        opacity: 0.9;
+    }
+
+   100% {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+  }
+  
+  .slideInRightDiagonal{
+    animation-name: slideInRightDiagonal;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    z-index: 10;
+  }
+
+  //
+
+  // всплывание сверху вниз
+
+  @keyframes slideInDown {
+    0%{
+        transform: translate3d(0%, -25%, 0);
+        opacity: 0;
+        visibility: visible;
+    }
+    
+    30%{
+        opacity: 0.2;
+    }
+
+    60%{
+        opacity: 0.4;
+    }
+
+    90%{
+        opacity: 0.9;
+    }
+
+   100% {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+  }
+  
+  .slideInDown {
+    animation-name: slideInDown;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    z-index: 2;
+  }
+
+  //
+
+  // всплывание слева
+
+  @keyframes slideInLeft {
+    0%{
+        transform: translate3d(5%, 0, 0);
+        opacity: 0;
+        visibility: visible;
+    }
+    
+    30%{
+        opacity: 0.2;
+    }
+
+    60%{
+        opacity: 0.4;
+    }
+
+    90%{
+        opacity: 0.9;
+    }
+
+   100% {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+  }
+  
+  .slideInLeft {
+    animation-name: slideInLeft;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    z-index: 10;
+  }
+
+  //
+
+  // всплывание справа
+
+  @keyframes slideInRight {
+    0%{
+        transform: translate3d(-5%, 0, 0);
+        opacity: 0;
+        visibility: visible;
+    }
+    
+    30%{
+        opacity: 0.2;
+    }
+
+    60%{
+        opacity: 0.4;
+    }
+
+    90%{
+        opacity: 0.9;
+    }
+
+   100% {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+  }
+  
+  .slideInRight {
+    animation-name: slideInRight;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    z-index: 10;
+  }
+
+ //
+
+  // всплывание справа
+
+  @keyframes slideOut {
+    0%{
+        scale: 0.9;
+        opacity: 0;
+        visibility: visible;
+    }
+    
+    30%{
+        opacity: 0.2;
+    }
+
+    60%{
+        opacity: 0.4;
+    }
+
+    90%{
+        opacity: 0.9;
+    }
+
+   100% {
+      scale: 1;
+      opacity: 1;
+    }
+  }
+  
+  .slideOut {
+    animation-name: slideOut;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    z-index: 10;
+  }
