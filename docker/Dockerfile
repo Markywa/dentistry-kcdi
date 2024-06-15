@@ -37,7 +37,7 @@ RUN npm run build -- --configuration production
 FROM nginx:alpine
 
 # Копируем билд приложения в корневую директорию nginx
-COPY --from=0 /app/dist/your-angular-app /usr/share/nginx/html
+COPY --from=0 /app/dist/dentistry-kcdi /usr/share/nginx/html
 
 # Экспонируем порт
 EXPOSE 80
