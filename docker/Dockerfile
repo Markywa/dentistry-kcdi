@@ -38,7 +38,7 @@ FROM nginx:alpine
 
 # Копируем билд приложения в корневую директорию nginx
 ADD ./docker/nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=front-builder /opt/front/static /var/www
+COPY --from=0 /app/dist/dentistry-kcdi /usr/share/nginx/html
 
 # Экспонируем порт
 EXPOSE 80
