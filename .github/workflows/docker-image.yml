@@ -31,8 +31,8 @@ jobs:
 
       - name: Tag the Docker image
         run: |
-          docker tag dentistry-kcdi:$(date +%s) markyvva/dentistry-kcdi:latest
-          docker tag dentistry-kcdi:$(date +%s) markyvva/dentistry-kcdi:${{ env.TAG }}
+          docker tag dentistry-kcdi:${{ env.TAG }} markyvva/dentistry-kcdi:latest
+          docker tag dentistry-kcdi:${{ env.TAG }} markyvva/dentistry-kcdi:${{ env.TAG }}
 
       - name: Push the Docker image
         run: |
