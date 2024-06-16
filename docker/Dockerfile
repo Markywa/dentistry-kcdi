@@ -16,32 +16,20 @@
 # EXPOSE 80
 
 # Используем базовый образ Node.js
-FROM node:20.14
-
-# Создаем рабочую директорию
-WORKDIR /app
-
-# Копируем package.json и package-lock.json
-COPY package*.json ./
-
-# Устанавливаем зависимости
+FROM node:20.14 AS front-builder
+WORKDIR /opt/front
+ADD ./package.json /opt/front
+ADD ./package-lock.json /opt/front
 RUN npm install
-
-# Копируем остальной код
-COPY . .
-
-# Собираем приложение для production
+COPY ./ /opt/front
 RUN npm run build -- --configuration production
 
 # Используем базовый образ для сервера nginx
 FROM nginx:alpine
-
-# Копируем билд приложения в корневую директорию nginx
+RUN mkdir -p /var/www
 ADD ./docker/nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=0 /app/dist/dentistry-kcdi /usr/share/nginx/html
-
-# Экспонируем порт
+COPY --from=front-builder /opt/front /var/www
 EXPOSE 80
 
 # Запуск nginx
-CMD ["nginx", "-g", "daemon off;"]
+# CMD ["nginx", "-g", "daemon off;"]
