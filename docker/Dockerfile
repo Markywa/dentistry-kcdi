@@ -28,7 +28,7 @@ RUN npm run build -- --configuration production
 FROM nginx:alpine
 RUN mkdir -p /var/www
 ADD ./docker/nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=front-builder /opt/front/browser /var/www
+COPY --from=front-builder /opt/front/dist/dentistry-kcdi/browser /var/www
 EXPOSE 80
 
 # Запуск nginx
