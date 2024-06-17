@@ -1,6 +1,7 @@
 import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChild, ElementRef, HostListener, Input, Renderer2, ViewChild } from "@angular/core";
-import { ModalControllerService } from "../../services/modal/modal-controller.component";
+import { ModalControllerService, ModalType } from "../../services/modal/modal-controller.component";
 import { CallbackComponent } from "../callback/callback.component";
+import { SignUpConsultationComponent } from "../sign-up-consultation/sign-up-consultation.component";
 
 @Component({
     selector: 'app-modal',
@@ -14,34 +15,26 @@ export class ModalComponent implements AfterContentInit {
    @Input() opened: boolean | null = false;
    @ViewChild('modal') modal!: ElementRef;
    @ContentChild(CallbackComponent, { static: false }) callbackComponent!: CallbackComponent;
+   @ContentChild(SignUpConsultationComponent, { static: false }) signUpConsultationComponent!: SignUpConsultationComponent;
 
    ngAfterContentInit(): void {
-    this.callbackComponent.emitClose.subscribe(() => {
-        this.closeModal();
-      });
+    if(this.signUpConsultationComponent){
+        this.signUpConsultationComponent.emitClose.subscribe((ModalID) => {
+            this.closeModal(ModalID);
+          });
+    } else if (this.callbackComponent) {
+        this.callbackComponent.emitClose.subscribe((ModalID) => {
+            this.closeModal(ModalID);
+          });
+    }
    }
 
    constructor(private modalControllerService: ModalControllerService, private renderer: Renderer2){}
 
-   closeModal(): void {
+   closeModal(ModalID: ModalType): void {
     this.renderer.addClass(this.modal.nativeElement, 'close-modal'); 
         setTimeout(() => {
-            this.modalControllerService.closeModal();
+            this.modalControllerService.closeModal(ModalID);
         }, 1000)
    }
-
-//    @HostListener('click', ['$event'])
-//    onClick(event: Event) {
-//         console.log('inside');
-//         this.renderer.addClass(this.modal.nativeElement, 'close-modal'); 
-//         setTimeout(() => {
-//             this.modalControllerService.closeModal();
-//         }, 1000)
-//         // 
-//         console.log(!this.modal.nativeElement.contains(event.target as Node));
-        
-//         if (this.modal.nativeElement && !this.modal.nativeElement.contains(event.target as Node)) {
-//             console.log('clicked outside');
-//         }
-//    }
 }

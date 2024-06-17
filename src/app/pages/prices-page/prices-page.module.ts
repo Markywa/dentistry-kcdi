@@ -11,6 +11,7 @@ import { SignUpConsultationModule } from "../../components/sign-up-consultation/
 import { CollapsePricesComponent } from "../../components/collapse-prices/collapse-prices.component";
 import { CollapseModule } from "../../directive/collapse/collapse.module";
 import { PricesComponent } from "../../components/prices/prices.component";
+import { HeaderInformationModule } from "../../components/header-information/header-information.module";
 
 @NgModule({
     declarations: [
@@ -29,6 +30,7 @@ import { PricesComponent } from "../../components/prices/prices.component";
         ScrollFadeDirectiveModule,
         SignUpConsultationModule,
         CollapseModule,
+        HeaderInformationModule
     ],
 })
 

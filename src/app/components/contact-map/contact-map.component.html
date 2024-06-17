@@ -10,17 +10,17 @@
         </div>
         <div class="container-contacts">
             <h2 class="container-contacts__title invert-text_color">Адрес</h2>
-            <span class="container-contacts__text invert-text_color">г. Красноярск, ул. Мира, д. 115а</span>
+            <span class="container-contacts__text invert-text_color">{{contacts.address}}</span>
             <h2 class="container-contacts__title invert-text_color">Телефон</h2>
-            <span class="container-contacts__text invert-text_color">+7(999) 999-99-99</span>
+            <span class="container-contacts__text invert-text_color">{{contacts.phone_number}}</span>
             <h2 class="container-contacts__title invert-text_color">Электронная почта</h2>
-            <span class="container-contacts__text invert-text_color">offic</span>
+            <span class="container-contacts__text invert-text_color">{{contacts.email}}</span>
             <h2 class="container-contacts__title invert-text_color">Режим работы</h2>
             <div class="container-contacts__schedule">
-                <span class="container-contacts__text invert-text_color">пн-пт с 9:00-21:00</span>
-                <span class="container-contacts__text invert-text_color">сб-вс с 9:00 до 15:00</span>
+                <span class="container-contacts__text invert-text_color">пн-сб: {{contacts.working_hours}}</span>
+                <!-- <span class="container-contacts__text invert-text_color">сб-вс с 9:00 до 15:00</span> -->
             </div>
-            <button class="container-contacts__button">Записаться на прием</button>
+            <button (click)="openSignUpConsultation()" class="container-contacts__button">Записаться на прием</button>
         </div>
     </div>   
 </div>

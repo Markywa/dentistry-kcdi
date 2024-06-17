@@ -26,11 +26,7 @@ import { PriceItemEntity, PricesService } from "../../services/prices/prices.ser
     changeDetection: ChangeDetectionStrategy.Default, 
 })
 
-export class CollapsePricesComponent implements OnChanges {
+export class CollapsePricesComponent {
     @Input() price!: PriceItemEntity; 
-    ngOnChanges(changes: SimpleChanges): void {
-        console.log(this.price);
-        
-    }
     public isCollapsed: boolean = true;
 }

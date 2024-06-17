@@ -42,7 +42,7 @@
 
   @keyframes slideInLeftDiagonal {
     0%{
-        transform: translate3d(-15%, 15%, 0);
+        transform: translate3d(-10%, 10%, 0);
         opacity: 0;
         visibility: visible;
     }
@@ -78,7 +78,7 @@
 
   @keyframes slideInRightDiagonal {
     0%{
-        transform: translate3d(15%, 15%, 0);
+        transform: translate3d(10%, 10%, 0);
         opacity: 0;
         visibility: visible;
     }

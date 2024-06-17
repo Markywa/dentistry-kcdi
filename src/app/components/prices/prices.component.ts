@@ -15,8 +15,7 @@ export class PricesComponent implements OnInit {
     public priceList!: PriceItemEntity[];
    ngOnInit(): void {
     this.pricesService.getPricesList().subscribe((response) => {
-        console.log(response);
-         this.priceList = response;
+        this.priceList = response;
         this.cdr.markForCheck();
         });
    }

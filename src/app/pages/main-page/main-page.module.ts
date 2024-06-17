@@ -10,6 +10,7 @@ import { PersonCardComponent } from "../../components/employees/person-card/pers
 import { ServicesComponent } from "../../components/services/services.component";
 import { HttpClientModule } from "@angular/common/http";
 import { ScrollFadeDirectiveModule } from "../../directive/scroll-fade.module";
+import { HeaderInformationModule } from "../../components/header-information/header-information.module";
 
 @NgModule({
     declarations: [
@@ -26,7 +27,8 @@ import { ScrollFadeDirectiveModule } from "../../directive/scroll-fade.module";
         LayoutPageModule,
         HttpClientModule,
         AngularSvgIconModule,
-        ScrollFadeDirectiveModule
+        ScrollFadeDirectiveModule,
+        HeaderInformationModule
     ],
 })
 

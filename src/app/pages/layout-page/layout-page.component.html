@@ -6,10 +6,16 @@
     <app-footer [isSendForm]="isSendForm" class="footer"></app-footer>
 </div>
 
-    <app-modal
-        [opened]="openModal$ | async">
-        <ng-container modal-content>
-            <app-callback class="modal"></app-callback>
-        </ng-container>
-    </app-modal>
+<app-modal
+    [opened]="(openModal$ | async) === ModalID.callback">
+    <ng-container modal-content>
+        <app-callback class="modal"></app-callback>
+    </ng-container>
+</app-modal>
 
+<app-modal
+    [opened]="(openModal$ | async) === ModalID.consultation">
+    <ng-container modal-content>
+        <app-sign-up-consultation [alternate]="true" [modal]="true" class="modal"></app-sign-up-consultation>
+    </ng-container>
+</app-modal>

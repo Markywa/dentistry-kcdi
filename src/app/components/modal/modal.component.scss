@@ -1,5 +1,5 @@
 .modal{
-    position: absolute;
+    position: fixed;
     top: 0;
     display: flex;
     z-index: 10;
@@ -22,8 +22,6 @@
   }
 
 .close-modal{
-    // animation: fadeOut 1s forwards;
-    // opacity: 1;
     animation-name: fadeOut;
     animation-duration: 1s;
     animation-fill-mode: both;

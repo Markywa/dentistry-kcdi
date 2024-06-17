@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { ContactsEntity, ContactsService } from "../../services/contacts/contacts.service";
 
 @Component({
     selector: 'app-contacts-page',
@@ -8,5 +9,5 @@ import { ChangeDetectionStrategy, Component } from "@angular/core";
 })
 
 export class ContactsPageComponent {
-    
+
 }

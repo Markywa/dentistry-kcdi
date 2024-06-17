@@ -9,6 +9,7 @@ import { ModalComponent } from "../../components/modal/modal.component";
 import { CallbackComponent } from "../../components/callback/callback.component";
 import { MaskitoDirective } from "@maskito/angular";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { SignUpConsultationModule } from "../../components/sign-up-consultation/sign-up-consultation.module";
 
 @NgModule({
     declarations:[LayoutPageComponent, ModalComponent, CallbackComponent],
@@ -22,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
         MaskitoDirective,
         FormsModule,
         ReactiveFormsModule,
+        SignUpConsultationModule,
     ],
     providers: [provideAngularSvgIcon()],
 })

@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
-import { slideInAnimation } from "../../../assets/animations";
 
 @Component({
     selector: 'app-prices-page',
@@ -9,5 +8,5 @@ import { slideInAnimation } from "../../../assets/animations";
 })
 
 export class PricesPageComponent {
-    
+
 }

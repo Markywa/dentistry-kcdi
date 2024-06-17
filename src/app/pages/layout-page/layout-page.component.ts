@@ -1,6 +1,6 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, Input, OnInit } from "@angular/core";
 import { slideInAnimation } from "../../../assets/animations";
-import { ModalControllerService } from "../../services/modal/modal-controller.component";
+import { ModalControllerService, ModalID } from "../../services/modal/modal-controller.component";
 
 @Component({
     selector: 'app-layout-page',
@@ -12,6 +12,7 @@ import { ModalControllerService } from "../../services/modal/modal-controller.co
 
 export class LayoutPageComponent implements OnInit{
     @Input() isSendForm: boolean = true;
+    ModalID = ModalID;
     constructor(private modalControllerService: ModalControllerService){}
 
     public isOpen: boolean = false;
@@ -19,6 +20,4 @@ export class LayoutPageComponent implements OnInit{
     ngOnInit(): void {
         this.isOpen = true;
     }   
-
-    
 }

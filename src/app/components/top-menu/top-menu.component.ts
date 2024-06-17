@@ -1,6 +1,8 @@
-import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { ModalControllerService } from "../../services/modal/modal-controller.component";
+import { ModalControllerService, ModalID } from "../../services/modal/modal-controller.component";
+import { MobileService } from "../../services/mobile/mobile.service";
+import { Subscription } from "rxjs";
 
 class Button {
     constructor(public name: string, public isActive: boolean, public link: string[]) {}
@@ -19,8 +21,22 @@ class ButtonFactory {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
-export class TopMenuComponent {
-    constructor(private router: Router, private modalControllerService: ModalControllerService){}
+export class TopMenuComponent implements OnInit, OnDestroy {
+    private sizeSubscription!: Subscription;
+    constructor(
+        private router: Router, 
+        private modalControllerService: ModalControllerService,
+        private mobileService: MobileService,
+    ){}
+
+    ngOnInit(): void {
+        this.sizeSubscription = this.mobileService._userDevice$.subscribe((device) => {
+            console.log(device);
+        })
+    }
+    ngOnDestroy(): void {
+        this.sizeSubscription.unsubscribe();
+    }
 
     private buttonData = [
         { name: 'Главная', isActive: this.router.url.includes('main'), link: ['/main'] },
@@ -40,6 +56,6 @@ export class TopMenuComponent {
     public buttons = ButtonFactory.createButtons(this.buttonData);
 
     public openCallbackModal(): void {
-        this.modalControllerService.openModal()
+        this.modalControllerService.openModal(ModalID.callback)
     }
 }

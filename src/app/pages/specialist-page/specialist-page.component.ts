@@ -1,6 +1,4 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
-import { slideInAnimation } from "../../../assets/animations";
-import { RouterOutlet } from "@angular/router";
 
 @Component({
     selector: 'app-specialist-page',
@@ -10,4 +8,5 @@ import { RouterOutlet } from "@angular/router";
 })
 
 export class SpecialistPageComponent {
+
 }

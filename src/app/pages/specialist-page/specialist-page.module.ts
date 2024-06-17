@@ -8,6 +8,7 @@ import { SpecialistPageComponent } from "./specialist-page.component";
 import { SpecialistPageRoutingModule } from "./specialist-page-routing.module";
 import { EmployeesTeamComponent } from "../../components/employees-team/employees-team.component";
 import { EmployeesCarouselComponent } from "../../components/employees-carusel/employees-carousel.component";
+import { HeaderInformationModule } from "../../components/header-information/header-information.module";
 
 @NgModule({
     declarations: [
@@ -23,6 +24,7 @@ import { EmployeesCarouselComponent } from "../../components/employees-carusel/e
         HttpClientModule,
         AngularSvgIconModule,
         ScrollFadeDirectiveModule,
+        HeaderInformationModule
     ],
 })
 

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from "@angular/core";
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild } from "@angular/core";
 import { MaskitoOptions } from "@maskito/core";
 import mask from "../../../mask";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
@@ -6,6 +6,7 @@ import { SignUpService } from "../../services/sign-up/sign-up.service";
 import { EmployeesListService } from "../../services/employees-list/employees-list.service";
 import { SpecialistsResponse } from "../../interfaces/employees.interface";
 import { NotificationType } from "../../shared/utils";
+import { ModalID, ModalType } from "../../services/modal/modal-controller.component";
 
 @Component({
     selector: 'app-sign-up-consultation',
@@ -16,7 +17,10 @@ import { NotificationType } from "../../shared/utils";
 
 export class SignUpConsultationComponent implements OnInit {
     @Input() alternate: boolean = false;
+    @Input() modal: boolean = false;
     @ViewChild('drawer') drawer!: ElementRef;
+    @Output() public emitClose = new EventEmitter<ModalType>();
+
     readonly options: MaskitoOptions = mask;
     public isSend = false;
     public specialistList: SpecialistsResponse[] = [];
@@ -31,7 +35,7 @@ export class SignUpConsultationComponent implements OnInit {
         phone_number: ['', Validators.minLength(17)],
         client_problem: [''],
         specialist: [''],
-        notification_type: NotificationType.FREE_CONSULTATION,
+        notification_type: [''],
       });
 
     constructor(
@@ -42,11 +46,17 @@ export class SignUpConsultationComponent implements OnInit {
         private employeesListService: EmployeesListService
     ) {}
 
+
     private clearForm(): void {
         this.signUpForm.reset();
     }
     
+    public closeModal(): void{
+        this.emitClose.emit(ModalID.consultation);
+    }
+
     public sendForm(): void{
+        this.signUpForm.patchValue({notification_type: NotificationType.FREE_CONSULTATION})
         if(this.signUpForm.invalid) return;
         this.signUpService
             .post({...this.signUpForm.value})
@@ -59,6 +69,9 @@ export class SignUpConsultationComponent implements OnInit {
                         this.renderer.addClass(this.drawer.nativeElement, 'down');
                         this.renderer.removeClass(this.drawer.nativeElement, 'up');
                         this.clearForm();
+                        if(this.modal){
+                            this.emitClose.emit(ModalID.consultation);
+                        }
                         setTimeout(() => {
                             this.isSend = false;
                             this.renderer.removeClass(this.drawer.nativeElement, 'down');

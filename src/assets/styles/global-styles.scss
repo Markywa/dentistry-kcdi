@@ -7,3 +7,63 @@
     color: var(--secondaryFontColor);
 }
 
+.text-title_first-level{
+    font-size: 90px;
+    font-weight: 500;
+    line-height: 91px;
+    margin: 0;
+    @media (max-width: 922px) {
+        font-size: 60px;
+        line-height: 60px;
+        font-weight: 600;
+    }
+    @media (max-width: 560px) {
+        font-size: 25px;
+        line-height: 30px;
+        font-weight: 600;
+    }
+}
+
+
+.text-title_second-level{
+    margin: 0;
+    font-size: 50px;
+    font-weight: 500;
+    line-height: 73px;
+    @media (max-width: 922px) {
+        font-size: 40px;
+        line-height: 32px;
+        font-weight: 500;
+    }
+    @media (max-width: 360px) {
+        font-size: 40px;
+        line-height: 32px;
+        font-weight: 500;
+    }
+}
+
+
+.text-title_third-level{
+    margin: 0;
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.text-simple_first-level{
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 20px;
+    margin: 0
+
+}
+
+.text-simple_second-level{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.text-simple_third-level{
+    font-size: 15px;
+    line-height: 15px;
+}

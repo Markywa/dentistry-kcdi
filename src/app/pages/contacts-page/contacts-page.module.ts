@@ -9,6 +9,7 @@ import { PricesPageRoutingModule } from "../prices-page/prices-page-routing.modu
 import { ContactsPageRoutingModule } from "./contacts-page-routing.module";
 import { ContactMapComponent } from "../../components/contact-map/contact-map.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HeaderInformationModule } from "../../components/header-information/header-information.module";
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
         AngularSvgIconModule,
         ScrollFadeDirectiveModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        HeaderInformationModule
     ],
 })
 

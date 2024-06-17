@@ -1,16 +1,30 @@
 <div class="divider" *ngIf="!alternate"></div>
 <div class="content"
 [ngClass]="{
+    'content-alternate-modal': modal,
     'content-alternate': alternate,
     'content': !alternate
 }">
-
-    <ng-container *ngIf="!alternate">
-        <h1 class="content__header invert-text_color" appScrollFade position="down" [delation]="0.1">Запишитесь на бесплатную консультацию</h1>
-        <span h1 class="content__description invert-text_color" appScrollFade position="down" [delation]="0.1">Наши специалисты сделают диагностику Вашей ротовой полости и составят план лечения</span>
+    <ng-container *ngIf="modal">
+        <svg-icon class="content-close" src="assets/icons/exit.svg" (click)="closeModal()"></svg-icon>
     </ng-container>
 
-    <ng-container *ngIf="alternate">
+    <ng-container *ngIf="!alternate || modal">
+        <h1 
+        [ngClass]="{
+            'content__header-modal': modal,
+            'content__header-alternate': alternate,
+            'content__header': !alternate && !modal
+        }" 
+        class="invert-text_color">Запишитесь на бесплатную консультацию</h1>
+        <span
+        [ngClass]="{
+            'content__description-modal': modal,
+        }" 
+        h1 class="content__description invert-text_color">Наши специалисты сделают диагностику Вашей ротовой полости и составят план лечения</span>
+    </ng-container>
+
+    <ng-container *ngIf="alternate && !modal">
         <h1 class="content__header-alternate invert-text_color">Записаться на бесплатную консультацию</h1>
     </ng-container>
 
@@ -36,15 +50,11 @@
         </div>
         <div>
             <textarea rows="5" formControlName="client_problem" placeholder="Опишите вашу проблему..." class="content-controls__input"  type="textarea"></textarea>
+            <span Class="content-controls__input-required invert-text_color">Необязательное поле</span>
         </div>
         <div class="content-controls__input_wrap">
             <div class="content-controls__item">
-                <select formControlName="specialist" aria-placeholder="Выбор специалиста" class="content-controls__input">
-                    <option value="" disabled selected hidden class="content-controls__input-placeholder">Выбор специалиста</option>
-                    <ng-container *ngFor="let specialist of specialistList">
-                        <option [value]="specialist.id">{{specialist.name}}</option>
-                    </ng-container>
-                </select>
+                <app-dropdown formControlName="specialist" [list]="specialistList"></app-dropdown>
                 <div class="arrow"></div>
             </div>
             <button class="content-controls__button" type="submit">Записаться</button>

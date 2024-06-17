@@ -7,9 +7,10 @@ import { SignUpConsultationComponent } from "./sign-up-consultation.component";
 import { ScrollFadeDirectiveModule } from "../../directive/scroll-fade.module";
 import { MaskitoDirective } from "@maskito/angular";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { DropdownComponent } from "../dropdown/dropdown.component";
 
 @NgModule({
-    declarations:[SignUpConsultationComponent],
+    declarations:[SignUpConsultationComponent, DropdownComponent],
     exports:[SignUpConsultationComponent],
     imports: [CommonModule,
         HttpClientModule,

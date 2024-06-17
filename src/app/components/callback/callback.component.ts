@@ -4,7 +4,7 @@ import mask from "../../../mask";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { SignUpService } from "../../services/sign-up/sign-up.service";
 import { NotificationType } from "../../shared/utils";
-import { ModalControllerService } from "../../services/modal/modal-controller.component";
+import { ModalControllerService, ModalID, ModalType } from "../../services/modal/modal-controller.component";
 import { BehaviorSubject, Observable, Subject } from "rxjs";
 
 @Component({
@@ -16,7 +16,7 @@ import { BehaviorSubject, Observable, Subject } from "rxjs";
 
 export class CallbackComponent {
     @ViewChild('drawer') drawer!: ElementRef;
-    @Output() public emitClose = new EventEmitter<void>();
+    @Output() public emitClose = new EventEmitter<ModalType>();
 
     readonly options: MaskitoOptions = mask;
     public isSend = false;
@@ -39,10 +39,11 @@ export class CallbackComponent {
     }
 
     public closeModal(): void{
-        this.emitClose.emit();
+        this.emitClose.emit(ModalID.callback);
     }
 
       public sendForm(): void{
+        this.signUpForm.patchValue({notification_type: NotificationType.CALLBACK})
         if(this.signUpForm.invalid) return;
         this.signUpService
             .post({...this.signUpForm.value})
@@ -55,7 +56,7 @@ export class CallbackComponent {
                         this.renderer.addClass(this.drawer.nativeElement, 'down');
                         this.renderer.removeClass(this.drawer.nativeElement, 'up');
                         this.clearForm();
-                        this.emitClose.emit();
+                        this.emitClose.emit(ModalID.callback);
                         setTimeout(() => {
                             this.isSend = false;
                             this.renderer.removeClass(this.drawer.nativeElement, 'down');

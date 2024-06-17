@@ -1,0 +1,15 @@
+<div class="custom-select">
+    <div class="select-box" (click)="toggleDropdown()">
+      <div class="selected-item invert-text_color" [ngClass]="{'shadowed': !selectedItem}">{{ selectedItem || 'Выбор специалиста' }}</div>
+      <div class="arrow">&#9660;</div>
+    </div>
+    <span Class="select-required invert-text_color">Необязательное поле</span>
+    <div class="dropdown" *ngIf="isOpen">
+      <div 
+        class="dropdown-item invert-text_color" 
+        *ngFor="let item of list" 
+        (click)="selectItem(item)">
+        {{ item.name }}
+      </div>
+    </div>
+  </div>
