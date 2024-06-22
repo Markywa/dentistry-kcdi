@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { ModalControllerService, ModalID } from "../../services/modal/modal-controller.component";
-import { MobileService } from "../../services/mobile/mobile.service";
+import { DeviceType, MobileService } from "../../services/mobile/mobile.service";
 import { Subscription } from "rxjs";
+import { ContactsEntity, ContactsService } from "../../services/contacts/contacts.service";
 
 class Button {
     constructor(public name: string, public isActive: boolean, public link: string[]) {}
@@ -23,15 +24,28 @@ class ButtonFactory {
 
 export class TopMenuComponent implements OnInit, OnDestroy {
     private sizeSubscription!: Subscription;
+    public deviceType!: DeviceType;
+    public isMenuOpen: boolean = false;
+    public contacts!: ContactsEntity;
     constructor(
         private router: Router, 
         private modalControllerService: ModalControllerService,
         private mobileService: MobileService,
+        private cdr: ChangeDetectorRef,
+        private contactsService: ContactsService,
     ){}
+    toggleMenu() {
+        this.isMenuOpen = !this.isMenuOpen;
+    }
 
     ngOnInit(): void {
         this.sizeSubscription = this.mobileService._userDevice$.subscribe((device) => {
-            console.log(device);
+            this.deviceType = device;
+            this.cdr.markForCheck();
+        })
+        this.contactsService.get().subscribe((contacts) => {
+            this.contacts = contacts;
+            this.cdr.markForCheck();
         })
     }
     ngOnDestroy(): void {
@@ -57,5 +71,14 @@ export class TopMenuComponent implements OnInit, OnDestroy {
 
     public openCallbackModal(): void {
         this.modalControllerService.openModal(ModalID.callback)
+    }
+
+    @HostListener('document:click', ['$event'])
+    onDocumentClick(event: MouseEvent) {
+        const targetElement = event.target as HTMLElement;
+        if (this.isMenuOpen && targetElement.childElementCount === 1) {
+            this.isMenuOpen = false;
+            this.cdr.markForCheck()
+        }
     }
 }

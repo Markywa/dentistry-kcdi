@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, ElementRef, ViewChild } from "@angular/core";
+import { ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild } from "@angular/core";
+import { DeviceType } from "../../services/mobile/mobile.service";
 
 @Component({
     selector: 'app-about-clinic',
@@ -8,5 +9,5 @@ import { ChangeDetectionStrategy, Component, ElementRef, ViewChild } from "@angu
 })
 
 export class AboutClinicComponent {
-
+    @Input() deviceType: DeviceType = 'desktop';
 }

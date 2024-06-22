@@ -57,8 +57,14 @@
     width: 100%;
     height: 100%;
     top: 0;
-    right: 0;
-    z-index: 10;
+    right: -100%;
+    z-index: 20;
+    transition: right 1s ease;
+    &__description{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
     &-btn{
         background: transparent;
         cursor: pointer;
@@ -87,7 +93,16 @@
         &__exit{
             display: flex;
             justify-content: flex-end;
+            cursor: pointer;
+            background: transparent;
+            border: none;
         }
     }
 }
-    
+
+.mobile{
+   
+}
+.open {
+    right: 0;
+}

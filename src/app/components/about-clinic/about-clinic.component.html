@@ -2,11 +2,11 @@
     <div class="container_wrap">
         <span class="container-footnote invert-text_color" appScrollFade position="down" [delation]="0.1">Широкий спектр услуг</span>
         <h1 class="text-title_first-level invert-text_color" appScrollFade position="down" [delation]="0.1">Наша клиника</h1>
-        <img class="container-image-left invert-text_color" src="assets/images/about-left.png" alt="" appScrollFade position="diagonalLeft" [delation]="0">
+        <img class="container-image-left invert-text_color" src="assets/images/about-left.png" appScrollFade position="diagonalLeft" [delation]="0">
     </div>
 
     <div class="container_wrap">
-        <img class="container-image-center" src="assets/images/about-center.png" alt="" appScrollFade position="up" [delation]="0.3">
+        <img class="container-image-center" src="assets/images/about-center.png" appScrollFade position="up" [delation]="0.3">
         <div class="container-description">
             <h3 class="container-description__title invert-text_color">Инновации</h3>
             <span class="container-description__text invert-text_color">Описание современного оборудования в 2-3 строки. Что за оборудование откуда</span>
@@ -15,7 +15,7 @@
 
     <div class="container_wrap">
         <span class="container-footnote__right invert-text_color">С 2012 года</span>
-        <img class="container-image-right" src="assets/images/about-right.png" alt="" appScrollFade position="diagonalRight" [delation]="0.4">
+        <img class="container-image-right" [src]="deviceType === 'desktop' ? 'assets/images/about-right.png' : 'assets/images/about-right-mobile.png'" appScrollFade position="diagonalRight" [delation]="0.4">
         <button class="container__button">Увидеть больше <svg-icon src="assets/icons/arrow.svg"></svg-icon></button>
         <div class="container-description">
             <h3 class="container-description__title invert-text_color">Забота</h3>

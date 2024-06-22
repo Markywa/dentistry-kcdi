@@ -16,7 +16,7 @@ export class MobileService {
         const windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
         this.checkDevice(windowWidth);
         const resize$ = fromEvent(window, 'resize').pipe(
-            debounceTime(250), // Добавляем задержку, чтобы избежать частых вызовов
+            // debounceTime(250), // задержка, чтобы избежать частых вызовов
             map(() => ({
               width: window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
             }))
@@ -28,9 +28,9 @@ export class MobileService {
     }
 
     private checkDevice(size: number): void {
-        if(size < 768){
+        if(size < 800){
             this._userDevice.next('mobile');
-        } else if (size >= 768 && size < 1324) {
+        } else if (size >= 800 && size < 1324) {
             this._userDevice.next('tablet');
         } else {
             this._userDevice.next('desktop');

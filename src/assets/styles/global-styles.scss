@@ -7,17 +7,21 @@
     color: var(--secondaryFontColor);
 }
 
+.background-text_color{
+    color: var(--thirdFontColor);
+}
+
 .text-title_first-level{
     font-size: 90px;
     font-weight: 500;
     line-height: 91px;
     margin: 0;
-    @media (max-width: 922px) {
+    @media (max-width: 1324px) {
         font-size: 60px;
         line-height: 60px;
         font-weight: 600;
     }
-    @media (max-width: 560px) {
+    @media (max-width: 521px) {
         font-size: 25px;
         line-height: 30px;
         font-weight: 600;
@@ -30,12 +34,12 @@
     font-size: 50px;
     font-weight: 500;
     line-height: 73px;
-    @media (max-width: 922px) {
+    @media (max-width: 1324px) {
         font-size: 40px;
         line-height: 32px;
         font-weight: 500;
     }
-    @media (max-width: 360px) {
+    @media (max-width: 521px) {
         font-size: 40px;
         line-height: 32px;
         font-weight: 500;
@@ -51,19 +55,18 @@
 
 .text-simple_first-level{
     font-size: 20px;
-    font-weight: 700;
     line-height: 20px;
     margin: 0
-
 }
 
 .text-simple_second-level{
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 20px;
+    font-size: 16px;
+    line-height: 16px;
+    margin: 0
 }
 
 .text-simple_third-level{
-    font-size: 15px;
-    line-height: 15px;
+    font-size: 14px;
+    line-height: 14px;
+    margin: 0
 }

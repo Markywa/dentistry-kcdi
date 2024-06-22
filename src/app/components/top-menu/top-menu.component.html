@@ -1,40 +1,48 @@
-<div class="header">
-    <div class="header__item">
-        <svg-icon src="assets/icons/kcdi-logo.svg"></svg-icon>
+<ng-container *ngIf="deviceType === 'desktop'">
+    <div class="header">
+        <div class="header__item">
+            <svg-icon src="assets/icons/kcdi-logo.svg"></svg-icon>
+        </div>
+        <div class="header__item_custom">
+                <div class="header__item-rout">
+                    <ng-container *ngFor="let item of buttons">
+                        <a 
+                        class="header__item-rout__button btn-transparent"
+                        [ngClass]="{
+                            'active': item.isActive
+                        }"
+                        [routerLink]="item.link"
+                        >{{item.name}}</a>
+                    </ng-container>
+                </div>
+        </div>
+        <button class="header__item header__item-call btn-transparent" (click)="openCallbackModal()">Заказать звонок</button>
     </div>
-    <div class="header__item_custom">
-            <div class="header__item-rout">
+</ng-container>
+
+<ng-container *ngIf="deviceType !== 'desktop'">
+    <button class="mobile-btn" (click)="toggleMenu()"><svg-icon src="assets/icons/menu.svg"></svg-icon></button>
+    <div class="mobile" [ngClass]="{'open': isMenuOpen}">
+        <div class="mobile-content">
+            <div class="mobile-content__item-rout">
+                <button class="mobile-content__exit" (click)="toggleMenu()"><svg-icon src="assets/icons/arrow-exit.svg"></svg-icon></button>
                 <ng-container *ngFor="let item of buttons">
                     <a 
-                    class="header__item-rout__button btn-transparent"
+                    class="header__item-rout__button btn-transparent invert-text_color"
                     [ngClass]="{
-                        'active': item.isActive
+                        'active_mobile': item.isActive
                     }"
                     [routerLink]="item.link"
                     >{{item.name}}</a>
                 </ng-container>
             </div>
-    </div>
-    <button class="header__item header__item-call btn-transparent" (click)="openCallbackModal()">Заказать звонок</button>
-</div>
-
-<!-- <button class="mobile-btn"><svg-icon src="assets/icons/menu.svg"></svg-icon></button> -->
-<!-- <div class="mobile">
-    <div class="mobile-content">
-        <div class="mobile-content__item-rout">
-            <div class="mobile-content__exit">></div>
-            <ng-container *ngFor="let item of buttons">
-                <a 
-                class="header__item-rout__button btn-transparent invert-text_color"
-                [ngClass]="{
-                    'active_mobile': item.isActive
-                }"
-                [routerLink]="item.link"
-                >{{item.name}}</a>
-            </ng-container>
-        </div>
-        <div>
-            текст
+            <div class="mobile__description">
+                <span class="mobile__description-item__title background-text_color">{{contacts.phone_number}}</span>
+                <span class="mobile__description-item__title background-text_color">Адрес:</span>
+                <span class="mobile__description-item background-text_color">{{contacts.address}}</span>
+                <span class="mobile__description-item__title background-text_color">Часы работы:</span>
+                <span class="mobile__description-item background-text_color">{{contacts.working_hours}}</span>
+            </div>
         </div>
     </div>
-</div> -->
+</ng-container>

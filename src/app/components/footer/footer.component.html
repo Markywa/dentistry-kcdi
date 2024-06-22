@@ -5,58 +5,71 @@
     </ng-container>
     <div class="footer-content">
         <div class="footer-content__left">
-            <span class="footer-content__title text_color">Краевой центр дентальной имплантации</span>
-            <div class="info">
-                <div class="social-club social-club__wrap">
-                    <div class="social-club-qr-code__wrap">
-                        <svg-icon src="assets/icons/qrcode.svg"></svg-icon>
+            <ng-container *ngIf="!isMobile">
+                <span class="footer-content__title text_color">Краевой центр дентальной имплантации</span>
+                <div class="info">
+                    <div class="social-club social-club__wrap">
+                        <div class="social-club-qr-code__wrap">
+                            <svg-icon src="assets/icons/qrcode.svg"></svg-icon>
+                        </div>
+                        <div class="social-club-telegram">
+                            <svg-icon src="assets/icons/telegram.svg"></svg-icon>
+                            <span class="social-club-telegram__item text_color">kcdi</span>
+                        </div>
                     </div>
-                    <div class="social-club-telegram">
-                        <svg-icon src="assets/icons/telegram.svg"></svg-icon>
-                        <span class="social-club-telegram__item text_color">kcdi</span>
+                    <div class="info-block">
+                        <div class="info-block__item">
+                            <svg-icon src="assets/icons/location.svg"></svg-icon>
+                            <span class="info-block__item text_color">{{'Крас пвб 106'}}</span>
+                        </div>
+                        <div class="info-block__item">
+                            <svg-icon src="assets/icons/mail.svg"></svg-icon>
+                            <span class="info-block__item text_color">{{'Крас пвб 106'}}</span>
+                        </div>
+                        <div class="info-block__item">
+                            <svg-icon src="assets/icons/vk.svg"></svg-icon>
+                            <span class="info-block__item text_color">{{'Крас пвб 106'}}</span>
+                        </div>
+                        <div class="info-block__item">
+                            <svg-icon src="assets/icons/instagram.svg"></svg-icon>
+                            <span class="info-block__item text_color">{{'Крас пвб 106'}}</span>
+                        </div>
                     </div>
                 </div>
-                <div class="info-block">
-                    <div class="info-block__item">
-                        <svg-icon src="assets/icons/location.svg"></svg-icon>
-                        <span class="info-block__item text_color">{{'Крас пвб 106'}}</span>
-                    </div>
-                    <div class="info-block__item">
-                        <svg-icon src="assets/icons/mail.svg"></svg-icon>
-                        <span class="info-block__item text_color">{{'Крас пвб 106'}}</span>
-                    </div>
-                    <div class="info-block__item">
-                        <svg-icon src="assets/icons/vk.svg"></svg-icon>
-                        <span class="info-block__item text_color">{{'Крас пвб 106'}}</span>
-                    </div>
-                    <div class="info-block__item">
-                        <svg-icon src="assets/icons/instagram.svg"></svg-icon>
-                        <span class="info-block__item text_color">{{'Крас пвб 106'}}</span>
-                    </div>
+            </ng-container>
+            <ng-container *ngIf="isMobile">
+                <div class="info-mobile">
+                    <svg-icon src="assets/icons/mobile-logo.svg"></svg-icon>
+                    <span class="info-mobile-item__title text_color">{{contacts.phone_number}}</span>
+                    <span class="info-mobile-item__title text_color">Адрес:</span>
+                    <span class="info-mobile-item text_color">{{contacts.address}}</span>
+                    <span class="info-mobile-item__title text_color">Часы работы:</span>
+                    <span class="info-mobile-item text_color">Пн-сб: {{contacts.working_hours}}</span>
+                </div>                
+            </ng-container>
+        </div>
+        <ng-container *ngIf="!isMobile">
+            <div class="footer-content__center">
+                <svg-icon></svg-icon>
+                <svg-icon></svg-icon>
+            </div>
+            <div class="footer-content__right">
+                <div class="content-info">
+                    <span class="content-info__title text_color">Разделы</span>
+                    <button class="content-info__buttons btn-transparent">Главная</button>
+                    <button class="content-info__buttons btn-transparent">Услуги</button>
+                    <button class="content-info__buttons btn-transparent">Цены</button>
+                    <button class="content-info__buttons btn-transparent">Специалисты</button>
+                    <button class="content-info__buttons btn-transparent">Акции</button>
+                    <button class="content-info__buttons btn-transparent">Отзывы</button>
+                    <button class="content-info__buttons btn-transparent">Контакты</button>
+                </div>
+                <div class="content-info">
+                    <span class="content-info__title text_color">Документы</span>
+                    <button class="content-info__buttons btn-transparent">Публичная оферта</button>
+                    <button class="content-info__buttons btn-transparent">Политика конфиденциальности</button>
                 </div>
             </div>
-            
-        </div>
-        <div class="footer-content__center">
-            <svg-icon></svg-icon>
-            <svg-icon></svg-icon>
-        </div>
-        <div class="footer-content__right">
-            <div class="content-info">
-                <span class="content-info__title text_color">Разделы</span>
-                <button class="content-info__buttons btn-transparent">Главная</button>
-                <button class="content-info__buttons btn-transparent">Услуги</button>
-                <button class="content-info__buttons btn-transparent">Цены</button>
-                <button class="content-info__buttons btn-transparent">Специалисты</button>
-                <button class="content-info__buttons btn-transparent">Акции</button>
-                <button class="content-info__buttons btn-transparent">Отзывы</button>
-                <button class="content-info__buttons btn-transparent">Контакты</button>
-            </div>
-            <div class="content-info">
-                <span class="content-info__title text_color">Документы</span>
-                <button class="content-info__buttons btn-transparent">Публичная оферта</button>
-                <button class="content-info__buttons btn-transparent">Политика конфиденциальности</button>
-            </div>
-        </div>
+        </ng-container>
     </div>
 </footer>

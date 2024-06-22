@@ -1,12 +1,19 @@
-<div class="container-header">
+<div [ngClass]="{'container-header-extra': extraView, 'container-header': !extraView}" >
+    <ng-container *ngIf="deviceType !== 'desktop' && extraView">
+        <svg-icon [src]="deviceType === 'mobile' ? 'assets/icons/mobile-logo.svg' : 'assets/icons/tablet-logo.svg' "></svg-icon>
+    </ng-container>
     <div class="container-header__title">
-        <h1 class="text-title_first-level text_color">{{title}}</h1>
+        <ng-container *ngFor="let item of title">
+            <h1 class="text-title_first-level text_color">{{item}}</h1>
+        </ng-container>
     </div>
-    <div  class="container-header__description">
-        <span class="container-header__description-item__title text_color">{{contacts.phone_number}}</span>
-        <span class="container-header__description-item__title text_color">Адрес:</span>
-        <span class="container-header__description-item text_color">{{contacts.address}}</span>
-        <span class="container-header__description-item__title text_color">Часы работы:</span>
-        <span class="container-header__description-item text_color">Пн-сб: {{contacts.working_hours}}</span>
-    </div>
+    <ng-container *ngIf="deviceType !== 'mobile' && extraView">
+        <div  class="container-header__description">
+            <span class="container-header__description-item__title text_color">{{contacts.phone_number}}</span>
+            <span class="container-header__description-item__title text_color">Адрес:</span>
+            <span class="container-header__description-item text_color">{{contacts.address}}</span>
+            <span class="container-header__description-item__title text_color">Часы работы:</span>
+            <span class="container-header__description-item text_color">Пн-сб: {{contacts.working_hours}}</span>
+        </div>
+    </ng-container>
 </div>

@@ -1,11 +1,15 @@
 <app-layout-page>
     <ng-container content>
         <div class="container">
-            <app-header-information [title]="'Твоя улыбка наша забота'"></app-header-information>
+            <app-header-information 
+                [extraView]="true" 
+                [deviceType]="deviceType" 
+                [title]="['Твоя улыбка', 'наша забота']"
+            ></app-header-information>
         
             <div class="container-content">
                 <div class="welcome-area">
-                    <img class="welcome-area__image" src="assets/images/welcome-image.png" alt="">
+                    <img class="welcome-area__image" [src]="mainPhoto" alt="">
                     <div class="welcome-area__advantages">
                         <div class="welcome-area__advantages-item" appScrollFade position="out" [delation]="0.1">
                             <h3 class="welcome-area__advantages-item_title invert-text_color">Преимущества 1</h3>
@@ -22,7 +26,7 @@
                     </div>
                 </div>
                 <div class="description">
-                    <app-about-clinic></app-about-clinic>
+                    <app-about-clinic [deviceType]="deviceType"></app-about-clinic>
                     <app-employees></app-employees>
                     <app-services></app-services>
                 </div>
