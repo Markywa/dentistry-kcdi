@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="container-about">
+        <div class="container-about__section">
+            <h1 class="container-about__section-title text-title_third-level invert-text_color">Описание</h1>
+            <div class="container-about__section-text text-simple_first-level invert-text_color" [innerHTML]="serviceEntity.about"></div>
+        </div>
+        <div class="container-about__image">
+            <app-employees-carousel [small]="true" [employeesList]="specialist"></app-employees-carousel>
+        </div>
+    </div>
+    <div class="container-directions">
+        <ng-container *ngIf="serviceEntity.photo_1">
+            <div class="container-directions__image-block">
+                <img class="container-directions__image" [src]="serviceEntity.photo_1" alt="Изображение Услуги">
+            </div>
+        </ng-container>
+        <div class="container-directions__section">
+            <h1 class="container-directions__section-title text-title_third-level invert-text_color">Основные направления</h1>
+            <div class="container-directions__section-text text-simple_first-level invert-text_color" [innerHTML]="serviceEntity.main_directions"></div>
+        </div>
+    </div>
+</div>

@@ -1,11 +1,11 @@
 import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
-import { SpecialistPageComponent } from "./specialist-page.component";
+import { ExtraOptions, RouterModule, Routes } from "@angular/router";
+import { ServicesPageComponent } from "./services-page.component";
 
 const routes: Routes = [
   {
     path: '',
-    component: SpecialistPageComponent,
+    component: ServicesPageComponent,
     data: {animation: 'slideInAnimation'}
   },
 ];
@@ -15,4 +15,4 @@ const routes: Routes = [
     exports: [RouterModule],
   })
 
-export class SpecialistPageRoutingModule {}
+export class ServicesPageRoutingModule {}

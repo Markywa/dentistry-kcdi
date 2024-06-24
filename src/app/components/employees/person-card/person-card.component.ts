@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnChanges, Renderer2, SimpleChanges, ViewChild } from "@angular/core";
-import { EmployeesResponse } from "../../../interfaces/employees.interface";
+import { EmployeesResponse, SpecialistsResponse } from "../../../interfaces/employees.interface";
+import { ModalControllerService, ModalID } from "../../../services/modal/modal-controller.component";
 
 @Component({
     selector: 'app-person-card',
@@ -9,12 +10,12 @@ import { EmployeesResponse } from "../../../interfaces/employees.interface";
 })
 
 export class PersonCardComponent implements OnChanges{
-    constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef){}
+    constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef, private modalControllerService: ModalControllerService){}
     @Input() currentPage: number = 1;
-    @Input() specialistList: EmployeesResponse[] = [];
+    @Input() specialistList: SpecialistsResponse[] = [];
     @ViewChild('card') card!: ElementRef;
     @ViewChild('image') image!: ElementRef;
-    public currentSpecialist!:EmployeesResponse;
+    public currentSpecialist!: SpecialistsResponse;
 
     public ngOnChanges(changes: SimpleChanges): void {
         if(changes['specialistList']){
@@ -33,5 +34,9 @@ export class PersonCardComponent implements OnChanges{
                 this.renderer.removeClass(this.image.nativeElement, 'toggleContentLeft');
             }, 600)
         }
+    }
+
+    public openModal(id: number): void {
+        this.modalControllerService.openModalWithData(ModalID.consultation, {specialist: id})
     }
 }

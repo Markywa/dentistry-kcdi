@@ -39,13 +39,18 @@ export const routes: Routes = [
             (m) => m.ContactsPageModule,
           )
       },
+      {
+        path: 'services/:id',
+        loadChildren: () =>
+          import('./pages/services-page/services-page.module').then(
+            (m) => m.ServicesPageModule,
+          )
+      },
 ];
 
 const config: ExtraOptions = {
     scrollPositionRestoration: 'enabled',
-    anchorScrolling: 'enabled',
-    scrollOffset: [0, 90],
-    useHash: true,
+    // scrollOffset: [0, 90],
   };
 
 @NgModule({
@@ -53,7 +58,7 @@ const config: ExtraOptions = {
         HttpClientModule,
         BrowserModule,
         BrowserAnimationsModule,
-        RouterModule.forRoot(routes, config),
+        RouterModule.forRoot(routes, {scrollPositionRestoration: 'top'}),
     ],
     exports: [RouterModule],
   })

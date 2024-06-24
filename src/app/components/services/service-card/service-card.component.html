@@ -1,0 +1,18 @@
+<div class="grid-container">
+    <div class="container cell-double">
+        <span class="container__footnote"  appScrollFade position="down" [delation]="0.1">Наши цены на</span>
+        <span class="text-title_first-level invert-text_color"  appScrollFade position="down" [delation]="0.1">Услуги</span>
+    </div>
+    <ng-container *ngFor="let item of serviceList">
+        <button class="service-block" (click)="routToService(item.id)" appScrollFade position="out" [delation]="0.2">
+            <img class="service-block__image" [src]="item.carousel_photo" alt="">
+            <div class="service-block__entity">
+                <div class="service-block__entity_top">
+                    <span class="service-block__entity-text text_color">Подробнее</span>
+                    <svg-icon class="service-block__entity-link" src="assets/icons/arrow-link.svg"></svg-icon>
+                </div>
+                <span class="service-block__entity-text text_color">{{item.title}}</span>
+            </div>
+        </button>
+    </ng-container>
+</div>

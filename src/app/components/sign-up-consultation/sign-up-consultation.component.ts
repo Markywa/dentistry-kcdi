@@ -6,7 +6,8 @@ import { SignUpService } from "../../services/sign-up/sign-up.service";
 import { EmployeesListService } from "../../services/employees-list/employees-list.service";
 import { SpecialistsResponse } from "../../interfaces/employees.interface";
 import { NotificationType } from "../../shared/utils";
-import { ModalID, ModalType } from "../../services/modal/modal-controller.component";
+import { ModalControllerService, ModalID, ModalType } from "../../services/modal/modal-controller.component";
+import { filter } from "rxjs";
 
 @Component({
     selector: 'app-sign-up-consultation',
@@ -28,6 +29,26 @@ export class SignUpConsultationComponent implements OnInit {
     ngOnInit(): void {
         this.employeesListService.getSpecialistsList()
             .subscribe((response) => this.specialistList = response);
+        this.modalControllerService._data$
+        // .pipe(
+        //     filter((data) => !!data))
+            .subscribe((data) => {
+                console.log(data);
+                
+                if(!data){
+                    return this.clearForm();
+                }
+                if (data?.specialist) {
+                    const selectedSpecialist = this.specialistList.find(s => s.id === data.specialist);
+                    if (selectedSpecialist) {
+                      data.specialist = selectedSpecialist.id;
+                    }
+                  }
+                this.signUpForm.patchValue(data);
+                console.log(this.signUpForm.value);
+                
+                this.cdr.markForCheck();
+        })
     }
 
     public signUpForm: FormGroup = this.fb.group({
@@ -43,12 +64,14 @@ export class SignUpConsultationComponent implements OnInit {
         private signUpService: SignUpService,
         private renderer: Renderer2,
         private cdr: ChangeDetectorRef,
-        private employeesListService: EmployeesListService
+        private employeesListService: EmployeesListService,
+        private modalControllerService: ModalControllerService,
     ) {}
 
 
     private clearForm(): void {
         this.signUpForm.reset();
+        this.cdr.markForCheck();
     }
     
     public closeModal(): void{

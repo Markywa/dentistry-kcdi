@@ -13,7 +13,9 @@ import { ModalControllerService, ModalID } from "../../services/modal/modal-cont
 export class LayoutPageComponent implements OnInit{
     @Input() isSendForm: boolean = true;
     ModalID = ModalID;
-    constructor(private modalControllerService: ModalControllerService){}
+    constructor(private modalControllerService: ModalControllerService){
+        window.scrollTo(0, 0)
+    }
 
     public isOpen: boolean = false;
     public openModal$ = this.modalControllerService._modal$;

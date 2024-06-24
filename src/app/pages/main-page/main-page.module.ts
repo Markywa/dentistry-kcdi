@@ -11,6 +11,7 @@ import { ServicesComponent } from "../../components/services/services.component"
 import { HttpClientModule } from "@angular/common/http";
 import { ScrollFadeDirectiveModule } from "../../directive/scroll-fade.module";
 import { HeaderInformationModule } from "../../components/header-information/header-information.module";
+import { ServicesCardComponent } from "../../components/services/service-card/service-card.component";
 
 @NgModule({
     declarations: [
@@ -19,6 +20,7 @@ import { HeaderInformationModule } from "../../components/header-information/hea
         EmployeesComponent,
         PersonCardComponent,
         ServicesComponent,
+        ServicesCardComponent
     ],
     exports: [MainPageComponent],
     imports: [

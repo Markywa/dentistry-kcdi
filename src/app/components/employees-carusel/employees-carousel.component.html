@@ -2,13 +2,22 @@
     <ng-container *ngFor="let employee of employeesList">
         <div class="specialist-container" appScrollFade position="out">
             <div class="specialist-container__image-block">
-                <img class="specialist-container__image-block_image" [src]="employee.photo" alt="">
-                <div class="specialist-container__image_text">
-                    <span class="invert-text_color">Стаж {{employee.experience}}</span>
-                </div>
+                <img 
+                    [ngClass]="{'specialist-container__image-block_image_small': small}"
+                    class="specialist-container__image-block_image" 
+                    [src]="employee.photo" alt="">
+                <ng-container *ngIf="employee.experience">
+                    <div
+                    [ngClass]="{'specialist-container__image_text_small': small}"
+                    class="specialist-container__image_text">
+                        <span class="invert-text_color">Стаж {{employee.experience}}</span>
+                    </div>
+                </ng-container>
             </div>
             <div class="specialist-container__legend">
-                <span class="specialist-container__legend-name invert-text_color">{{employee.name}}</span>
+                <span
+                [ngClass]="{'specialist-container__legend-name_small': small}"
+                class="specialist-container__legend-name invert-text_color">{{employee.name}}</span>
                 <span class="specialist-container__legend-job invert-text_color">{{employee.job}}</span>
             </div>
         </div>

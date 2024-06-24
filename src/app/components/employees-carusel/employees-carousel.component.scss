@@ -9,6 +9,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    height: 100%;
     &__image{
         &_text{
             position: absolute;
@@ -17,6 +18,9 @@
             background-color: rgba($color: #EEEEEE, $alpha: 0.5);
             margin-top: 20px;
             margin-left: 20px;
+            &_small{
+                padding: 4px 14px 4px 14px;
+            }
         }
         &-block{
             display: flex;
@@ -26,6 +30,10 @@
                 height: 490px;
                 border-radius: 16px;
                 object-fit: cover;
+                &_small{
+                    width: 320px;
+                height: 390px;
+                }
             }
             
         }
@@ -36,10 +44,15 @@
         flex-direction: column;
         justify-content: center;
         gap: 15px;
+        align-items: center;
         &-name{
             text-align: center;
             font-weight: 600;
             font-size: 30px;
+            max-width: 350px;
+            &_small{
+                max-width: 300px;
+            }
         }
         &-job{
             text-align: center;

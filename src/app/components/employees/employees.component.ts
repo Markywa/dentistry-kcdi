@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, Renderer2, ViewChild } from "@angular/core";
 import { EmployeesListService } from "../../services/employees-list/employees-list.service";
-import { EmployeesResponse } from "../../interfaces/employees.interface";
+import { EmployeesResponse, SpecialistsResponse } from "../../interfaces/employees.interface";
 
 @Component({
     selector: 'app-employees',
@@ -11,13 +11,13 @@ import { EmployeesResponse } from "../../interfaces/employees.interface";
 
 export class EmployeesComponent implements OnInit{
     constructor(private employeesListService: EmployeesListService, private renderer: Renderer2, private cdr: ChangeDetectorRef){}
-    public specialistList: EmployeesResponse[] = [];
+    public specialistList: SpecialistsResponse[] = [];
     public selectedPage: number = 1; 
     public pageLength: number = 0;
     @ViewChild('image') image!: ElementRef;
     @ViewChild('card') card!: ElementRef;
     ngOnInit(){
-        this.employeesListService.getEmployeesList()
+        this.employeesListService.getSpecialistsList()
         .subscribe((data) => {
             this.specialistList = data;
             this.pageLength = data.length;

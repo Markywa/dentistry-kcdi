@@ -17,8 +17,9 @@
             <span class="container-contacts__text invert-text_color">{{contacts.email}}</span>
             <h2 class="container-contacts__title invert-text_color">Режим работы</h2>
             <div class="container-contacts__schedule">
-                <span class="container-contacts__text invert-text_color">пн-сб: {{contacts.working_hours}}</span>
-                <!-- <span class="container-contacts__text invert-text_color">сб-вс с 9:00 до 15:00</span> -->
+                <ng-container *ngFor="let item of contacts.working_hours.split(',')">
+                    <span class="container-contacts__text invert-text_color">{{item}}</span>
+                </ng-container>
             </div>
             <button (click)="openSignUpConsultation()" class="container-contacts__button">Записаться на прием</button>
         </div>

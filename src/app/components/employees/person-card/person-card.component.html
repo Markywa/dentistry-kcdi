@@ -1,5 +1,5 @@
 <div class="container-wrap">
-    <img class="container__image slide-tr" [src]="currentSpecialist.photo" alt="" appScrollFade position="left" [delation]="0" #image>
+    <img class="container__image slide-tr" [src]="currentSpecialist.carousel_photo" alt="" appScrollFade position="left" [delation]="0" #image>
     <div class="container"  appScrollFade position="right" [delation]="0.1" #card>
         <div class="container-header">
             <div class="container-header__top">
@@ -17,7 +17,7 @@
             <span class="container-content__text">
                 {{currentSpecialist.about}}
             </span>
-            <button class="container-content__button">
+            <button class="container-content__button" (click)="openModal(currentSpecialist.id)">
                 Записаться на прием
             </button>
         </div>

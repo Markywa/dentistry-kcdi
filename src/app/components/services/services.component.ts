@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { ChangeDetectionStrategy, Component, OnInit } from "@angular/core";
+import { ServicesDataService } from "../../services/services-data/services-data.service";
 
 @Component({
     selector: 'app-services',
@@ -7,6 +8,10 @@ import { ChangeDetectionStrategy, Component } from "@angular/core";
     changeDetection: ChangeDetectionStrategy.OnPush, 
 })
 
-export class ServicesComponent{
-    
+export class ServicesComponent implements OnInit{
+    constructor(private servicesDataService: ServicesDataService){}
+    public servicesList: any[] = [];
+    ngOnInit(): void {
+        this.servicesDataService.getServicesList().subscribe((data) => this.servicesList = data);
+    }
 }

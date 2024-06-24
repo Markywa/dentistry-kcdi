@@ -24,8 +24,13 @@
             display: flex;
             flex-direction: row;
             justify-content: space-between;
+            &-text{
+              max-width: 430px;
+            }
             &-price {
                 white-space: nowrap; /* предотвращает перенос цены на следующую строку */
+                display: flex;
+                align-items: end;
               }
             &-name {
                 flex: 1;

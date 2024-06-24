@@ -17,21 +17,4 @@ export class MapService {
     const view = this.map.getView();
     view.setZoom(zoomLevel);
   }
-//   setZoom(zoomLevel: number): void {
-//     const view = this.map.getView();
-//     const zoom = view.getZoom();
-//     view.setZoom(this.defaultZoom + zoomLevel);
-//   }
-
-//   zoomIn(): void {
-//     const view = this.map.getView();
-//     const zoom = view.getZoom();
-//     view.setZoom(zoom! + 0.1);
-//   }
-
-//   zoomOut(): void {
-//     const view = this.map.getView();
-//     const zoom = view.getZoom();
-//     view.setZoom(zoom! - 0.1);
-//   }
 }

@@ -1,18 +1,20 @@
-import { Directive, HostListener, ElementRef, Renderer2, Input } from '@angular/core';
+import { Directive, HostListener, ElementRef, Renderer2, Input, OnInit, AfterViewInit } from '@angular/core';
 import { isElementInViewport } from '../shared/utils';
 
 @Directive({
   selector: '[appScrollFade]'
 })
-export class ScrollFadeDirective {
+export class ScrollFadeDirective implements AfterViewInit {
   constructor(private el: ElementRef, private renderer: Renderer2) {}
     @Input() position!: 'left' | 'up' | 'right' | 'down' | 'diagonalLeft' | 'diagonalRight' | 'out';
     @Input() delation: number = 0;
  
+    ngAfterViewInit(): void {
+        this.renderer.addClass(this.el.nativeElement, 'noVisible');
+    }
+
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    this.renderer.addClass(this.el.nativeElement, 'noVisible');
-
     if (isElementInViewport(this.el.nativeElement)) {
         switch(this.position) {
             case 'diagonalLeft':

@@ -13,7 +13,9 @@
             <span class="container-header__description-item__title text_color">Адрес:</span>
             <span class="container-header__description-item text_color">{{contacts.address}}</span>
             <span class="container-header__description-item__title text_color">Часы работы:</span>
-            <span class="container-header__description-item text_color">Пн-сб: {{contacts.working_hours}}</span>
+            <ng-container *ngFor="let item of contacts.working_hours.split(',')">
+                <span class="container-header__description-item text_color">{{item}}</span>
+            </ng-container>
         </div>
     </ng-container>
 </div>

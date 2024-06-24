@@ -9,14 +9,8 @@ import { EmployeesListService } from "../../services/employees-list/employees-li
     changeDetection: ChangeDetectionStrategy.Default, 
 })
 
-export class EmployeesCarouselComponent implements OnInit{
+export class EmployeesCarouselComponent {
     constructor(private employeesListService: EmployeesListService, private cdr: ChangeDetectorRef){}
-    public employeesList: EmployeesResponse[] = [];
-    ngOnInit(): void {
-        this.employeesListService.getEmployeesList()
-            .subscribe((data) => {
-                this.employeesList = data;
-                this.cdr.markForCheck();
-        })
-    }
+    @Input() employeesList: EmployeesResponse[] = [];
+    @Input() small: boolean = false;
 }

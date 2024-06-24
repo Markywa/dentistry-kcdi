@@ -12,7 +12,7 @@ export class MainPageComponent {
     public isMobile: boolean = true;
     public deviceType!: DeviceType;
     public mainPhoto: string = 'assets/images/welcome-image.png';
-    constructor(private mobileService: MobileService, private cdr: ChangeDetectorRef){}
+    constructor(private mobileService: MobileService, private cdr: ChangeDetectorRef){};
 
     ngOnInit(): void {
         this.mobileService._userDevice$.subscribe((device) => {

@@ -1,0 +1,94 @@
+.grid-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    &__footnote{
+        color: var(--secondaryFontColor);
+        font-size: 20px;
+    }
+    &__title{
+        font-size: 90px;
+        line-height: 73px;
+        margin: 0;
+        font-weight: 500;
+        color: var(--secondaryFontColor);
+    }
+}
+
+.cell-double {
+    flex: calc(50% - 10px);
+}
+
+.service-block {
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    position: relative;
+    display: inline-block;
+    padding: 0;
+    line-height: 0;
+    transition: opacity 0.3s ease;
+    &__image{
+        border-radius: 16px;
+        max-height: 325px;
+        max-width: 325px;
+        object-fit: cover;
+    }
+    &__entity {
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        align-items: flex-start;
+        z-index: 3; /* Слой контента выше слоя затемнения */
+        &_top {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+        }
+        &-text {
+            font-size: 20px;
+            line-height: 24px;
+            font-weight: 500;
+            transition: transform 0.5s ease;
+        }
+        &-link{
+            transition: transform 0.5s ease;
+        }
+    }
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 2; 
+        border-radius: 16px;
+    }
+    &:hover::before {
+        opacity: 1;
+    }
+}
+
+.service-block:hover .service-block__entity-text,
+.service-block:hover .service-block__entity-link {
+    transform: scale(1.1);
+}
+
+

@@ -34,9 +34,13 @@ export class DropdownComponent implements ControlValueAccessor {
     }
     onChange: any = () => {};
     onTouched: any = () => {};
-  
+
     writeValue(value: any): void {
-      this.selectedItem = value;
+      if(!isNaN(value)){
+        this.selectedItem = this.list.find((item) => item.id === value)?.name as string; 
+      } else {
+        this.selectedItem = value;
+      }
     }
   
     registerOnChange(fn: any): void {
