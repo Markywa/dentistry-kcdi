@@ -14,13 +14,37 @@
         <div class="header__item_custom">
                 <div class="header__item-rout">
                     <ng-container *ngFor="let item of buttons">
-                        <a 
-                        class="header__item-rout__button btn-transparent"
-                        [ngClass]="{
-                            'active': item.isActive
-                        }"
-                        [routerLink]="item.link"
-                        >{{item.name}}</a>
+                        <ng-container *ngIf="item.link">
+                            <a 
+                            class="header__item-rout__button btn-transparent"
+                            [ngClass]="{
+                                'active': item.isActive
+                            }"
+                            [routerLink]="item.link"
+                            >{{item.name}}</a>
+                        </ng-container>
+                        <ng-container *ngIf="item.showExtras">
+                            <div 
+                                class="header__item-rout__block" 
+                                [ngClass]="{
+                                    'active': item.isActive
+                                }">
+                                    <button class="header__item-rout__block-btn" (click)="toggleExtras()">
+                                        <span >{{item.name}}</span>
+                                        <svg width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M1 1L4 4L7 1" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg> 
+                                    </button>
+                                
+                                <ng-container *ngIf="extrasShow">
+                                    <div class="header__item-rout__extras">
+                                        <ng-container *ngFor="let item of extras">
+                                            <button class="header__item-rout__block-btn" (click)="routToService(item.id)">{{item.title}}</button>
+                                        </ng-container>
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </ng-container>
                     </ng-container>
                 </div>
         </div>

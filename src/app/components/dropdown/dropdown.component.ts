@@ -23,7 +23,6 @@ export class DropdownComponent implements ControlValueAccessor {
     isOpen: boolean = false;
   
     toggleDropdown() {
-      console.log(this.selectedItem);
       this.isOpen = !this.isOpen;
     }
   

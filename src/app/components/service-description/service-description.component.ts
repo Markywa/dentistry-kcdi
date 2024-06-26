@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { ServicesDataService } from "../../services/services-data/services-data.service";
 import { EmployeesResponse } from "../../interfaces/employees.interface";
@@ -11,6 +11,7 @@ import { EmployeesResponse } from "../../interfaces/employees.interface";
 })
 
 export class ServiceDescriptionComponent implements OnInit {
+    @Output() changeServiceName = new EventEmitter<string>();
     constructor(private activatedRoute: ActivatedRoute, private servicesDataService: ServicesDataService){}
     public serviceEntity!: any;
     public specialist: EmployeesResponse[] = [];
@@ -19,6 +20,8 @@ export class ServiceDescriptionComponent implements OnInit {
         window.scrollTo(0, 0);
         this.activatedRoute.params.subscribe((data) => {
             this.servicesDataService.getService(data['id']).subscribe((data) => {
+                this.specialist = [];
+                this.changeServiceName.emit(data.title);
                 this.serviceEntity = {
                     ...data, 
                     about: data.about.replace(/\r\n|\n|\r/g, '<br>'), 

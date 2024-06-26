@@ -9,5 +9,9 @@ import { ContactsEntity, ContactsService } from "../../services/contacts/contact
 })
 
 export class ServicesPageComponent {
+    public serviceName!: string
 
+    changeServiceName(name: string) {
+        this.serviceName = name;
+    }
 }

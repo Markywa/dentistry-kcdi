@@ -4,14 +4,15 @@ import { ModalControllerService, ModalID } from "../../services/modal/modal-cont
 import { DeviceType, MobileService } from "../../services/mobile/mobile.service";
 import { Subscription } from "rxjs";
 import { ContactsEntity, ContactsService } from "../../services/contacts/contacts.service";
+import { ServicesDataService } from "../../services/services-data/services-data.service";
 
 class Button {
-    constructor(public name: string, public isActive: boolean, public link: string[]) {}
+    constructor(public name: string, public isActive: boolean, public link: string[] | null, public showExtras: boolean) {}
   }
   
 class ButtonFactory {
-    static createButtons(buttonData: { name: string, isActive: boolean, link: string[] }[]): Button[] {
-        return buttonData.map(data => new Button(data.name, data.isActive, data.link));
+    static createButtons(buttonData: { name: string, isActive: boolean, link: string[] | null, showExtras: boolean }[]): Button[] {
+        return buttonData.map(data => new Button(data.name, data.isActive, data.link, data.showExtras));
     }
 }
 
@@ -27,15 +28,26 @@ export class TopMenuComponent implements OnInit, OnDestroy {
     public deviceType!: DeviceType;
     public isMenuOpen: boolean = false;
     public contacts!: ContactsEntity;
+    public extras: any[] = [];
+    public extrasShow: boolean = false;
     constructor(
         private router: Router, 
         private modalControllerService: ModalControllerService,
         private mobileService: MobileService,
         private cdr: ChangeDetectorRef,
         private contactsService: ContactsService,
+        private servicesDataService: ServicesDataService
     ){}
     toggleMenu() {
         this.isMenuOpen = !this.isMenuOpen;
+    }
+
+    toggleExtras() {
+        this.extrasShow = !this.extrasShow;
+    }
+
+    public routToService(id: number): void {
+        this.router.navigate(['services', id])
     }
 
     ngOnInit(): void {
@@ -47,19 +59,24 @@ export class TopMenuComponent implements OnInit, OnDestroy {
             this.contacts = contacts;
             this.cdr.markForCheck();
         })
+        this.servicesDataService.getServicesList()
+            .subscribe((data) => {
+                this.extras = data;
+                this.cdr.markForCheck();
+            });
     }
     ngOnDestroy(): void {
         this.sizeSubscription.unsubscribe();
     }
 
     private buttonData = [
-        { name: 'Главная', isActive: this.router.url.includes('main'), link: ['/main'] },
-        { name: 'Услуги', isActive: this.router.url.includes('services'), link: ['/services'] },
-        { name: 'Цены', isActive: this.router.url.includes('prices'), link: ['/prices'] },
-        { name: 'Специалисты', isActive: this.router.url.includes('specialist'), link: ['/specialist'] },
+        { name: 'Главная', isActive: this.router.url.includes('main'), link: ['/main'], showExtras: false },
+        { name: 'Услуги', isActive: this.router.url.includes('services'), link: null, showExtras: true },
+        { name: 'Цены', isActive: this.router.url.includes('prices'), link: ['/prices'], showExtras: false },
+        { name: 'Специалисты', isActive: this.router.url.includes('specialist'), link: ['/specialist'], showExtras: false },
         // { name: 'Акции', isActive: this.router.url.includes('stock'), link: ['/stock'] },
         // { name: 'Отзывы', isActive: this.router.url.includes('reviews'), link: ['/reviews'] },
-        { name: 'Контакты', isActive: this.router.url.includes('contacts'), link: ['/contacts'] },
+        { name: 'Контакты', isActive: this.router.url.includes('contacts'), link: ['/contacts'], showExtras: false },
     ];
 
     changeSelected(item: Button): void {

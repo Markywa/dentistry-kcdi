@@ -11,49 +11,53 @@ export class ScrollFadeDirective implements AfterViewInit {
  
     ngAfterViewInit(): void {
         this.renderer.addClass(this.el.nativeElement, 'noVisible');
+        this.showContent(this.el.nativeElement);
     }
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    if (isElementInViewport(this.el.nativeElement)) {
-        switch(this.position) {
-            case 'diagonalLeft':
-                setTimeout(() => {
-                    this.renderer.addClass(this.el.nativeElement, 'slideInLeftDiagonal');
-                }, this.delation*1000)
-            break;
-            case 'up':
-                setTimeout(() => {
-                    this.renderer.addClass(this.el.nativeElement, 'slideInUp');
-                }, this.delation*1000)
-            break;
-            case 'diagonalRight':
-                setTimeout(() => {
-                    this.renderer.addClass(this.el.nativeElement, 'slideInRightDiagonal');
-                }, this.delation*1000)
-            break;
-            case 'down':
-                setTimeout(() => {
-                    this.renderer.addClass(this.el.nativeElement, 'slideInDown');
-                }, this.delation*1000)
-            break;
-            case 'left':
-                setTimeout(() => {
-                    this.renderer.addClass(this.el.nativeElement, 'slideInRight');
-                }, this.delation*1000)
-            break;
-            case 'right':
-                setTimeout(() => {
-                    this.renderer.addClass(this.el.nativeElement, 'slideInLeft');
-                }, this.delation*1000)
-            break;
-            case 'out':
-                setTimeout(() => {
-                    this.renderer.addClass(this.el.nativeElement, 'slideOut');
-                }, this.delation*1000)
-            break;
-        }
+    this.showContent(this.el.nativeElement);
     }
 
-}
+    private showContent(element: ElementRef)   {
+        if (isElementInViewport(element)) {
+            switch(this.position) {
+                case 'diagonalLeft':
+                    setTimeout(() => {
+                        this.renderer.addClass(element, 'slideInLeftDiagonal');
+                    }, this.delation*1000)
+                break;
+                case 'up':
+                    setTimeout(() => {
+                        this.renderer.addClass(element, 'slideInUp');
+                    }, this.delation*1000)
+                break;
+                case 'diagonalRight':
+                    setTimeout(() => {
+                        this.renderer.addClass(element, 'slideInRightDiagonal');
+                    }, this.delation*1000)
+                break;
+                case 'down':
+                    setTimeout(() => {
+                        this.renderer.addClass(element, 'slideInDown');
+                    }, this.delation*1000)
+                break;
+                case 'left':
+                    setTimeout(() => {
+                        this.renderer.addClass(element, 'slideInRight');
+                    }, this.delation*1000)
+                break;
+                case 'right':
+                    setTimeout(() => {
+                        this.renderer.addClass(element, 'slideInLeft');
+                    }, this.delation*1000)
+                break;
+                case 'out':
+                    setTimeout(() => {
+                        this.renderer.addClass(element, 'slideOut');
+                    }, this.delation*1000)
+                break;
+            }
+        }
+    }
 }

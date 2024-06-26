@@ -28,13 +28,9 @@ export class SignUpConsultationComponent implements OnInit {
 
     ngOnInit(): void {
         this.employeesListService.getSpecialistsList()
-            .subscribe((response) => this.specialistList = response);
+            .subscribe((response) => this.specialistList = response.filter((item) => !item.not_a_doctor));
         this.modalControllerService._data$
-        // .pipe(
-        //     filter((data) => !!data))
             .subscribe((data) => {
-                console.log(data);
-                
                 if(!data){
                     return this.clearForm();
                 }
@@ -44,9 +40,7 @@ export class SignUpConsultationComponent implements OnInit {
                       data.specialist = selectedSpecialist.id;
                     }
                   }
-                this.signUpForm.patchValue(data);
-                console.log(this.signUpForm.value);
-                
+                this.signUpForm.patchValue(data);                
                 this.cdr.markForCheck();
         })
     }

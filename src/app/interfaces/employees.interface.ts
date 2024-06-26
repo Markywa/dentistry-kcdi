@@ -14,4 +14,5 @@ export interface SpecialistsResponse {
     job: string,
     name: string,
     carousel_photo: string,
+    not_a_doctor?: boolean,
 }

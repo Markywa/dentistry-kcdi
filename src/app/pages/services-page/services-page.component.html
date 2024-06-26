@@ -3,11 +3,11 @@
     >
     <ng-container content>
         <div class="container">
-            <app-header-information [title]="['Терапия']"></app-header-information>
+            <app-header-information [title]="[serviceName]"></app-header-information>
 
             <div class="container-content">
                 <div class="description">
-                    <app-service-description></app-service-description>
+                    <app-service-description (changeServiceName)="changeServiceName($event)"></app-service-description>
                 </div>
             </div>   
         </div>

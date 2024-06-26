@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import { Observable, of, shareReplay } from 'rxjs';
+import { map, Observable, of, shareReplay } from 'rxjs';
 import { API_CAROUSEL_SPECIALISTS, API_SPECIALISTS } from '../../../environments/urls';
 import { EmployeesResponse, SpecialistsResponse } from '../../interfaces/employees.interface';
 
@@ -19,6 +19,12 @@ export class EmployeesListService {
     }
 
     getSpecialistsList(): Observable<SpecialistsResponse[]> {
-        return this.specialistsList$ ??= this.http.get<SpecialistsResponse[]>(API_CAROUSEL_SPECIALISTS).pipe(shareReplay(1));
+        return this.specialistsList$ ??= this.http.get<SpecialistsResponse[]>(API_CAROUSEL_SPECIALISTS)
+        .pipe(
+            map((res) => {
+                res.find((name) => name.name === 'Сафонов Глеб Николаевич')!.not_a_doctor = true;
+                return res
+            }),
+            shareReplay(1));
     }
 }

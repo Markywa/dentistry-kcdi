@@ -17,9 +17,11 @@
             <span class="container-content__text">
                 {{currentSpecialist.about}}
             </span>
-            <button class="container-content__button" (click)="openModal(currentSpecialist.id)">
-                Записаться на прием
-            </button>
+            <ng-container *ngIf="!currentSpecialist.not_a_doctor">
+                <button class="container-content__button" (click)="openModal(currentSpecialist.id)">
+                    Записаться на прием
+                </button>
+            </ng-container>
         </div>
     </div>
 </div>

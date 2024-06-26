@@ -27,6 +27,35 @@
             gap: 52px;
             display: flex;
             height: 100%;
+            &__extras{
+                position: absolute;
+                display: flex;
+                flex-direction: column;
+                top: 100%;
+                background-color: var(--primaryBackgroundColor);
+                gap: 10px;
+                padding: 20px;
+                z-index: 10;
+                border-radius: 0 0 16px 16px;
+            }
+            &__block{
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                &-btn{
+                    display: flex;
+                    background-color: transparent;
+                    border: none;
+                    color: var(--primaryFontColor);
+                    cursor: pointer;
+                    font-size: 15px;
+                    gap: 4px;
+                    font-weight: 600;
+                    flex-direction: row;
+                    align-items: center;
+                }
+            }
             &__button{
                 font-size: 15px;
                 height: 100%;
