@@ -6,7 +6,9 @@
             Скачать полный прайс
         </button>
     </div>
-    <div class="container-form">
-        <app-sign-up-consultation [alternate]="true"></app-sign-up-consultation>
-    </div>
+    <ng-container *ngIf="!isMobileDevice">
+        <div class="container-form">
+            <app-sign-up-consultation [alternate]="true"></app-sign-up-consultation>
+        </div>
+    </ng-container>
 </div>

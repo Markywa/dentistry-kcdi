@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
+import { DeviceType } from "../../services/mobile/mobile.service";
 
 @Component({
     selector: 'app-employees-team',
@@ -8,4 +9,5 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from "@
 })
 
 export class EmployeesTeamComponent {
+    @Input() device!: DeviceType;
 }

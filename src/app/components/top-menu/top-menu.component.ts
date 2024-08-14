@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, On
 import { Router } from "@angular/router";
 import { ModalControllerService, ModalID } from "../../services/modal/modal-controller.component";
 import { DeviceType, MobileService } from "../../services/mobile/mobile.service";
-import { Subscription } from "rxjs";
+import { combineLatest, Subscription } from "rxjs";
 import { ContactsEntity, ContactsService } from "../../services/contacts/contacts.service";
 import { ServicesDataService } from "../../services/services-data/services-data.service";
 
@@ -47,7 +47,8 @@ export class TopMenuComponent implements OnInit, OnDestroy {
     }
 
     public routToService(id: number): void {
-        this.router.navigate(['services', id])
+        this.extrasShow = false;
+        this.router.navigate(['services', id]);
     }
 
     ngOnInit(): void {

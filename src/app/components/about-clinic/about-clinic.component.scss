@@ -4,7 +4,7 @@
     justify-content: space-between;
     @media (max-width: 1000px) {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 50% 50%;
         grid-template-rows: auto auto;
         gap: 10px; /* расстояние между элементами */
     }
@@ -59,6 +59,9 @@
         width: 330px;
         @media (max-width: 1324px) {
             width: 205px;
+        @media (max-width: 1000px) {
+            width: 100%;
+        }
         }
         &__text{
             font-size: 20px;
@@ -78,6 +81,8 @@
             @media (max-width: 1324px) {
                 font-size: 16px;
                 line-height: 16px;
+                padding-bottom: 10px;
+                margin-top: 20px;
             }
         }
     }

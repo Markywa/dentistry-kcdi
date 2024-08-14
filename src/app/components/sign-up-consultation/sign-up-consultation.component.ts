@@ -7,7 +7,6 @@ import { EmployeesListService } from "../../services/employees-list/employees-li
 import { SpecialistsResponse } from "../../interfaces/employees.interface";
 import { NotificationType } from "../../shared/utils";
 import { ModalControllerService, ModalID, ModalType } from "../../services/modal/modal-controller.component";
-import { filter } from "rxjs";
 
 @Component({
     selector: 'app-sign-up-consultation',

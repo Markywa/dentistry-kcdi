@@ -1,9 +1,11 @@
 <div class="container">
-    <div class="container__block">
+    <!-- <h1 *ngIf="device === 'mobile'" class="text-title_first-level invert-text_color">Команда врачей</h1> -->
+    <div *ngIf="device !== 'mobile'" class="container__block">
         <h1 class="text-title_first-level invert-text_color">Команда врачей</h1>
         <img src="assets/images/specialist-left.png" alt="">
     </div>
     <div class="container__block">
+        <h1 *ngIf="device === 'mobile'" class="text-title_first-level invert-text_color">Команда врачей</h1>
         <img src="assets/images/specialist-right.png" alt="">
         <div  class="container__block-textarea">
             <span class="container__block-text invert-text_color">Мы - дружный коллектив высококлассных специалистов!</span>
@@ -19,7 +21,9 @@
                 <svg-icon class="container__block-icon" src="assets/icons/double-arrow.svg"></svg-icon>
                 <span class="container__block-text invert-text_color">Современные методики диагностики и лечения</span>
             </div>
-            <span class="container__block-text invert-text_color">В каждый случай мы вкладываем большой опыт и талант, доводя свою работу до совершенства. Почему наша работа отличается индивидуальностью и высоким уровнем качества? Потому что нам не все равно!</span>
+            <img *ngIf="device === 'mobile'" src="assets/images/specialist-left.png" alt="">
+            <span *ngIf="device === 'desktop'" class="container__block-text invert-text_color">В каждый случай мы вкладываем большой опыт и талант, доводя свою работу до совершенства. Почему наша работа отличается индивидуальностью и высоким уровнем качества? Потому что нам не все равно!</span>
         </div>
     </div>
+    <span *ngIf="device !== 'desktop'" class="container__block-text_down invert-text_color">В каждый случай мы вкладываем большой опыт и талант, доводя свою работу до совершенства. Почему наша работа оётличается индивидуальностью и высоким уровнем качества? Потому что нам не все равно!</span>
 </div>

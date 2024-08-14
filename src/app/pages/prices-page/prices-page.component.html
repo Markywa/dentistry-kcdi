@@ -1,12 +1,12 @@
 <app-layout-page
-    [isSendForm]="false">
+    [isSendForm]="isMobileDevice">
     <ng-container content>
         <div class="container">
             <app-header-information [title]="['Цены']"></app-header-information>
             
             <div class="container-content">
                 <div class="description">
-                    <app-prices-description></app-prices-description>
+                    <app-prices-description [isMobileDevice]="isMobileDevice"></app-prices-description>
                     <app-prices></app-prices>
                 </div>
             </div>   

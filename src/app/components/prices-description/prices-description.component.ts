@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from "@angular/core";
 import { PricesService } from "../../services/prices/prices.service";
 import { FileDownloadService } from "../../services/download/download.service";
+import { DeviceType } from "../../services/mobile/mobile.service";
 
 @Component({
     selector: 'app-prices-description',
@@ -10,7 +11,12 @@ import { FileDownloadService } from "../../services/download/download.service";
 })
 
 export class PricesDescriptionComponent implements OnInit {
-   constructor(private pricesService: PricesService, private cdr: ChangeDetectorRef, private fileDownloadService: FileDownloadService){}
+    @Input() isMobileDevice!: boolean;
+   constructor(
+    private pricesService: PricesService, 
+    private cdr: ChangeDetectorRef, 
+    private fileDownloadService: FileDownloadService
+){}
    public file!: string;
     ngOnInit(): void {
         this.pricesService.getFilePrices().subscribe((response) => {
@@ -23,7 +29,7 @@ export class PricesDescriptionComponent implements OnInit {
         this.fileDownloadService.downloadFile(file).subscribe(blob => {
             const link = document.createElement('a');
             link.href = window.URL.createObjectURL(blob);
-            link.download = 'Цены.pdf'; // Здесь вы можете указать любое имя файла
+            link.download = 'Цены.pdf';
             link.click();
             window.URL.revokeObjectURL(link.href); // Освобождаем память
           }, error => {

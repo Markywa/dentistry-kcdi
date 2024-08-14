@@ -30,6 +30,9 @@
                 height: 490px;
                 border-radius: 16px;
                 object-fit: cover;
+                @media screen and (max-width: 536px) {
+                    width: 100%;
+                }
                 &_small{
                     width: 320px;
                 height: 390px;
