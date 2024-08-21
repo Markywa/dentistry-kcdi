@@ -2,21 +2,25 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    @media (max-width: 1000px) {
+    @media (max-width: 800px) {
         display: grid;
         grid-template-columns: 50% 50%;
         grid-template-rows: auto auto;
         gap: 10px; /* расстояние между элементами */
     }
+    @media (max-width: 700px) {
+        grid-template-columns: 55% 45%;
+    }
     &_wrap{
         display: flex;
         flex-direction: column;
         width: 30%;
-        @media (max-width: 1000px) {
+        @media (max-width: 800px) {
             &:nth-child(1) {
                 grid-column: 1;
                 grid-row: 1;
                 width: 100%;
+                gap: 10px;
             }
             &:nth-child(2) {
                 grid-column: 2;
@@ -47,6 +51,9 @@
     }
     &-image-left{
         margin-top: 30%;
+        @media screen and (max-width: 1324px) {
+            margin-top: auto;   
+        }
     }
     &-image-right{
         margin-top: 50%;

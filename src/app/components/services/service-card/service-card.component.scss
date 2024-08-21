@@ -1,8 +1,12 @@
 .grid-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     flex-wrap: wrap;
     flex-direction: row;
+    @media screen and (max-width: 621px){
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .container{
@@ -23,7 +27,10 @@
 }
 
 .cell-double {
-    flex: calc(50% - 10px);
+    grid-column: 3/1;
+    @media screen and (max-width: 621px){
+        grid-row: 1;
+    }
 }
 
 .service-block {
@@ -52,6 +59,9 @@
         height: 100%;
         align-items: flex-start;
         z-index: 3; /* Слой контента выше слоя затемнения */
+        @media screen and (max-width: 900px){
+            padding: 10px;
+        }
         &_top {
             display: flex;
             flex-direction: row;

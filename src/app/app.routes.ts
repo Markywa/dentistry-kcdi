@@ -40,6 +40,13 @@ export const routes: Routes = [
           )
       },
       {
+        path: 'stock',
+        loadChildren: () =>
+          import('./pages/stock-page/stock-page.module').then(
+            (m) => m.StockPageModule,
+          )
+      },
+      {
         path: 'services/:id',
         loadChildren: () =>
           import('./pages/services-page/services-page.module').then(

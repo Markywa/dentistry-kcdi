@@ -5,7 +5,7 @@
 
 export const environment = {
     production: false,
-    baseUrl: 'http://77.223.97.22/',
+    baseUrl: '',
   } as const;
   
   /*

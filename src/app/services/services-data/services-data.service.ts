@@ -15,6 +15,7 @@ export interface ContactsEntity{
 })
 
 export class ServicesDataService {
+    private serviceObservable$!: Observable<any>;
     constructor(private http: HttpClient) {}
 
     getService(id: number): Observable<any> {
@@ -22,7 +23,7 @@ export class ServicesDataService {
     }
 
     getServicesList(): Observable<any> {
-        return this.http.get<any>(API_SERVICES).pipe(shareReplay(1));
+        return this.serviceObservable$ ??= this.http.get<any>(API_SERVICES).pipe(shareReplay(1));
     }
 
 }

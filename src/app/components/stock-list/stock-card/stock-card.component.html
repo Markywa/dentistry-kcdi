@@ -1,0 +1,15 @@
+<div class="container">
+    <img class="container__image" [src]="card.photo" alt="">
+
+    <div class="container__description">
+        <span class="card__timelapse text-simple_first-level">{{card.validity}}</span>
+
+        <div class="card-entity">
+            <h2 class="card-entity__header text-title_third-level">{{card.title}}</h2>
+            <span class="card-entity__text text-simple_first-level">{{card.about}}</span>
+            <span class="card-entity__limitation text-simple_first-level">*{{card.note}}</span>    
+        </div>
+        
+        <button class="card-entity__button">Записаться на прием</button>
+    </div>
+</div>

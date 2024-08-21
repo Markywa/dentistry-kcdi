@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="container__board">
+        <div class="container__board-left">
+        </div>
+        <div class="container__image-block">
+            <img class="container__image-block-section" [src]="currentSpecialist.carousel_photo" alt="">
+            <div class="container__image-block-information">
+                <div class="information__header">
+                    <span>{{currentPage}}/{{pageLength}}</span>
+                    <div class="information__toggle">
+                        <button 
+                            *ngIf="currentPage > 1"
+                            class="information__toggle-button left" 
+                            (click)="previousPage()"
+                        ><svg-icon src="assets/icons/arrow-left.svg"></svg-icon></button>
+                        <button 
+                            *ngIf="currentPage < pageLength"
+                            class="information__toggle-button right" 
+                            (click)="nextPage()"
+                        ><svg-icon src="assets/icons/arrow-right.svg"></svg-icon></button>
+                    </div>
+                </div>
+                <div *ngIf="deviceType !== 'mobile'" class="information__description">
+                    <h3>{{currentSpecialist.name}}</h3>
+                    <span>Опыт работы {{currentSpecialist.experience}}</span>
+                    <span>{{currentSpecialist.about}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="container__board-right"> 
+
+        </div>
+    </div>
+</div>
+<div class="information__description" *ngIf="deviceType === 'mobile'">
+    <h3>{{currentSpecialist.name}}</h3>
+    <span>Опыт работы {{currentSpecialist.experience}}</span>
+    <span>{{currentSpecialist.about}}</span>
+</div>

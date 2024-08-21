@@ -1,0 +1,104 @@
+// .container{
+//     &__image-block{
+//         display: flex;
+//         position: relative;
+//         justify-content: center;
+//         &-section{
+//             position: relative;
+//             width: auto;
+//             border-radius: 16px;
+//         }
+//         &-information{
+//             z-index: 2;
+//             position: absolute;
+//             display: flex;
+//             flex-direction: column;
+//             justify-content: space-between;
+//             height: 100%;
+//             padding: 30px;
+//         }
+//     }
+// }
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    &__board{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 6px;
+        &-left{
+            display: flex;
+            justify-content: center;
+            background-color: var(--primaryBackgroundColor);
+            width: 48px;
+            height: 85%;
+            border-radius: 16px 0 0 16px;
+        }
+        &-right{
+            display: flex;
+            justify-content: center;
+            background-color: var(--primaryBackgroundColor);
+            width: 48px;
+            height: 85%;
+            border-radius: 0 16px 16px 0;
+        }
+    }
+    &__image-block {
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center; /* Центрирование по вертикали */
+        &-section {
+            position: relative;
+            width: auto; /* Изображение не будет растягиваться */
+            max-width: 100%; /* Максимальная ширина изображения */
+            border-radius: 16px;
+            overflow: hidden; /* Обрезать изображение, если оно меньше блока */
+        }
+        &-information {
+            z-index: 2;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            padding: 30px;
+            max-width: 760px;
+            color: white; /* Цвет текста, чтобы он был виден на фоне изображения */
+            @media  screen and (max-width: 768px) {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.information{
+    &__toggle{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 20%;
+        &-button{
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            svg{
+                width: 25px;
+                height: 25px;
+            }
+            &.right{
+                margin-left: auto;
+            }
+        }
+    }
+    &__description{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        @media  screen and (max-width: 768px) {
+            max-width: 760px;
+        }
+    }
+}

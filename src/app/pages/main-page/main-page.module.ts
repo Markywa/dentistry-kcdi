@@ -12,6 +12,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { ScrollFadeDirectiveModule } from "../../directive/scroll-fade.module";
 import { HeaderInformationModule } from "../../components/header-information/header-information.module";
 import { ServicesCardComponent } from "../../components/services/service-card/service-card.component";
+import { EmployeesCaouselMobileModule } from "../../components/employees-carousel-mobile/employees-carousel-mobile.module";
 
 @NgModule({
     declarations: [
@@ -30,7 +31,8 @@ import { ServicesCardComponent } from "../../components/services/service-card/se
         HttpClientModule,
         AngularSvgIconModule,
         ScrollFadeDirectiveModule,
-        HeaderInformationModule
+        HeaderInformationModule,
+        EmployeesCaouselMobileModule
     ],
 })
 
