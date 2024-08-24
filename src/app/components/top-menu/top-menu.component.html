@@ -50,6 +50,12 @@
         </div>
         <button class="header__item header__item-call btn-transparent" (click)="openCallbackModal()">Заказать звонок</button>
     </div>
+    <div class="help-area">
+        <button
+         class="help-area__button btn-transparent"
+         [ngClass]="{'button-active': isHelpOpen}"
+         (click)="routToHelpPage()">Помощь</button>
+    </div>
 </ng-container>
 
 <ng-container *ngIf="deviceType !== 'desktop'">
@@ -59,14 +65,38 @@
             <div class="mobile-content__item-rout">
                 <button class="mobile-content__exit" (click)="toggleMenu()"><svg-icon src="assets/icons/arrow-exit.svg"></svg-icon></button>
                 <ng-container *ngFor="let item of buttons">
-                    <a 
-                    class="header__item-rout__button btn-transparent invert-text_color"
-                    [ngClass]="{
-                        'active_mobile': item.isActive
-                    }"
-                    [routerLink]="item.link"
-                    >{{item.name}}</a>
+                    <ng-container *ngIf="item.link">
+                        <a 
+                        class="header__item-rout__button btn-transparent invert-text_color"
+                        [ngClass]="{
+                            'active_mobile': item.isActive
+                        }"
+                        [routerLink]="item.link"
+                        >{{item.name}}</a>
+                    </ng-container>
+                    <ng-container *ngIf="item.showExtras">
+                        <div 
+                            class="header__item-rout__block" 
+                            [ngClass]="{
+                                'active_mobile': item.isActive
+                            }">
+                            <button class="header__item-rout__block-btn" (click)="toggleExtras()">
+                                <span >{{item.name}}</span>
+                            </button>
+                            
+                            <ng-container *ngIf="extrasShow">
+                                <div class="header__item-rout__extras">
+                                    <ng-container *ngFor="let item of extras">
+                                        <button class="header__item-rout__block-btn" (click)="routToService(item.id)">{{item.title}}</button>
+                                    </ng-container>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </ng-container>
                 </ng-container>
+                <button class="header__item-rout__block-btn" (click)="routToHelpPage()">Помощь</button>
+                <button class="header__item-call_button" (click)="openCallbackModal()">Заказать звонок</button>
+
             </div>
             <div class="mobile__description">
                 <span class="mobile__description-item__title background-text_color">{{contacts.phone_number}}</span>

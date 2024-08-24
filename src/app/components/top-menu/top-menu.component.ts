@@ -49,6 +49,9 @@ export class TopMenuComponent implements OnInit, OnDestroy {
     public routToService(id: number): void {
         this.extrasShow = false;
         this.router.navigate(['services', id]);
+        if(this.deviceType !== 'desktop'){
+            this.toggleMenu();
+        }
     }
 
     ngOnInit(): void {
@@ -75,14 +78,22 @@ export class TopMenuComponent implements OnInit, OnDestroy {
         { name: 'Услуги', isActive: this.router.url.includes('services'), link: null, showExtras: true },
         { name: 'Цены', isActive: this.router.url.includes('prices'), link: ['/prices'], showExtras: false },
         { name: 'Специалисты', isActive: this.router.url.includes('specialist'), link: ['/specialist'], showExtras: false },
-        // { name: 'Акции', isActive: this.router.url.includes('stock'), link: ['/stock'], showExtras: false },
-        // { name: 'Отзывы', isActive: this.router.url.includes('reviews'), link: ['/reviews'] },
+        { name: 'Акции', isActive: this.router.url.includes('stock'), link: ['/stock'], showExtras: false },
+        { name: 'Отзывы', isActive: this.router.url.includes('reviews'), link: ['/reviews'], showExtras: false },
         { name: 'Контакты', isActive: this.router.url.includes('contacts'), link: ['/contacts'], showExtras: false },
     ];
 
     changeSelected(item: Button): void {
         this.buttons.forEach((button) => button.isActive = false);
         item.isActive = true;
+    }
+
+    routToHelpPage(): void {
+        this.router.navigate(['help']);
+    }
+
+    get isHelpOpen(): boolean {
+        return this.router.url.includes('help');
     }
 
     public buttons = ButtonFactory.createButtons(this.buttonData);

@@ -47,6 +47,20 @@ export const routes: Routes = [
           )
       },
       {
+        path: 'reviews',
+        loadChildren: () =>
+          import('./pages/reviews-page/reviews-page.module').then(
+            (m) => m.ReviewsPageModule,
+          )
+      },
+      {
+        path: 'help',
+        loadChildren: () =>
+          import('./pages/help-page/help-page.module').then(
+            (m) => m.HelpPageModule,
+          )
+      },
+      {
         path: 'services/:id',
         loadChildren: () =>
           import('./pages/services-page/services-page.module').then(

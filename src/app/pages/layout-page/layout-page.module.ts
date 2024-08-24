@@ -10,9 +10,15 @@ import { CallbackComponent } from "../../components/callback/callback.component"
 import { MaskitoDirective } from "@maskito/angular";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SignUpConsultationModule } from "../../components/sign-up-consultation/sign-up-consultation.module";
+import { ReviewsSendComponent } from "../../components/reviews-send/reviews-send.component";
 
 @NgModule({
-    declarations:[LayoutPageComponent, ModalComponent, CallbackComponent],
+    declarations:[
+        LayoutPageComponent, 
+        ModalComponent, 
+        CallbackComponent,
+        ReviewsSendComponent,
+    ],
     exports:[LayoutPageComponent],
     imports: [CommonModule,
         AngularSvgIconModule,

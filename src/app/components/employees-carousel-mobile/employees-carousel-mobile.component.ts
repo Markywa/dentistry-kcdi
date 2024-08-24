@@ -32,7 +32,6 @@ export class EmployeesCarouselMobileComponent {
     }
 
     selectSpecialist(num: number): void {
-        console.log(this.currentPage);
         this.currentSpecialist = this.specialistList[num - 1];
         this.currentPage = num;
     }

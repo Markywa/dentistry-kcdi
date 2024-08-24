@@ -1,0 +1,51 @@
+<div class="container">
+    <svg-icon class="container-close" src="assets/icons/exit.svg" (click)="closeModal()"></svg-icon>
+
+    <form 
+        class='content-controls_wrap-alternate'
+        action="submit" 
+        [formGroup]="signUpForm" 
+        (ngSubmit)="sendForm()" 
+    >
+        <h3 class="container-content__header invert-text_color">Оставьте отзыв</h3>
+            <span class="container-content__description invert-text_color">Поделитесь своим впечатлением о клинике :)</span>
+        <div class="content-controls__input_wrap">
+            <div class="content-controls__item">
+                <svg-icon class="content-controls__item-icon" src="assets/icons/person.svg"></svg-icon>
+                <input formControlName="name" placeholder="Ваше имя..." class="content-controls__input" type="text">
+                
+            </div>
+            <div class="content-controls__item">
+                <svg-icon class="content-controls__item-icon" src="assets/icons/phone.svg"></svg-icon>
+                <input formControlName="phone_number" [maskito]="options" placeholder="Ваш телефон..." class="content-controls__input"  type="text">
+            </div>
+        </div>
+        <div>
+            <textarea rows="5" formControlName="feedback" placeholder="Текст отзыва..." class="content-controls__input"  type="textarea"></textarea>
+            <span Class="content-controls__input-required invert-text_color">Необязательное поле</span>
+        </div>
+        <div class="content-controls__item-rating"> 
+            <span Class="invert-text_color">Поставьте оценку от 1 до 5</span>
+            <input 
+                formControlName="rating"
+                class="content-controls__input-rating"  
+                type="number" 
+                pattern="[1-5]" 
+                min="1" 
+                max="5"  
+                (input)="onRatingInput($event)"
+            >
+        </div>
+        <div class="content-controls__input_wrap">
+            <button class="content-controls__button" type="submit">Оставить отзыв</button>
+        </div>
+    </form>
+    <div class="drawer" #drawer> 
+         <ng-container *ngIf="isSend">
+            <div class="drawer__content">
+                <h1 class="drawer__title invert-text_color">Спасибо</h1>
+                <p class="drawer__description invert-text_color">Ваш отзыв доставлен! Он отобразится в ближайшее время</p>
+            </div>
+        </ng-container>
+    </div>
+</div>

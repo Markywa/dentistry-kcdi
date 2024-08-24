@@ -4,9 +4,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export enum ModalID {
     consultation = 'consultation',
     callback = 'callback',
+    review = 'review',
 }
 
-export type ModalType = 'callback' | 'consultation' | '';
+export type ModalType = 'callback' | 'consultation' | 'review' | '';
 
 @Injectable({
     providedIn: 'root',

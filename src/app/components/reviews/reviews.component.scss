@@ -1,0 +1,36 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    &__info-block{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        width: 60%;
+        @media screen and (max-width: 964px){
+            gap: 10px;
+            width: 100%;
+        }
+        .header{
+            width: 50%;
+            @media screen and (max-width: 964px){
+                width: 40%;
+            }
+        }
+        .review-button{
+            width: fit-content;
+            cursor: pointer;
+            background-color: var(--primaryButtonBgColor);
+            border: none;
+            border-radius: 16px;
+            color: var(--primaryFontColor);
+            padding: 18px 32px 18px 32px;
+            font-size: 15px;
+            font-weight: 600;
+            @media screen and (max-width: 564px){
+                gap: 10px;
+                width: 90%;
+            }
+        }
+    }
+}

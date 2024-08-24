@@ -8,3 +8,4 @@ export const API_CONTACTS = `${environment.baseUrl}api/website/contacts/` as con
 export const API_TAKE_SERVICE = (id: number) => `${environment.baseUrl}api/website/service/${id}/` as const;
 export const API_SERVICES = `${environment.baseUrl}api/website/carousel-service/` as const;
 export const API_DISCOUNT = `${environment.baseUrl}api/website/discount/` as const;
+export const API_FEEDBACK = `${environment.baseUrl}api/website/feedback/` as const;

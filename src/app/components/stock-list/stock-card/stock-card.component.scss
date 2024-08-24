@@ -2,25 +2,22 @@
     display: grid;
     grid-template-columns: 50% 50%;
     gap: 30px;
-    @media screen and (max-width: 658px){
+    @media screen and (max-width: 808px){
         display: flex;
         flex-direction: column;
     }
     &__image{
         width: 100%;
         border-radius: 16px;
-        min-height: 500px;
+        height: 500px;
         object-fit: cover;
-        @media screen and (max-width: 658px){
-            min-height: 300px;
-        }
     }
     &__description{
         display: flex;
         justify-content: center;
         flex-direction: column;
         gap: 50px;
-        @media screen and (max-width: 658px){
+        @media screen and (max-width: 808px){
             gap: 10px;
         }
     }
@@ -50,5 +47,8 @@
         cursor: pointer;
         font-weight: 500;
         border: none;
+        @media screen and (max-width: 808px){
+            width: 90%;
+        }
     }
 }

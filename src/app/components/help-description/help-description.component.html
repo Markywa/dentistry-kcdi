@@ -1,0 +1,10 @@
+<div class="container">
+    <ng-container *ngFor="let item of helpDescription">
+        <div class="container__section">
+            <h3 class="container__section-title invert-text_color">{{item.title}}</h3>
+            <ng-container *ngFor="let description of item.description">
+                <span class="container__section-text invert-text_color">{{description}}</span>
+            </ng-container>
+        </div>
+    </ng-container>
+</div>

@@ -1,0 +1,45 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 16px;
+    background-color: var(--thirdBackgroundColor);
+    padding: 30px;
+    height: 100%;
+    &__header{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        &-title{
+            padding: 0;
+            margin: 0;
+            font-size: 30px;
+            font-weight: 600;
+        }
+        &-rating{
+            display: flex;
+            flex-direction: row;
+            gap: 5px;
+        }
+    }
+    &__content{
+        &-text{
+            display: -webkit-box;
+            overflow: hidden;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 4;
+        }
+    }
+    &__button-read{
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 15px;
+        text-decoration: underline;
+        width: fit-content;
+        padding: 0;
+        text-align: start;
+        opacity: 0.5;
+    }
+}

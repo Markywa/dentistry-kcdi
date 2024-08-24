@@ -19,3 +19,10 @@
         <app-sign-up-consultation [alternate]="true" [modal]="true" class="modal"></app-sign-up-consultation>
     </ng-container>
 </app-modal>
+
+<app-modal
+    [opened]="(openModal$ | async) === ModalID.review">
+    <ng-container modal-content>
+        <app-reviews-send></app-reviews-send>
+    </ng-container>
+</app-modal>
