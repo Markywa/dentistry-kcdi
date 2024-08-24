@@ -22,7 +22,7 @@ export class PersonCardComponent implements OnChanges{
             this.currentSpecialist = this.specialistList[0];
         }
 
-        if(changes['currentPage']){
+        if(changes['currentPage'] && this.card){
             this.renderer.addClass(this.card.nativeElement, 'toggleContentRight');
             this.renderer.addClass(this.image.nativeElement, 'toggleContentLeft');
             setTimeout(() => {

@@ -18,6 +18,9 @@ export class HeaderInformationComponent {
     public logo!: string;
 
     ngOnInit(): void {
-        this.contactsService.get().subscribe((response) => this.contacts = response);
+        this.contactsService.get().subscribe((response) => {
+            this.contacts = response;
+            this.cdr.markForCheck();
+        });
     }
 }

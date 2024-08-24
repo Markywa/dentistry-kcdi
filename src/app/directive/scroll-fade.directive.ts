@@ -11,7 +11,7 @@ export class ScrollFadeDirective implements AfterViewInit {
  
     ngAfterViewInit(): void {
         this.renderer.addClass(this.el.nativeElement, 'noVisible');
-        this.showContent(this.el.nativeElement);
+        setTimeout(()=> { this.showContent(this.el.nativeElement);}, 0)
     }
 
   @HostListener('window:scroll', [])
@@ -19,7 +19,7 @@ export class ScrollFadeDirective implements AfterViewInit {
     this.showContent(this.el.nativeElement);
     }
 
-    private showContent(element: ElementRef)   {
+    private showContent(element: ElementRef)   {        
         if (isElementInViewport(element)) {
             switch(this.position) {
                 case 'diagonalLeft':

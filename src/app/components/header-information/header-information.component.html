@@ -7,7 +7,7 @@
             <h1 class="text-title_first-level text_color">{{item}}</h1>
         </ng-container>
     </div>
-    <ng-container *ngIf="deviceType !== 'mobile' && extraView">
+    <ng-container *ngIf="deviceType !== 'mobile' && extraView && contacts">
         <div  class="container-header__description">
             <span class="container-header__description-item__title text_color">{{contacts.phone_number}}</span>
             <span class="container-header__description-item__title text_color">Адрес:</span>

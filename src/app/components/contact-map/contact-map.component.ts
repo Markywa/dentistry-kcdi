@@ -27,7 +27,8 @@ export class ContactMapComponent implements AfterViewInit, OnInit {
     constructor(
       private mapService: MapService, 
       private modalControllerService: ModalControllerService,
-      private contactsService: ContactsService){}
+      private contactsService: ContactsService
+    ){}
     public map = new Map();
     public zoomLevel: number = 17;
     public maxZoomLevel: number = 18;
