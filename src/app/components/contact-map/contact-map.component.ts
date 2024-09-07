@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit } from "@angular/core";
+import { AfterViewInit, ChangeDetectionStrategy, Component, inject, OnInit } from "@angular/core";
 import Map from 'ol/Map';
 import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
@@ -14,7 +14,10 @@ import { MapService } from "../../services/map-service/map-service.service";
 import VectorLayer from "ol/layer/Vector";
 import { ModalControllerService, ModalID } from "../../services/modal/modal-controller.component";
 import { ContactsEntity, ContactsService } from "../../services/contacts/contacts.service";
+import { MobileService } from "../../services/mobile/mobile.service";
+import { map } from "rxjs";
 
+const DEFAULT_COORDINATES = [92.83690366, 56.00978477];
 
 @Component({
     selector: 'app-contact-map',
@@ -34,6 +37,7 @@ export class ContactMapComponent implements AfterViewInit, OnInit {
     public maxZoomLevel: number = 18;
     public minZoomLevel: number = 14;
     public contacts!: ContactsEntity; 
+    public deviceType$ = inject(MobileService)._userDevice$.pipe(map((data) => data));
 
     ngOnInit(): void {
       this.contactsService.get().subscribe((data) => this.contacts = data)
@@ -41,6 +45,19 @@ export class ContactMapComponent implements AfterViewInit, OnInit {
 
     ngAfterViewInit(): void {
       this.initializeMap();
+      this.deviceType$.subscribe((data) => {        
+        if(data === 'mobile'){
+          this.map.setView(new View({
+            center: [92.83840366, 56.00978477],
+            zoom: this.zoomLevel
+          }))
+        } else {
+          this.map.setView(new View({
+            center: DEFAULT_COORDINATES,
+            zoom: this.zoomLevel
+          }))
+        }
+      })
     }
   
     public initializeMap(): void {
@@ -55,7 +72,7 @@ export class ContactMapComponent implements AfterViewInit, OnInit {
             })
           ],
           view: new View({
-            center: [92.83690366, 56.00978477],
+            center: DEFAULT_COORDINATES,
             zoom: this.zoomLevel
           }),
           controls: [],

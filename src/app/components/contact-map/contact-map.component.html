@@ -1,3 +1,20 @@
+<div class="container_mobile" *ngIf="(deviceType$ | async) === 'mobile'">
+    <div class="container-contacts_mobile">
+        <h2 class="container-contacts__title invert-text_color">Адрес</h2>
+        <span class="container-contacts__text invert-text_color">{{contacts.address}}</span>
+        <h2 class="container-contacts__title invert-text_color">Телефон</h2>
+        <span class="container-contacts__text invert-text_color">{{contacts.phone_number}}</span>
+        <h2 class="container-contacts__title invert-text_color">Электронная почта</h2>
+        <span class="container-contacts__text invert-text_color">{{contacts.email}}</span>
+        <h2 class="container-contacts__title invert-text_color">Режим работы</h2>
+        <div class="container-contacts__schedule">
+            <ng-container *ngFor="let item of contacts.working_hours.split(',')">
+                <span class="container-contacts__text invert-text_color">{{item}}</span>
+            </ng-container>
+        </div>
+        <button (click)="openSignUpConsultation()" class="container-contacts__button">Записаться на прием</button>
+    </div>
+</div>
 <div class="container">
     <div 
         id="map" class="map">
@@ -8,7 +25,7 @@
             <input type="range" [min]="minZoomLevel" [max]="maxZoomLevel" step="0.1" [(ngModel)]="zoomLevel" (input)="onZoomChange($event)" class="container-buttons__slider">
             <button (click)="zoomOut()" class="container-buttons__button"><svg-icon src="assets/icons/minus.svg"></svg-icon></button>
         </div>
-        <div class="container-contacts">
+        <div class="container-contacts" *ngIf="(deviceType$ | async) !== 'mobile'">
             <h2 class="container-contacts__title invert-text_color">Адрес</h2>
             <span class="container-contacts__text invert-text_color">{{contacts.address}}</span>
             <h2 class="container-contacts__title invert-text_color">Телефон</h2>
