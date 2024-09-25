@@ -1,9 +1,9 @@
 export default [
 {
     context: [
-    '/api',
+        '/api',
     ],
-    target: 'http://77.223.97.22/',
+    target: 'https://kcdi24.ru/',
     secure: false,
     logLevel: 'debug',
     changeOrigin: true,

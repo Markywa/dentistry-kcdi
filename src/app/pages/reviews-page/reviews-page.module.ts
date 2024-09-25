@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { LayoutPageModule } from "../layout-page/layout-page.module";
 import { AngularSvgIconModule } from "angular-svg-icon";
@@ -12,6 +12,7 @@ import { ReviewsPageRoutingModule } from "./reviews-page-routing.module";
 import { ReviewsComponent } from "../../components/reviews/reviews.component";
 import { ReviewsListComponent } from "../../components/reviews-list/reviews-list.component";
 import { ReviewsCardComponent } from "../../components/reviews-list/reviews-card/reviews-card.component";
+import { ReviewsPlatformComponent } from "../../components/reviews-platform/reviews-platform.component";
 
 @NgModule({
     declarations: [
@@ -19,6 +20,7 @@ import { ReviewsCardComponent } from "../../components/reviews-list/reviews-card
         ReviewsComponent,
         ReviewsListComponent,
         ReviewsCardComponent,
+        ReviewsPlatformComponent
     ],
     exports: [ReviewsPageComponent],
     imports: [
@@ -32,6 +34,7 @@ import { ReviewsCardComponent } from "../../components/reviews-list/reviews-card
         CollapseModule,
         HeaderInformationModule
     ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 
 export class ReviewsPageModule {}

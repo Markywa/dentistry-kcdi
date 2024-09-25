@@ -1,10 +1,10 @@
 <div class="grid-container">
     <div class="container cell-double">
-        <span class="container__footnote"  appScrollFade position="down" [delation]="0.1">Наши цены на</span>
-        <span class="text-title_first-level invert-text_color"  appScrollFade position="down" [delation]="0.1">Услуги</span>
+        <span class="container__footnote"  appScrollFade position="down" [delation]="0.1" [isRenderEnd]="isRenderEnd">Наши цены на</span>
+        <span class="text-title_first-level invert-text_color"  appScrollFade position="down" [delation]="0.1" [isRenderEnd]="isRenderEnd">Услуги</span>
     </div>
     <ng-container *ngFor="let item of serviceList">
-        <button class="service-block" (click)="routToService(item.id)" appScrollFade position="out" [delation]="0.2">
+        <button class="service-block" (click)="routToService(item.id)" appScrollFade position="out" [delation]="0.2" [isRenderEnd]="isRenderEnd">
             <img class="service-block__image" [src]="item.carousel_photo" alt="">
             <div class="service-block__entity">
                 <div class="service-block__entity_top">

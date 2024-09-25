@@ -5,9 +5,10 @@ export enum ModalID {
     consultation = 'consultation',
     callback = 'callback',
     review = 'review',
+    statement = 'statement',
 }
 
-export type ModalType = 'callback' | 'consultation' | 'review' | '';
+export type ModalType = 'callback' | 'consultation' | 'review' | 'statement' | '';
 
 @Injectable({
     providedIn: 'root',

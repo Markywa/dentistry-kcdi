@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild } from "@angular/core";
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild } from "@angular/core";
 import { EmployeesResponse, SpecialistsResponse } from "../../interfaces/employees.interface";
 import { EmployeesListService } from "../../services/employees-list/employees-list.service";
 import { DeviceType } from "../../services/mobile/mobile.service";
@@ -10,7 +10,7 @@ import { DeviceType } from "../../services/mobile/mobile.service";
     changeDetection: ChangeDetectionStrategy.Default, 
 })
 
-export class EmployeesCarouselMobileComponent {
+export class EmployeesCarouselMobileComponent implements AfterViewInit {
     constructor(
         private cdr: ChangeDetectorRef, 
         private employeesListService: EmployeesListService){}
@@ -21,6 +21,7 @@ export class EmployeesCarouselMobileComponent {
     public pageLength!: number;
     public currentSpecialist!: SpecialistsResponse;
     public currentPage!: number;
+    public isRenderEnd: boolean = false;
     ngOnInit(){
         this.employeesListService.getSpecialistsList()
         .subscribe((data) => {
@@ -29,6 +30,10 @@ export class EmployeesCarouselMobileComponent {
             this.selectSpecialist(1);
             this.cdr.markForCheck();
         })
+    }
+
+    ngAfterViewInit(): void {
+        this.isRenderEnd = true 
     }
 
     selectSpecialist(num: number): void {

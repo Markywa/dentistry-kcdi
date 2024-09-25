@@ -9,3 +9,4 @@ export const API_TAKE_SERVICE = (id: number) => `${environment.baseUrl}api/websi
 export const API_SERVICES = `${environment.baseUrl}api/website/carousel-service/` as const;
 export const API_DISCOUNT = `${environment.baseUrl}api/website/discount/` as const;
 export const API_FEEDBACK = `${environment.baseUrl}api/website/feedback/` as const;
+export const API_APPLICATION = `${environment.baseUrl}api/website/application/` as const;

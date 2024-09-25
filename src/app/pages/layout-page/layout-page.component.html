@@ -26,3 +26,11 @@
         <app-reviews-send></app-reviews-send>
     </ng-container>
 </app-modal>
+
+<app-modal
+    [opened]="(openModal$ | async) === ModalID.statement">
+    <ng-container modal-content>
+        <app-statement-form></app-statement-form>
+    </ng-container>
+</app-modal>
+

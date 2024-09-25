@@ -11,6 +11,7 @@ import { MaskitoDirective } from "@maskito/angular";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SignUpConsultationModule } from "../../components/sign-up-consultation/sign-up-consultation.module";
 import { ReviewsSendComponent } from "../../components/reviews-send/reviews-send.component";
+import { StatementFormComponent } from "../../components/statement-form/statement-form.component";
 
 @NgModule({
     declarations:[
@@ -18,6 +19,7 @@ import { ReviewsSendComponent } from "../../components/reviews-send/reviews-send
         ModalComponent, 
         CallbackComponent,
         ReviewsSendComponent,
+        StatementFormComponent,
     ],
     exports:[LayoutPageComponent],
     imports: [CommonModule,

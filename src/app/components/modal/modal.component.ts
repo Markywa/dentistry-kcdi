@@ -3,6 +3,7 @@ import { ModalControllerService, ModalType } from "../../services/modal/modal-co
 import { CallbackComponent } from "../callback/callback.component";
 import { SignUpConsultationComponent } from "../sign-up-consultation/sign-up-consultation.component";
 import { ReviewsSendComponent } from "../reviews-send/reviews-send.component";
+import { StatementFormComponent } from "../statement-form/statement-form.component";
 
 @Component({
     selector: 'app-modal',
@@ -18,6 +19,7 @@ export class ModalComponent implements AfterContentInit {
    @ContentChild(CallbackComponent, { static: false }) callbackComponent!: CallbackComponent;
    @ContentChild(SignUpConsultationComponent, { static: false }) signUpConsultationComponent!: SignUpConsultationComponent;
    @ContentChild(ReviewsSendComponent, { static: false }) reviewsSendComponent!: ReviewsSendComponent;
+   @ContentChild(StatementFormComponent, { static: false }) statementFormComponent!: StatementFormComponent;
 
    ngAfterContentInit(): void {
     if(this.signUpConsultationComponent){
@@ -30,6 +32,10 @@ export class ModalComponent implements AfterContentInit {
           });
     } else if (this.reviewsSendComponent) {
         this.reviewsSendComponent.emitClose.subscribe((ModalID) => {
+            this.closeModal(ModalID);
+        })
+    } else if(this.statementFormComponent) {
+        this.statementFormComponent.emitClose.subscribe((ModalID) => {
             this.closeModal(ModalID);
         })
     }

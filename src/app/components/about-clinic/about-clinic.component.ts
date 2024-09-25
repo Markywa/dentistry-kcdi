@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild } from "@angular/core";
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild } from "@angular/core";
 import { DeviceType } from "../../services/mobile/mobile.service";
 
 @Component({
@@ -8,6 +8,11 @@ import { DeviceType } from "../../services/mobile/mobile.service";
     changeDetection: ChangeDetectionStrategy.Default, 
 })
 
-export class AboutClinicComponent {
+export class AboutClinicComponent implements AfterViewInit {
     @Input() deviceType: DeviceType = 'desktop';
+    public isRenderEnd: boolean = false;
+
+    ngAfterViewInit(): void {
+        this.isRenderEnd = true;
+    }
 }

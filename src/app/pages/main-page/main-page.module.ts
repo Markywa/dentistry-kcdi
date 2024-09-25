@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
 import { MainPageComponent } from "./main-page.component";
 import { CommonModule } from "@angular/common";
 import { MainPageRoutingModule } from "./main-page-routing.module";
@@ -13,6 +13,7 @@ import { ScrollFadeDirectiveModule } from "../../directive/scroll-fade.module";
 import { HeaderInformationModule } from "../../components/header-information/header-information.module";
 import { ServicesCardComponent } from "../../components/services/service-card/service-card.component";
 import { EmployeesCaouselMobileModule } from "../../components/employees-carousel-mobile/employees-carousel-mobile.module";
+import { ReviewsCarouselComponent } from "../../components/reviews-carousel/reviews-carousel.component";
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { EmployeesCaouselMobileModule } from "../../components/employees-carouse
         EmployeesComponent,
         PersonCardComponent,
         ServicesComponent,
-        ServicesCardComponent
+        ServicesCardComponent,
+        ReviewsCarouselComponent,
     ],
     exports: [MainPageComponent],
     imports: [
@@ -34,6 +36,7 @@ import { EmployeesCaouselMobileModule } from "../../components/employees-carouse
         HeaderInformationModule,
         EmployeesCaouselMobileModule
     ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 
 export class MainPageModule {}

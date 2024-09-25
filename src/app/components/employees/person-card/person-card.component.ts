@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnChanges, Renderer2, SimpleChanges, ViewChild } from "@angular/core";
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnChanges, Renderer2, SimpleChanges, ViewChild } from "@angular/core";
 import { EmployeesResponse, SpecialistsResponse } from "../../../interfaces/employees.interface";
 import { ModalControllerService, ModalID } from "../../../services/modal/modal-controller.component";
 
@@ -9,13 +9,18 @@ import { ModalControllerService, ModalID } from "../../../services/modal/modal-c
     changeDetection: ChangeDetectionStrategy.OnPush, 
 })
 
-export class PersonCardComponent implements OnChanges{
+export class PersonCardComponent implements OnChanges, AfterViewInit{
     constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef, private modalControllerService: ModalControllerService){}
     @Input() currentPage: number = 1;
     @Input() specialistList: SpecialistsResponse[] = [];
     @ViewChild('card') card!: ElementRef;
     @ViewChild('image') image!: ElementRef;
     public currentSpecialist!: SpecialistsResponse;
+    public isRenderEnd: boolean = false;
+
+    public ngAfterViewInit(): void {
+        this.isRenderEnd = true;
+    }
 
     public ngOnChanges(changes: SimpleChanges): void {
         if(changes['specialistList']){

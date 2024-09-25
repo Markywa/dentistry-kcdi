@@ -8,10 +8,14 @@ export class ScrollFadeDirective implements AfterViewInit {
   constructor(private el: ElementRef, private renderer: Renderer2) {}
     @Input() position!: 'left' | 'up' | 'right' | 'down' | 'diagonalLeft' | 'diagonalRight' | 'out';
     @Input() delation: number = 0;
+    @Input() isRenderEnd: boolean = false;
  
     ngAfterViewInit(): void {
         this.renderer.addClass(this.el.nativeElement, 'noVisible');
-        setTimeout(()=> { this.showContent(this.el.nativeElement);}, 0)
+        setTimeout(()=> { 
+            // this.isRenderEnd = true
+            this.showContent(this.el.nativeElement);
+        }, 0)
     }
 
   @HostListener('window:scroll', [])
@@ -20,7 +24,7 @@ export class ScrollFadeDirective implements AfterViewInit {
     }
 
     private showContent(element: ElementRef)   {        
-        if (isElementInViewport(element)) {
+        if (isElementInViewport(element) && this.isRenderEnd) {
             switch(this.position) {
                 case 'diagonalLeft':
                     setTimeout(() => {

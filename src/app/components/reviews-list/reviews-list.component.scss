@@ -1,4 +1,5 @@
 .container{
+    margin-top: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 50px;
@@ -9,5 +10,21 @@
     @media screen and (max-width: 736px){
         grid-template-columns: 1fr;
         gap: 20px;
+    }
+}
+
+.review-button{
+    width: fit-content;
+    cursor: pointer;
+    background-color: var(--primaryButtonBgColor);
+    border: none;
+    border-radius: 16px;
+    color: var(--primaryFontColor);
+    padding: 18px 32px 18px 32px;
+    font-size: 15px;
+    font-weight: 600;
+    @media screen and (max-width: 564px){
+        gap: 10px;
+        width: 90%;
     }
 }

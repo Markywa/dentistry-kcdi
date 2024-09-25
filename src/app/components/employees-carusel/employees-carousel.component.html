@@ -1,6 +1,6 @@
 <div class="container">
     <ng-container *ngFor="let employee of employeesList">
-        <div class="specialist-container" appScrollFade position="out">
+        <div class="specialist-container" appScrollFade position="out" [isRenderEnd]="isRenderEnd">
             <div class="specialist-container__image-block">
                 <img 
                     [ngClass]="{'specialist-container__image-block_image_small': small}"

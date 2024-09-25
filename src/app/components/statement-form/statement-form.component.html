@@ -1,0 +1,46 @@
+<div class="container">
+    <svg-icon class="container-close" src="assets/icons/exit.svg" (click)="closeModal()"></svg-icon>
+
+    <form 
+        class='content-controls_wrap-alternate'
+        action="submit" 
+        [formGroup]="signUpForm" 
+        (ngSubmit)="sendForm()" 
+    >
+        <h3 class="container-content__header invert-text_color">Форма заявления</h3>
+        <input formControlName="name" placeholder="ФИО пациента" class="content-controls__input" type="text">
+        <input formControlName="taxpayer_name" placeholder="ФИО налогоплательщика" class="content-controls__input" type="text">
+        <input formControlName="INN" placeholder="ИНН налогоплательщика" class="content-controls__input" type="number">
+        <input formControlName="reporting_year" placeholder="Отчетный год (год за который берётся справка)" class="content-controls__input" type="number" #dateSelector>
+
+        <div class="checkbox-form">
+            <span class="invert-text_color">Справку прошу:</span>
+            <div class="checkbox-form _padding">
+                <div>
+                    <label for="issue_type1">
+                        <input formControlName="issue_type" type="radio" id="issue_type1" value="CLINIC" checked>
+                        <span class="invert-text_color">Выдать по адресу пр-кт Мира 115а</span>
+                    </label>
+                </div>
+                <div class="checkbox-form_mail">
+                    <label for="issue_type2">
+                        <input formControlName="issue_type" type="radio" id="issue_type2" value="EMAIL">
+                        <span class="invert-text_color">Выслать на электронную почту:</span>
+                    </label>
+                    <input formControlName="email" class="checkbox-form_mail-input" type="text" placeholder="вашаПочта@mail.ru">
+                </div>
+            </div>
+        </div>
+        <div class="content-controls__input_wrap">
+            <button class="content-controls__button" type="submit">Отправить форму</button>
+        </div>
+    </form>
+    <div class="drawer" #drawer> 
+         <ng-container *ngIf="isSend">
+            <div class="drawer__content">
+                <h1 class="drawer__title invert-text_color">Спасибо</h1>
+                <p class="drawer__description invert-text_color">Ваше заявление доставлено! С вами свяжутся как только оно будет обработано</p>
+            </div>
+        </ng-container>
+    </div>
+</div>

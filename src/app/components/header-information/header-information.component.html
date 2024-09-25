@@ -2,13 +2,16 @@
     <ng-container *ngIf="deviceType !== 'desktop' && extraView">
         <svg-icon [src]="deviceType === 'mobile' ? 'assets/icons/mobile-logo.svg' : 'assets/icons/tablet-logo.svg' "></svg-icon>
     </ng-container>
-    <ng-container *ngIf="title.length">
+    <ng-container *ngIf="title.length; else margin">
         <div class="container-header__title">
             <ng-container *ngFor="let item of title">
                 <h1 class="text-title_first-level text_color">{{item}}</h1>
             </ng-container>
         </div>
     </ng-container>
+    <ng-template #margin>
+        <div class="_margin"></div>
+    </ng-template>
     <ng-container *ngIf="deviceType !== 'mobile' && extraView && contacts">
         <div  class="container-header__description">
             <span class="container-header__description-item__title text_color">Телефон: <span class="container-header__description-item text_color">{{contacts.phone_number}}</span></span>

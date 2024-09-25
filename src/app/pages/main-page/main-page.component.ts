@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from "@angular/core";
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from "@angular/core";
 import { DeviceType, MobileService } from "../../services/mobile/mobile.service";
 
 @Component({
@@ -8,9 +8,10 @@ import { DeviceType, MobileService } from "../../services/mobile/mobile.service"
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
-export class MainPageComponent {
+export class MainPageComponent implements OnInit, AfterViewInit {
     public isMobile: boolean = true;
     public deviceType!: DeviceType;
+    public isRenderEnd: boolean = false;
     public mainPhoto: string = 'assets/images/welcome-image.png';
     constructor(private mobileService: MobileService, private cdr: ChangeDetectorRef){};
 
@@ -19,6 +20,10 @@ export class MainPageComponent {
             this.deviceType = device; 
             this.mobileAdaptation(device);
             this.cdr.markForCheck()})
+    }
+
+    ngAfterViewInit(): void {
+        this.isRenderEnd = true;
     }
 
     private mobileAdaptation(device: DeviceType): void {

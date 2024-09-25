@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild } from "@angular/core";
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild } from "@angular/core";
 import { EmployeesResponse } from "../../interfaces/employees.interface";
 import { EmployeesListService } from "../../services/employees-list/employees-list.service";
 
@@ -9,8 +9,13 @@ import { EmployeesListService } from "../../services/employees-list/employees-li
     changeDetection: ChangeDetectionStrategy.Default, 
 })
 
-export class EmployeesCarouselComponent {
+export class EmployeesCarouselComponent implements OnInit{
     constructor(private employeesListService: EmployeesListService, private cdr: ChangeDetectorRef){}
     @Input() employeesList: EmployeesResponse[] = [];
     @Input() small: boolean = false;
+    public isRenderEnd: boolean = false;
+
+    ngOnInit(): void {
+        this.isRenderEnd = true;
+    }
 }
