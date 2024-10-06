@@ -10,3 +10,5 @@ export const API_SERVICES = `${environment.baseUrl}api/website/carousel-service/
 export const API_DISCOUNT = `${environment.baseUrl}api/website/discount/` as const;
 export const API_FEEDBACK = `${environment.baseUrl}api/website/feedback/` as const;
 export const API_APPLICATION = `${environment.baseUrl}api/website/application/` as const;
+export const API_FILE_LIST = `${environment.baseUrl}api/website/file/` as const;
+export const API_FILE_DOWNLOAD = (id: number) => `${environment.baseUrl}api/website/file/${id}/` as const;

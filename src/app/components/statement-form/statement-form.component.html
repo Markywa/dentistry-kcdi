@@ -9,6 +9,7 @@
     >
         <h3 class="container-content__header invert-text_color">Форма заявления</h3>
         <input formControlName="name" placeholder="ФИО пациента" class="content-controls__input" type="text">
+        <input formControlName="phone_number" [maskito]="options" placeholder="Номер телефона" class="content-controls__input" type="text">
         <input formControlName="taxpayer_name" placeholder="ФИО налогоплательщика" class="content-controls__input" type="text">
         <input formControlName="INN" placeholder="ИНН налогоплательщика" class="content-controls__input" type="number">
         <input formControlName="reporting_year" placeholder="Отчетный год (год за который берётся справка)" class="content-controls__input" type="number" #dateSelector>

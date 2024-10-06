@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReviewsApiService } from '../../services/reviews/reviews-api.service';
 import { StatementService } from '../../services/statement/statement.service';
 import { combineLatest, fromEvent } from 'rxjs';
+import { MaskitoOptions } from '@maskito/core';
+import mask from '../../../mask';
 
 @Component({
   selector: 'app-statement-form',
@@ -23,13 +25,15 @@ export class StatementFormComponent {
 @ViewChild('dateSelector') dateSelector!: ElementRef;
 ModalID = ModalID;
 public isSend = false;
+public options: MaskitoOptions = mask;
 
 public signUpForm: FormGroup = this.fb.group({
     name: ['', Validators.required],
-    taxpayer_name: ['', Validators.required],
-    INN: ['', [Validators.required, Validators.maxLength(12), Validators.minLength(12)]],
+    taxpayer_name: '',
+    INN: ['', Validators.required],
     reporting_year: ['', Validators.required],
     issue_type: ['CLINIC', Validators.required],
+    phone_number: ['', Validators.minLength(17)],
     email: '',
   });
 
@@ -55,6 +59,7 @@ private clearForm(): void {
         INN: '',
         reporting_year: '',
         issue_type: 'CLINIC',
+        phone_number: '',
         email: '',
       });
     this.cdr.markForCheck();

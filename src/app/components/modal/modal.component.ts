@@ -1,5 +1,5 @@
 import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChild, ElementRef, HostListener, Input, Renderer2, ViewChild } from "@angular/core";
-import { ModalControllerService, ModalType } from "../../services/modal/modal-controller.component";
+import { ModalControllerService, ModalID, ModalType } from "../../services/modal/modal-controller.component";
 import { CallbackComponent } from "../callback/callback.component";
 import { SignUpConsultationComponent } from "../sign-up-consultation/sign-up-consultation.component";
 import { ReviewsSendComponent } from "../reviews-send/reviews-send.component";
@@ -41,12 +41,26 @@ export class ModalComponent implements AfterContentInit {
     }
    }
 
-   constructor(private modalControllerService: ModalControllerService, private renderer: Renderer2){}
+   constructor(
+        private modalControllerService: ModalControllerService, 
+        private renderer: Renderer2
+    ){}
 
    closeModal(ModalID: ModalType): void {
     this.renderer.addClass(this.modal.nativeElement, 'close-modal'); 
         setTimeout(() => {
             this.modalControllerService.closeModal(ModalID);
-        }, 1000)
+        }, 500)
    }
+
+//    @HostListener('document:click', ['$event'])
+//    onDocumentClick(event: MouseEvent): void {
+//     const target = event.target as HTMLElement;
+//     console.log(target);
+    
+//     // Проверяем, был ли клик вне модального окна
+//     if (this.opened && !this.modal.nativeElement.contains(target)) {
+//       this.closeModal(ModalID.callback); // Закрываем модальное окно
+//     }
+//    }
 }

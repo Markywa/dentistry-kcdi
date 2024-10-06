@@ -32,7 +32,7 @@ import { ReviewsPlatformComponent } from "../../components/reviews-platform/revi
         ScrollFadeDirectiveModule,
         SignUpConsultationModule,
         CollapseModule,
-        HeaderInformationModule
+        HeaderInformationModule,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

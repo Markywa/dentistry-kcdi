@@ -58,17 +58,18 @@
                 <div class="content-info">
                     <span class="content-info__title text_color">Разделы</span>
                     <button (click)="naviagate(['/', 'main'])" class="content-info__buttons btn-transparent">Главная</button>
-                    <button (click)="naviagate(['/', 'services'])" class="content-info__buttons btn-transparent">Услуги</button>
+                    <!-- <button (click)="naviagate(['/', 'services'])" class="content-info__buttons btn-transparent">Услуги</button> -->
                     <button (click)="naviagate(['/', 'prices'])" class="content-info__buttons btn-transparent">Цены</button>
                     <button (click)="naviagate(['/', 'specialist'])" class="content-info__buttons btn-transparent">Специалисты</button>
-                    <!-- <button (click)="naviagate(['/'])" class="content-info__buttons btn-transparent">Акции</button> -->
-                    <!-- <button (click)="naviagate(['/'])" class="content-info__buttons btn-transparent">Отзывы</button> -->
+                    <button (click)="naviagate(['/', 'stock'])" class="content-info__buttons btn-transparent">Акции</button>
+                    <button (click)="naviagate(['/', 'reviews'])" class="content-info__buttons btn-transparent">Отзывы</button>
                     <button (click)="naviagate(['/', 'contacts'])" class="content-info__buttons btn-transparent">Контакты</button>
                 </div>
                 <div class="content-info">
                     <span class="content-info__title text_color">Документы</span>
-                    <button class="content-info__buttons btn-transparent">Публичная оферта</button>
-                    <button class="content-info__buttons btn-transparent">Политика конфиденциальности</button>
+                    <ng-container *ngFor="let file of fileList$ | async">
+                        <button class="content-info__buttons btn-transparent" (click)="downloadFile(file.file, file.name)">{{ file.name }}</button>
+                    </ng-container>
                 </div>
             </div>
         </ng-container>

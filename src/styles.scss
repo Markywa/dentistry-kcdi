@@ -23,6 +23,9 @@ router-outlet {
 
 .modal-open{
     overflow: hidden;
+    @media screen and (min-width: 1136px) {
+        padding-right: 17px;
+    }
 }
 
 img{
