@@ -10,7 +10,7 @@
                 <div class="info">
                     <div class="social-club social-club__wrap">
                         <div class="social-club-qr-code__wrap">
-                            <img class="social-club-qr-code_small" src="assets/images/qr-code.png" alt="">
+                            <img class="social-club-qr-code_small" src="assets/images/taplink.png" alt="">
                             <!-- <svg-icon src="assets/icons/qrcode.svg"></svg-icon> -->
                         </div>
                         <!-- <div class="social-club-telegram">
@@ -58,18 +58,17 @@
                 <div class="content-info">
                     <span class="content-info__title text_color">Разделы</span>
                     <button (click)="naviagate(['/', 'main'])" class="content-info__buttons btn-transparent">Главная</button>
-                    <!-- <button (click)="naviagate(['/', 'services'])" class="content-info__buttons btn-transparent">Услуги</button> -->
+                    <button (click)="naviagate(['/', 'services'])" class="content-info__buttons btn-transparent">Услуги</button>
                     <button (click)="naviagate(['/', 'prices'])" class="content-info__buttons btn-transparent">Цены</button>
                     <button (click)="naviagate(['/', 'specialist'])" class="content-info__buttons btn-transparent">Специалисты</button>
                     <button (click)="naviagate(['/', 'stock'])" class="content-info__buttons btn-transparent">Акции</button>
                     <button (click)="naviagate(['/', 'reviews'])" class="content-info__buttons btn-transparent">Отзывы</button>
-                    <button (click)="naviagate(['/', 'contacts'])" class="content-info__buttons btn-transparent">Контакты</button>
                 </div>
                 <div class="content-info">
-                    <span class="content-info__title text_color">Документы</span>
+                    <!-- <span class="content-info__title text_color">Документы</span>
                     <ng-container *ngFor="let file of fileList$ | async">
                         <button class="content-info__buttons btn-transparent" (click)="downloadFile(file.file, file.name)">{{ file.name }}</button>
-                    </ng-container>
+                    </ng-container> -->
                 </div>
             </div>
         </ng-container>
