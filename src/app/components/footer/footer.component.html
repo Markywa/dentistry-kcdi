@@ -65,10 +65,10 @@
                     <button (click)="naviagate(['/', 'reviews'])" class="content-info__buttons btn-transparent">Отзывы</button>
                 </div>
                 <div class="content-info">
-                    <!-- <span class="content-info__title text_color">Документы</span>
+                    <span class="content-info__title text_color">Документы</span>
                     <ng-container *ngFor="let file of fileList$ | async">
-                        <button class="content-info__buttons btn-transparent" (click)="downloadFile(file.file, file.name)">{{ file.name }}</button>
-                    </ng-container> -->
+                        <button class="content-info__buttons btn-transparent" (click)="downloadFile(file)">{{ file.name }}</button>
+                    </ng-container>
                 </div>
             </div>
         </ng-container>
