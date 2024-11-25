@@ -10,20 +10,34 @@
             <div class="container-content">
                 <div class="welcome-area">
                     <img class="welcome-area__image" [src]="mainPhoto" alt="">
-                    <div class="welcome-area__advantages">
-                        <div class="welcome-area__advantages-item" appScrollFade position="out" [delation]="0.1" [isRenderEnd]="isRenderEnd">
+                    <div class="welcome-area__advantages" *ngIf="deviceType !== 'mobile'; else mobileInfo">
+                        <div class="welcome-area__advantages-item">
                             <h3 class="welcome-area__advantages-item_title invert-text_color">Широкий спектр услуг</h3>
-                            <!-- <span class="welcome-area__advantages-item_text invert-text_color">Описание преимущества в 1-2х предлодениях</span> -->
                         </div>
-                        <div class="welcome-area__advantages-item" appScrollFade position="out" [delation]="0.1" [isRenderEnd]="isRenderEnd">
+                        <div class="welcome-area__advantages-item">
                             <h3 class="welcome-area__advantages-item_title invert-text_color">Высококлассные специалисты</h3>
-                            <!-- <span class="welcome-area__advantages-item_text invert-text_color">Описание преимущества в 1-2х предлодениях</span> -->
                         </div>
-                        <div class="welcome-area__advantages-item" appScrollFade position="out" [delation]="0.1" [isRenderEnd]="isRenderEnd">
+                        <div class="welcome-area__advantages-item">
                             <h3 class="welcome-area__advantages-item_title invert-text_color">Забота о клиентах</h3>
-                            <!-- <span class="welcome-area__advantages-item_text invert-text_color">Описание преимущества в 1-2х предлодениях</span> -->
                         </div>
                     </div>
+                    <ng-template #mobileInfo>
+                        <div class="welcome-area__advantages-core">
+                            <div class="welcome-area__advantages-mobile" *ngIf="contacts$ | async as contacts">
+                                <button class="welcome-area__advantages-mobile-item_callback" (click)="openCallbackModal()">
+                                    Обратный звонок
+                                </button>
+                                <div class="welcome-area__advantages-mobile-item">
+                                    <span class="welcome-area__advantages-mobile-item_title invert-text_color">Телефон: <a href="tel:{{contacts.phone_number}}">{{contacts.phone_number}}</a></span>
+                                    <span class="welcome-area__advantages-mobile-item_title invert-text_color">Адресс: {{contacts.address}}</span>
+                                    <span class="welcome-area__advantages-mobile-item_title   invert-text_color">Часы работы:</span>
+                                    <ng-container *ngFor="let item of contacts.working_hours.split(',')">
+                                        <span class="welcome-area__advantages-mobile-item_title   invert-text_color">{{item}}</span>
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
                 </div>
                 <div class="description">
                     <app-about-clinic 

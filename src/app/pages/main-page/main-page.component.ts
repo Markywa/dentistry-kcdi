@@ -1,6 +1,8 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from "@angular/core";
 import { DeviceType, MobileService } from "../../services/mobile/mobile.service";
 import { Meta, Title } from "@angular/platform-browser";
+import { ContactsService } from "../../services/contacts/contacts.service";
+import { ModalControllerService, ModalID } from "../../services/modal/modal-controller.component";
 
 @Component({
     selector: 'app-main-page',
@@ -18,7 +20,9 @@ export class MainPageComponent implements OnInit, AfterViewInit {
         private mobileService: MobileService, 
         private cdr: ChangeDetectorRef,
         private title: Title,
-        private meta: Meta
+        private meta: Meta,
+        private contactsService: ContactsService,
+        private modalControllerService: ModalControllerService,
     ){
         this.title.setTitle('Главная - Краевой Центр Дентальной Имплантации');
         this.meta.addTags([
@@ -43,8 +47,14 @@ export class MainPageComponent implements OnInit, AfterViewInit {
             this.cdr.markForCheck()})
     }
 
+    public contacts$ = this.contactsService.get();
+
     ngAfterViewInit(): void {
         this.isRenderEnd = true;
+    }
+
+    public openCallbackModal(): void {
+        this.modalControllerService.openModal(ModalID.callback);
     }
 
     private mobileAdaptation(device: DeviceType): void {
