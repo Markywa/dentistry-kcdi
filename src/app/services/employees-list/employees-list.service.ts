@@ -22,8 +22,25 @@ export class EmployeesListService {
         return this.specialistsList$ ??= this.http.get<SpecialistsResponse[]>(API_CAROUSEL_SPECIALISTS)
         .pipe(
             map((res) => {
-                res.find((name) => name.name === 'Сафонов Глеб Николаевич')!.not_a_doctor = true;
-                return res
+                const nameToFind = 'Сафонов Глеб Николаевич';
+                
+                const found = res.find((name) => {
+                    const nameWords = name.name.split(' ');
+                    const searchWords = nameToFind.split(' ');
+                
+                    // Считаем количество совпадающих слов
+                    const matches = nameWords.filter(word => searchWords.includes(word)).length;
+                
+                    // Проверяем, что минимум два слова совпадают
+                    return matches >= 2;
+                });
+                
+                if (found) {
+                    found.not_a_doctor = true;
+                } else {
+                    console.error('Объект не найден');
+                }
+                return res;
             }),
             shareReplay(1));
     }

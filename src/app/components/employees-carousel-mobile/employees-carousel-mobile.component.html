@@ -2,7 +2,7 @@
     <span class="container-footnote" appScrollFade position="down" [delation]="0.1" [isRenderEnd]="isRenderEnd">Наши эксперты</span>
     <h1 class="text-title_first-level invert-text_color" appScrollFade position="down" [delation]="0.1" [isRenderEnd]="isRenderEnd">Команда</h1>    
 </div>
-<div class="container" appScrollFade [delation]="0.1" position="out" [isRenderEnd]="isRenderEnd">
+<div class="container" appScrollFade [delation]="0.1" position="out" [isRenderEnd]="isRenderEnd" *ngIf="currentSpecialist">
     <div class="container__board">
         <div class="container__board-left">
         </div>
