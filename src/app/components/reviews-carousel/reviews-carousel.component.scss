@@ -1,6 +1,9 @@
 .container{
     &-header{
         margin-bottom: 20px;
+        @media (max-width: 320px) {
+            margin-bottom: 0;
+        }
         &_rout{
             display: flex;
             flex-direction: row;
@@ -16,5 +19,12 @@
         text-decoration: none;
         cursor: pointer;
         font-weight: 500;
+    }
+}
+
+.scale{
+    @media (max-width: 328px) {
+        display: block;
+        scale: 0.8;
     }
 }

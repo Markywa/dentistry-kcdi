@@ -72,6 +72,10 @@
 svg-icon {
     svg{
         width: 260px;
-        height: 90px;
+        height: 90px;    
+        @media (max-width: 799px) {
+            width: 200px;
+            height: 70px;
+        }
     }
 }
