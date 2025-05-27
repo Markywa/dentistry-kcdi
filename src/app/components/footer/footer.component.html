@@ -3,6 +3,9 @@
     <ng-container *ngIf="isSendForm">
         <app-sign-up-consultation></app-sign-up-consultation>
     </ng-container>
+    <ng-container *ngIf="isVacanciesForm">
+        <app-vacancies-form></app-vacancies-form>
+    </ng-container>
     <div class="footer-content">
         <div class="footer-content__left">
             <ng-container *ngIf="!isMobile">

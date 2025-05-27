@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from "@angular/core";
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, Input } from "@angular/core";
 import { ContactsEntity, ContactsService } from "../../services/contacts/contacts.service";
-import { DeviceType } from "../../services/mobile/mobile.service";
+import { DeviceType, MobileService } from "../../services/mobile/mobile.service";
+import { Observable } from "rxjs";
 
 @Component({
     selector: 'app-header-information',
@@ -11,9 +12,10 @@ import { DeviceType } from "../../services/mobile/mobile.service";
 
 export class HeaderInformationComponent {
     @Input() title!: string[];
-    @Input() deviceType!: DeviceType;
     @Input() extraView: boolean = false;
+    @Input() showInformation: boolean = false;
     constructor(private contactsService: ContactsService, private cdr: ChangeDetectorRef){}
+    deviceType$: Observable<DeviceType> = inject(MobileService)._userDevice$;
     public contacts!: ContactsEntity;
     public logo!: string;
 

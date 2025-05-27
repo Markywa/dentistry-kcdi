@@ -1,0 +1,81 @@
+<div class="send-wrap">  
+    <form #applicationForm="ngForm" (ngSubmit)="submit(applicationForm)">
+        <div class="container">
+            <div class="container-wrap">
+                <h2 class="text-title_fourth-level invert-text_color">Заполните анкету и мы свяжемся с Вами</h2>
+                
+                <select class="custom-select" name="desiredPosition" ngModel aria-placeholder="Желаемая должность">
+                    <option value="" disabled selected hidden>Желаемая должность</option>
+                    <option value="Администратор">Администратор</option>
+                    <option value="Помощник Администратора">Помощник Администратора</option>
+                    <option value="Стоматолог-Терапевт">Стоматолог-Терапевт</option>
+                    <option value="Стоматолог-Ортопед">Стоматолог-Ортопед</option>
+                    <option value="Хирург-Имплантолог">Хирург-Имплантолог</option>
+                    <option value="Стоматолог-Ортодонт">Стоматолог-Ортодонт</option>
+                    <option value="Гигиенист">Гигиенист</option>
+                    <option value="Главный Врач">Главный Врач</option>
+                    <option value="Ассистент Стоматолога">Ассистент Стоматолога</option>
+                    <option value="Медсестра">Медсестра</option>
+                </select>
+                
+                <div class="container-required">
+                    <input type="text" name="firstName" ngModel placeholder="Имя*" required>
+                    <span>*Обязательное поле</span>
+                </div>
+                
+                <input type="text" name="lastName" ngModel placeholder="Фамилия">
+                
+                <div class="container-required">
+                    <input type="text" name="phone" ngModel placeholder="Телефон*" required>
+                    <span>*Обязательное поле</span>
+                </div>
+                
+                <textarea name="reasonForApplying" ngModel rows="5" placeholder="Почему хотите у нас работать"></textarea>
+                <textarea name="previousWork" ngModel rows="5" placeholder="Где работали до этого, почему ушли/хотите уйти"></textarea>
+                <textarea name="aboutYourself" ngModel rows="5" placeholder="О себе, где обучались"></textarea>
+                
+                <select class="custom-select" name="workExperience" ngModel aria-placeholder="Опыт работы в сфере">
+                    <option value="" disabled selected hidden>Опыт работы в сфере</option>
+                    <option value="Нет опыта">Нет опыта</option>
+                    <option value="Менее года">Менее года</option>
+                    <option value="1 - 3 года">1 - 3 года</option>
+                    <option value="3 - 6 лет">3 - 6 лет</option>
+                    <option value="Более 6 лет">Более 6 лет</option>
+                </select>
+                
+                <input type="number" name="lastSalary" ngModel placeholder="Сколько зарабатывали на прошлой работе">
+                <input type="number" name="minSalary" ngModel placeholder="Какая минимальная зарплата на старте">
+                <input type="number" name="optimalSalary" ngModel placeholder="Какая оптимальная зарплата">
+                
+                <select class="custom-select" name="maritalStatus" ngModel aria-placeholder="Семейное положение">
+                    <option value="" disabled selected hidden>Семейное положение</option>
+                    <option value="Холост">Холост</option>
+                    <option value="Женат/Замужем">Женат/Замужем</option>
+                </select>
+                
+                <input type="text" name="vkProfile" ngModel placeholder="Ваша страница Вконтакте (если есть)">
+                <input type="text" name="instagramProfile" ngModel placeholder="Ваша страница Instagram (если есть)">
+                <input type="number" name="age" ngModel placeholder="Ваш возраст">
+                
+                <div class="container-required">
+                    <label for="image-upload" class="image-upload-label">+ Прикрепить своё фото, если нет соцсетей</label>
+                    <input type="file" id="image-upload" accept="image/png, image/jpg, image/jpeg" style="display: none;" (change)="previewImage($event)">
+                    <div id="image-preview" style="margin-top: 10px;"></div>
+                </div>
+
+                <button type="submit" class="submit-button">Записаться</button>
+            </div>
+            
+            
+        </div>
+    </form>
+    <div class="drawer" #drawer>
+        <!-- Контент шторки -->
+        <ng-container *ngIf="isSend">
+            <div class="drawer__content">
+                <h1 class="drawer__title invert-text_color">Спасибо</h1>
+                <p class="drawer__description invert-text_color">Ваш отклик будет доставлен на почту организации</p>
+            </div>
+        </ng-container>
+    </div>
+</div>

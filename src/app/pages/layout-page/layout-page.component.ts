@@ -12,6 +12,7 @@ import { ModalControllerService, ModalID } from "../../services/modal/modal-cont
 
 export class LayoutPageComponent implements OnInit{
     @Input() isSendForm: boolean = true;
+    @Input() isVacanciesForm: boolean = false;
     ModalID = ModalID;
     constructor(private modalControllerService: ModalControllerService){
         window.scrollTo(0, 0)

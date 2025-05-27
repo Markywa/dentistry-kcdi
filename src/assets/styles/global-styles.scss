@@ -68,6 +68,22 @@
     }
 }
 
+.text-title_fourth-level{
+    margin: 0;
+    font-size: 30px;
+    font-weight: 500;
+    @media (max-width: 1324px) {
+        font-size: 25px;
+        line-height: 30px;
+        font-weight: 500;
+    }
+    @media (max-width: 521px) {
+        font-size: 20px;
+        line-height: 25px;
+        font-weight: 500;
+    }
+}
+
 .text-simple_first-level{
     font-size: 20px;
     line-height: 20px;

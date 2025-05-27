@@ -14,6 +14,7 @@ import { map } from "rxjs";
 
 export class FooterComponent implements OnInit {
     @Input() isSendForm: boolean = true;
+    @Input() isVacanciesForm: boolean = false;
     public isMobile: boolean = true;
     public fileList$ = this.downloaderFileService.getFilelist().pipe(map((data) => data));
 

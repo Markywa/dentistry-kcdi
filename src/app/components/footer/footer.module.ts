@@ -7,11 +7,13 @@ import { MaskitoDirective } from '@maskito/angular'
 import { ScrollFadeDirectiveModule } from "../../directive/scroll-fade.module";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignUpConsultationModule } from "../sign-up-consultation/sign-up-consultation.module";
+import { VacanciesFormComponent } from "../vacancies-form/vacancies-form.component";
 
 
 @NgModule({
     declarations:[
         FooterComponent,
+        VacanciesFormComponent
     ],
     exports:[FooterComponent],
     imports: [CommonModule,

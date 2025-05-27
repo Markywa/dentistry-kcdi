@@ -3,7 +3,7 @@
     <div class="main-page__content" [@slideInAnimation]="isOpen">
         <ng-content select="[content]"></ng-content>
     </div>
-    <app-footer [isSendForm]="isSendForm" class="footer"></app-footer>
+    <app-footer [isSendForm]="isSendForm" [isVacanciesForm]="isVacanciesForm" class="footer"></app-footer>
 </div>
 
 <app-modal

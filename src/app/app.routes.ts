@@ -67,6 +67,13 @@ export const routes: Routes = [
             (m) => m.ServicesPageModule,
           )
       },
+      {
+        path: 'vacancies',
+        loadChildren: () =>
+          import('./pages/vacancies-page/vacancies-page.module').then(
+            (m) => m.VacanciesPageModule,
+          )
+      },
 ];
 
 const config: ExtraOptions = {

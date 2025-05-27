@@ -1,14 +1,14 @@
 <div [ngClass]="{'container-header-extra': extraView, 'container-header': !extraView}" >
-    <ng-container *ngIf="deviceType !== 'desktop' && extraView">
-        <svg-icon [src]="deviceType === 'mobile' ? 'assets/icons/mobile-logo.svg' : 'assets/icons/tablet-logo.svg' "></svg-icon>
+    <ng-container *ngIf="(deviceType$ | async) !== 'desktop' && extraView">
+        <svg-icon [src]="(deviceType$ | async) === 'mobile' ? 'assets/icons/mobile-logo.svg' : 'assets/icons/tablet-logo.svg' "></svg-icon>
     </ng-container>
     <ng-container *ngIf="title.length; else margin">
         <div class="container-header__title">
             <ng-container *ngFor="let item of title">
                 <h1 
                     [ngClass]="{
-                        'text-title_first-level': deviceType !== 'mobile',
-                        'text-title_third-level': deviceType === 'mobile'
+                        'text-title_first-level': (deviceType$ | async) !== 'mobile',
+                        'text-title_third-level': (deviceType$ | async) === 'mobile'
                     }" 
                     class=" text_color"
                 >{{item}}</h1>
@@ -18,7 +18,7 @@
     <ng-template #margin>
         <div class="_margin"></div>
     </ng-template>
-    <ng-container *ngIf="deviceType !== 'mobile' && extraView && contacts">
+    <ng-container *ngIf="(deviceType$ | async) === 'desktop' && (extraView || showInformation) && contacts">
         <div  class="container-header__description">
             <span class="container-header__description-item__title text_color">Телефон: <span class="container-header__description-item text_color">{{contacts.phone_number}}</span></span>
             <span class="container-header__description-item__title text_color">Адрес: <span class="container-header__description-item text_color">{{contacts.address}}</span></span>

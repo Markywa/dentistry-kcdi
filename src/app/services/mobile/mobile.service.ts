@@ -13,12 +13,13 @@ export class MobileService {
     private resizeSubscription!: Subscription;
 
     constructor() {
-        const windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        
+        const windowWidth = document.body.clientWidth;
         this.checkDevice(windowWidth);
         const resize$ = fromEvent(window, 'resize').pipe(
             // debounceTime(250), // задержка, чтобы избежать частых вызовов
             map(() => ({
-              width: window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+              width: document.body.clientWidth,
             }))
           );
       

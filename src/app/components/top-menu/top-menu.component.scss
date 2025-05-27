@@ -35,7 +35,7 @@
             padding: 0 48px 0 48px;
         }
         &-rout{
-            gap: 52px;
+            gap: 34px;
             display: flex;
             height: 100%;
             &__extras{
@@ -92,6 +92,18 @@
                 text-decoration: none;
                 align-items: center;
                 display: flex;
+                justify-content: center;
+                flex-direction: column;
+                &-mobile{
+                    font-size: 15px;
+                    height: 100%;
+                    font-weight: 600;
+                    white-space: nowrap;
+                    position:relative;
+                    text-decoration: none;
+                    display: flex;
+                    flex-direction: column;
+                }
             }
         }
     }
