@@ -21,6 +21,7 @@ export class PricesDescriptionComponent implements OnInit {
     ngOnInit(): void {
         this.pricesService.getFilePrices().subscribe((response) => {
             this.file = response;
+            this.file = this.file.replace("http://", "https://");            
             this.cdr.markForCheck();
         })  
     }

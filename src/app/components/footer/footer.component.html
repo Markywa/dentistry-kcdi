@@ -1,7 +1,19 @@
 
 <footer class="footer">
     <ng-container *ngIf="isSendForm">
-        <app-sign-up-consultation></app-sign-up-consultation>
+        <div>
+            <div *ngIf="!isShowSendForm">
+                <div class="divider"></div>
+                <div class="content">
+                    <div class="content-wrap">
+                        <span class="text-title_second-level invert-text_color">Запишитесь со скидкой 15% на первый визит!</span>
+                        <button class="invert-text_color" (click)="openWhatsApp()">Записаться через WhatsApp</button>
+                        <button class="invert-text_color" (click)="showSendForm()">Записаться через сайт</button>
+                    </div>
+                </div>
+            </div>
+            <app-sign-up-consultation *ngIf="isShowSendForm"></app-sign-up-consultation>
+        </div>
     </ng-container>
     <ng-container *ngIf="isVacanciesForm">
         <app-vacancies-form></app-vacancies-form>
