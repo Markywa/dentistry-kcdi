@@ -8,8 +8,11 @@
         </div>
     </div>
     <div class="container__content">
-        <span class="container__content-text invert-text_color">{{reviewsCard.feedback}}</span>
+        <span class="invert-text_color" [ngClass]="{
+            'container__content-text': !isShowAll}"
+            >{{reviewsCard.feedback}}</span>
     </div>
 
-    <button class="container__button-read invert-text_color">Читать отзыв полностью (временно недостпуно)</button>
+    <button *ngIf="!isShowAll" class="container__button-read invert-text_color" (click)="showAll()">Читать отзыв полностью</button>
+    <button *ngIf="isShowAll" class="container__button-read invert-text_color" (click)="hideAll()">Скрыть</button>
 </div>
