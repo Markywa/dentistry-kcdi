@@ -6,6 +6,9 @@
     padding: 50px;
     box-shadow: 0px 0px 18.2px 1px #00000033;
     position: relative;
+    @media screen and (max-width: 400px) {
+        padding: 25px;
+    }
     &-close{
         position: absolute;
         right: 5%;
@@ -62,7 +65,7 @@
         &-input{
             border-radius: 8px;
             border: 1px solid var(--primaryInputBorderColor);
-            width: 300px;
+            width: 100%;
             padding: 12px 52px 12px 52px;
             margin-left: 20px;
             text-align: center;

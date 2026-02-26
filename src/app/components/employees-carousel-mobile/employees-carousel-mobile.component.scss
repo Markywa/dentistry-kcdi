@@ -15,6 +15,7 @@
             justify-content: center;
             background-color: var(--primaryBackgroundColor);
             width: 48px;
+            min-width: 48px;
             height: 85%;
             border-radius: 16px 0 0 16px;
         }
@@ -23,6 +24,7 @@
             justify-content: center;
             background-color: var(--primaryBackgroundColor);
             width: 48px;
+            min-width: 48px;
             height: 85%;
             border-radius: 0 16px 16px 0;
         }
@@ -31,13 +33,13 @@
         display: flex;
         position: relative;
         justify-content: center;
-        align-items: center; /* Центрирование по вертикали */
+        align-items: center; 
         &-section {
             position: relative;
-            width: auto; /* Изображение не будет растягиваться */
-            max-width: 100%; /* Максимальная ширина изображения */
+            width: auto;
+            max-width: 100%;
             border-radius: 16px;
-            overflow: hidden; /* Обрезать изображение, если оно меньше блока */
+            overflow: hidden; 
         }
         &-information {
             z-index: 2;
@@ -48,7 +50,9 @@
             height: 100%;
             padding: 30px;
             max-width: 760px;
-            color: white; /* Цвет текста, чтобы он был виден на фоне изображения */
+            color: black;
+            text-shadow: -1px 0 1px white;
+            width: 100%;
             @media  screen and (max-width: 768px) {
                 width: 100%;
             }
@@ -69,6 +73,9 @@
             svg{
                 width: 25px;
                 height: 25px;
+                path{
+                    stroke: black
+                }
             }
             &.right{
                 margin-left: auto;
