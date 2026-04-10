@@ -5,6 +5,7 @@ import { DeviceType, MobileService } from "../../services/mobile/mobile.service"
 import { combineLatest, Subscription } from "rxjs";
 import { ContactsEntity, ContactsService } from "../../services/contacts/contacts.service";
 import { ServicesDataService } from "../../services/services-data/services-data.service";
+import { ScrollCheckerService } from "../../services/scroll-checker/scroll-checker.service";
 
 class Button {
     constructor(public name: string, public isActive: boolean, public link: string[] | null, public showExtras: boolean) {}
@@ -30,13 +31,15 @@ export class TopMenuComponent implements OnInit, OnDestroy {
     public contacts!: ContactsEntity;
     public extras: any[] = [];
     public extrasShow: boolean = false;
+    public showStickyHeader = false;
     constructor(
         private router: Router, 
         private modalControllerService: ModalControllerService,
         private mobileService: MobileService,
         private cdr: ChangeDetectorRef,
         private contactsService: ContactsService,
-        private servicesDataService: ServicesDataService
+        private servicesDataService: ServicesDataService,
+        private scrollChecker: ScrollCheckerService
     ){}
     toggleMenu() {
         this.isMenuOpen = !this.isMenuOpen;
@@ -68,6 +71,14 @@ export class TopMenuComponent implements OnInit, OnDestroy {
                 this.extras = data;
                 this.cdr.markForCheck();
             });
+        this.scrollChecker.scroll$.subscribe((res) => {
+            if(res === 'start'){
+                this.showStickyHeader = true;
+            } else {
+                this.showStickyHeader = false;
+            }
+            this.cdr.detectChanges();
+        })
     }
     ngOnDestroy(): void {
         this.sizeSubscription.unsubscribe();
@@ -81,7 +92,7 @@ export class TopMenuComponent implements OnInit, OnDestroy {
         { name: 'Специальные предложения', isActive: this.router.url.includes('stock'), link: ['/stock'], showExtras: false },
         { name: 'Отзывы', isActive: this.router.url.includes('reviews'), link: ['/reviews'], showExtras: false },
         { name: 'Контакты', isActive: this.router.url.includes('contacts'), link: ['/contacts'], showExtras: false },
-        { name: 'Вакансии', isActive: this.router.url.includes('vacancies'), link: ['/vacancies'], showExtras: false },
+        // { name: 'Вакансии', isActive: this.router.url.includes('vacancies'), link: ['/vacancies'], showExtras: false },
     ];
 
     changeSelected(item: Button): void {

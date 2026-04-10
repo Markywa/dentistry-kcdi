@@ -1,5 +1,6 @@
 
 <footer class="footer">
+    <div class="footer-wrapper">
     <ng-container *ngIf="isSendForm">
         <div>
             <div *ngIf="!isShowSendForm">
@@ -7,7 +8,7 @@
                 <div class="content">
                     <div class="content-wrap">
                         <span class="text-title_second-level invert-text_color">Запишитесь на первый визит!</span>
-                        <button class="invert-text_color" (click)="openWhatsApp()">Записаться через WhatsApp</button>
+                        <button class="invert-text_color" (click)="openMax()">Записаться через MAX</button>
                         <button class="invert-text_color" (click)="showSendForm()">Записаться через сайт</button>
                     </div>
                 </div>
@@ -40,16 +41,26 @@
                         </div>
                         <div class="info-block__item">
                             <svg-icon src="assets/icons/mail.svg"></svg-icon>
-                            <span class="info-block__item text_color">{{'office@kcdi24.ru'}}</span>
+                            <a href="mailto:office@kcdi24.ru" class="contact-link email-link info-block__item text_color">
+                                {{'office@kcdi24.ru'}}
+                            </a>
                         </div>
                         <div class="info-block__item">
-                            <svg-icon src="assets/icons/vk.svg"></svg-icon>
-                            <span class="info-block__item text_color">vk.com/kcdi24</span>
+                            <svg-icon src="assets/icons/vk.svg"></svg-icon>    
+                            <a href="https://vk.com/kcdi24" class="contact-link vk-link info-block__item text_color" target="_blank" rel="noopener noreferrer">
+                                {{'vk.com/kcdi24'}}
+                            </a>
                         </div>
                         <div class="info-block__item">
+                            <svg-icon src="assets/icons/mail.svg"></svg-icon>
+                            <a href="https://taplink.cc/kcdi24?from=qr" class="contact-link vk-link info-block__item text_color">
+                                {{'Переход на таплинк'}}
+                            </a>
+                        </div>
+                        <!-- <div class="info-block__item">
                             <svg-icon src="assets/icons/instagram.svg"></svg-icon>
                             <span class="info-block__item text_color">instagram.com/kcdi24</span>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </ng-container>
@@ -61,6 +72,24 @@
                     <span class="info-mobile-item text_color">{{contacts.address}}</span>
                     <span class="info-mobile-item__title text_color">Часы работы:</span>
                     <span class="info-mobile-item text_color">Пн-сб: {{contacts.working_hours}}</span>
+                    <div class="">
+                        <svg-icon src="assets/icons/mail.svg"></svg-icon>
+                        <a href="mailto:office@kcdi24.ru" class="contact-link text_color">
+                            {{'office@kcdi24.ru'}}
+                        </a>
+                    </div>
+                    <div class="">
+                        <svg-icon src="assets/icons/vk.svg"></svg-icon>    
+                        <a href="https://vk.com/kcdi24" class="contact-link text_color" target="_blank" rel="noopener noreferrer">
+                            {{'vk.com/kcdi24'}}
+                        </a>
+                    </div>
+                    <div class="">
+                        <svg-icon src="assets/icons/mail.svg"></svg-icon>
+                        <a href="https://taplink.cc/kcdi24?from=qr" class="contact-link text_color">
+                            {{'Переход на таплинк'}}
+                        </a>
+                    </div>
                 </div>                
             </ng-container>
         </div>
@@ -87,5 +116,7 @@
                 </div>
             </div>
         </ng-container>
+    </div>
+            <span class="info-block__item-description text_color">Необходима консультация со специалистом. Цены не являются публичной офертой.</span>
     </div>
 </footer>

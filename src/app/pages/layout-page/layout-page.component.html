@@ -1,8 +1,21 @@
 <div class="main-page" >
-    <app-top-menu class="main-page__header"></app-top-menu>
+    <app-top-menu class="main-page__header" [ngClass]="{
+        'main-page__header': (deviceType | async) === 'desktop', 
+        'main-page__header-sticky': (deviceType | async) !== 'desktop'
+    }"></app-top-menu>
     <div class="main-page__content" [@slideInAnimation]="isOpen">
         <ng-content select="[content]"></ng-content>
     </div>
+
+    <div class="up">
+        <button 
+            class="up-button" 
+            (click)="scrollToTop()"
+            [class.show]="showUpButton">
+            ↑
+        </button>
+    </div>
+    
     <app-footer [isSendForm]="isSendForm" [isVacanciesForm]="isVacanciesForm" class="footer"></app-footer>
 </div>
 

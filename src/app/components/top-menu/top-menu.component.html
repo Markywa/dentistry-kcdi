@@ -76,7 +76,8 @@
 </ng-container>
 
 <ng-container *ngIf="deviceType !== 'desktop'">
-    <button class="mobile-btn" (click)="toggleMenu()"><svg-icon src="assets/icons/menu.svg"></svg-icon></button>
+    <button *ngIf="!showStickyHeader" class="mobile-btn" (click)="toggleMenu()"><svg-icon src="assets/icons/menu.svg"></svg-icon></button>
+
     <div class="mobile" [ngClass]="{'open': isMenuOpen}">
         <div class="mobile-content">
             <div class="mobile-content__item-rout">
@@ -148,3 +149,9 @@
         </div>
     </div>
 </ng-container>
+
+
+<div class="mobile-header__sticky fade-in" *ngIf="deviceType !== 'desktop' && showStickyHeader">
+    <svg-icon [src]="'assets/icons/mobile-logo.svg'"></svg-icon>
+    <button class="mobile-btn__sticky" (click)="toggleMenu()"><svg-icon src="assets/icons/menu.svg"></svg-icon></button>
+</div>

@@ -140,6 +140,21 @@
         top: 40px;
         right: 5%;
         z-index: 5;
+        svg-icon > svg {
+            & > path {
+                stroke: var(--primaryFontColor);
+            }   
+        }
+        &__sticky{
+            background: transparent;
+            cursor: pointer;
+            border: none;
+            svg-icon > svg {
+                & > path {
+                    stroke: var(--primaryFontColor);
+                }   
+            }
+        }
     }
     &-content{
         display: flex;
@@ -167,9 +182,6 @@
     }
 }
 
-.mobile{
-   
-}
 .open {
     right: 0;
 }
@@ -191,4 +203,32 @@
 
 .button-active{
     border: 2px solid white;
+}
+
+.mobile-header__sticky{
+    display: flex;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 20px;
+    position: absolute;
+    background-color: var(--primaryBackgroundColor);
+    transition: opacity 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;      /* 起始完全透明 */
+  }
+  to {
+    opacity: 1;      /* 结束完全不透明 */
+  }
+}
+
+.fade-in {
+  animation-name: fadeIn;           /* 动画名称，对应上面的 fadeIn */
+  animation-duration: 0.5s;        /* 动画持续时间 */
+  animation-timing-function: ease;  /* 缓动效果，使动画更自然 */
+  animation-fill-mode: forwards;    /* 动画结束后保持最后状态（不透明） */
 }
