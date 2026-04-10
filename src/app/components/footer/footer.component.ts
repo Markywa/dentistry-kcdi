@@ -45,7 +45,7 @@ export class FooterComponent implements OnInit {
     }
 
     public openMax(): void {
-        window.open('https://max.ru/join/bc1H05j9qjDI1YBTduumT88_HNGTk52mG9x3zxGQAp4', '_blank')
+        window.open('https://max.ru/u/f9LHodD0cOJy4pOyAMVI9zqLKL56OMsWTiR0i_XSLPYa0UcZhgaskSEoOyw', '_blank')
     }
     
     public downloadFile(file: FileEntityTransformed): void {
