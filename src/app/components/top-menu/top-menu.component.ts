@@ -64,7 +64,7 @@ export class TopMenuComponent implements OnInit, OnDestroy {
         })
         this.contactsService.get().subscribe((contacts) => {
             this.contacts = contacts;
-            this.cdr.markForCheck();
+            this.cdr.detectChanges();
         })
         this.servicesDataService.getServicesList()
             .subscribe((data) => {
