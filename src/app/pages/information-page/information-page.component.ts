@@ -145,7 +145,7 @@ export class InformationPageComponent implements OnInit, OnDestroy {
     },
     {
       id: 4,
-      apiKey: 'Порядок оказания бесплатной и платной стоматологической помощи',
+      apiKey: 'Гос гарантии',
       title: 'Порядок оказания бесплатной и платной стоматологической помощи',
       subtitle: 'Гарантии и программа государственных гарантий',
       icon: 'assets/icons/query.svg',
@@ -164,7 +164,7 @@ export class InformationPageComponent implements OnInit, OnDestroy {
     },
     {
       id: 5,
-      apiKey: 'Гос гарантии',
+      apiKey: 'Первичная мед информация',
       title: 'Первичная медицинская документация',
       subtitle: 'Договор, согласия, амбулаторная карта',
       icon: 'assets/icons/docs.svg',
