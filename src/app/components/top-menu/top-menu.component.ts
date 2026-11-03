@@ -92,6 +92,7 @@ export class TopMenuComponent implements OnInit, OnDestroy {
         { name: 'Специальные предложения', isActive: this.router.url.includes('stock'), link: ['/stock'], showExtras: false },
         { name: 'Отзывы', isActive: this.router.url.includes('reviews'), link: ['/reviews'], showExtras: false },
         { name: 'Контакты', isActive: this.router.url.includes('contacts'), link: ['/contacts'], showExtras: false },
+        { name: 'Правовая информация', isActive: this.router.url.includes('information'), link: ['/information'], showExtras: false },
         // { name: 'Вакансии', isActive: this.router.url.includes('vacancies'), link: ['/vacancies'], showExtras: false },
     ];
 

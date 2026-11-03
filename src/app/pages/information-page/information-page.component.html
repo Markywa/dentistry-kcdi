@@ -1,0 +1,170 @@
+<app-layout-page [isSendForm]="false">
+  <ng-container content>
+    <div class="container">
+      <app-header-information [title]="['Правовая информация']"></app-header-information>
+
+      <div class="container-content">
+        <div class="description">
+
+          <section class="legal-section">
+            <h1 class="legal-section__title">Информация для пациентов</h1>
+            <p class="legal-section__text">
+              Выберите интересующий раздел — вся информация и документы доступны
+              для ознакомления и скачивания.
+            </p>
+          </section>
+
+          <!-- ================= МОБИЛЬНАЯ ВЕРСИЯ ================= -->
+          <div class="section-buttons section-buttons--mobile" *ngIf="isMobileDevice">
+            <ng-container *ngFor="let section of sections; trackBy: trackById">
+              <div
+                class="section-card"
+                [class.section-card--active]="isOpen(section.id)"
+              >
+                <button
+                  type="button"
+                  class="section-button"
+                  [class.section-button--active]="isOpen(section.id)"
+                  (click)="toggleSection(section.id)"
+                  [attr.aria-expanded]="isOpen(section.id)"
+                >
+                  <img
+                    class="section-button__icon"
+                    [src]="section.icon"
+                    [alt]="section.title"
+                    loading="lazy"
+                  />
+                  <span class="section-button__text">
+                    <span class="section-button__title">{{ section.title }}</span>
+                    <span class="section-button__subtitle">{{ section.subtitle }}</span>
+                  </span>
+                  <span class="section-button__arrow">›</span>
+                </button>
+
+                <!-- Панель рендерится прямо под своей кнопкой -->
+                <div
+                  class="section-panel section-panel--inline"
+                  *ngIf="isOpen(section.id)"
+                >
+                  <ng-container
+                    *ngTemplateOutlet="sectionPanel; context: { $implicit: section }"
+                  ></ng-container>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+
+          <!-- ================= ДЕСКТОПНАЯ ВЕРСИЯ ================= -->
+          <ng-container *ngIf="!isMobileDevice">
+            <div class="section-buttons section-buttons--desktop">
+              <button
+                *ngFor="let section of sections; trackBy: trackById"
+                type="button"
+                class="section-button"
+                [class.section-button--active]="isOpen(section.id)"
+                (click)="toggleSection(section.id)"
+                [attr.aria-expanded]="isOpen(section.id)"
+              >
+                <img
+                  class="section-button__icon"
+                  [src]="section.icon"
+                  [alt]="section.title"
+                  loading="lazy"
+                />
+                <span class="section-button__text">
+                  <span class="section-button__title">{{ section.title }}</span>
+                  <span class="section-button__subtitle">{{ section.subtitle }}</span>
+                </span>
+                <span class="section-button__arrow">›</span>
+              </button>
+            </div>
+
+            <!-- Панель внизу страницы, как было -->
+            <ng-container *ngFor="let section of sections; trackBy: trackById">
+              <div class="section-panel" *ngIf="isOpen(section.id)">
+                <ng-container
+                  *ngTemplateOutlet="sectionPanel; context: { $implicit: section }"
+                ></ng-container>
+              </div>
+            </ng-container>
+          </ng-container>
+
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</app-layout-page>
+
+<!-- ================= ОБЩИЙ ШАБЛОН ПАНЕЛИ ================= -->
+<ng-template #sectionPanel let-section>
+  <h2 class="section-panel__title">{{ section.title }}</h2>
+
+  <!-- Шапка раздела (HTML) -->
+  <div
+    class="section-panel__header"
+    *ngIf="section.headerHtml"
+    [innerHTML]="section.headerHtml"
+  ></div>
+
+  <!-- Блочный контент (раздел «Налоговый вычет») -->
+  <div class="section-panel__blocks" *ngIf="section.blocks">
+    <ng-container *ngFor="let block of section.blocks">
+      <p class="section-panel__text" *ngIf="block.type === 'text'">
+        {{ block.value }}
+      </p>
+
+      <ul class="section-panel__list" *ngIf="block.type === 'list'">
+        <li *ngFor="let item of block.items">{{ item }}</li>
+      </ul>
+
+      <button
+        *ngIf="block.type === 'button'"
+        type="button"
+        class="section-panel__button"
+        (click)="showStatementForm()"
+      >
+        Форма заявления
+      </button>
+    </ng-container>
+  </div>
+
+  <!-- Статья (раздел 6) -->
+  <div
+    class="section-panel__article"
+    *ngIf="section.isArticle && section.articleHtml"
+    [innerHTML]="section.articleHtml"
+  ></div>
+
+  <!-- Документы для скачивания (разделы 3, 4, 5) -->
+  <ng-container *ngIf="section.files && section.files.length > 0; else noFiles">
+    <div class="documents-section">
+      <h3 class="documents-section__title">Документы для скачивания</h3>
+      <ul class="documents-list">
+        <li
+          class="documents-list__item"
+          *ngFor="let file of section.files; trackBy: trackByFile"
+        >
+          <div class="documents-list__info">
+            <span class="documents-list__icon">{{ file.icon || '📄' }}</span>
+            <div class="documents-list__meta">
+              <span class="documents-list__name">{{ file.name }}</span>
+              <span class="documents-list__size">{{ file.size }}</span>
+            </div>
+          </div>
+          <a
+            class="documents-list__download"
+            [href]="file.url"
+            download
+            target="_blank"
+            rel="noopener"
+          >Скачать</a>
+        </li>
+      </ul>
+    </div>
+  </ng-container>
+  <ng-template #noFiles>
+    <p class="documents-section__empty" *ngIf="!section.isArticle && !section.blocks">
+      Документы для этого раздела скоро появятся.
+    </p>
+  </ng-template>
+</ng-template>

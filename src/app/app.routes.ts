@@ -54,6 +54,13 @@ export const routes: Routes = [
           )
       },
       {
+        path: 'information',
+        loadChildren: () =>
+          import('./pages/information-page/information-page.module').then(
+            (m) => m.InformationPageModule,
+          )
+      },
+      {
         path: 'help',
         loadChildren: () =>
           import('./pages/help-page/help-page.module').then(
