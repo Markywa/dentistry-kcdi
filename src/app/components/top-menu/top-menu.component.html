@@ -67,12 +67,12 @@
         </div>
         <button class="header__item header__item-call btn-transparent" (click)="openCallbackModal()">Заказать звонок</button>
     </div>
-    <div class="help-area">
+    <!-- <div class="help-area">
         <button
          class="help-area__button btn-transparent"
          [ngClass]="{'button-active': isHelpOpen}"
          (click)="routToHelpPage()">Помощь</button>
-    </div>
+    </div> -->
 </ng-container>
 
 <ng-container *ngIf="deviceType !== 'desktop'">
@@ -135,7 +135,7 @@
                         </div>
                     </ng-container>
                 </ng-container>
-                <button class="header__item-rout__block-btn" (click)="routToHelpPage()">Помощь</button>
+                <!-- <button class="header__item-rout__block-btn" (click)="routToHelpPage()">Помощь</button> -->
                 <button class="header__item-call_button" (click)="openCallbackModal()">Заказать звонок</button>
 
             </div>
