@@ -106,7 +106,7 @@
     [innerHTML]="section.headerHtml"
   ></div>
 
-  <!-- Блочный контент (раздел «Налоговый вычет») -->
+  <!-- Блочный контент (раздел «Налоговый вычет», «Лечение по ДМС», «Рекомендации») -->
   <div class="section-panel__blocks" *ngIf="section.blocks">
     <ng-container *ngFor="let block of section.blocks">
       <p class="section-panel__text" *ngIf="block.type === 'text'">
@@ -135,7 +135,7 @@
     [innerHTML]="section.articleHtml"
   ></div>
 
-  <!-- Документы для скачивания (разделы 3, 4, 5) -->
+  <!-- Документы для скачивания (разделы 3, 4, 5, 6) -->
   <ng-container *ngIf="section.files && section.files.length > 0; else noFiles">
     <div class="documents-section">
       <h3 class="documents-section__title">Документы для скачивания</h3>
