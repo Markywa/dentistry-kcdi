@@ -456,6 +456,7 @@ export class InformationPageComponent implements OnInit, OnDestroy {
   }
 
   downloadPDF(file: any) {
+    file = file.url.replace("http://", "https://");   
     this.fileDownloadService.downloadFile(file.url).subscribe(blob => {
         const link = document.createElement('a');
         link.href = window.URL.createObjectURL(blob);
