@@ -151,13 +151,10 @@
               <span class="documents-list__size">{{ file.size }}</span>
             </div>
           </div>
-          <a
+          <button
             class="documents-list__download"
-            [href]="file.url"
-            download
-            target="_blank"
-            rel="noopener"
-          >Скачать</a>
+            (click)="downloadPDF(file)"
+          >Скачать</button>
         </li>
       </ul>
     </div>

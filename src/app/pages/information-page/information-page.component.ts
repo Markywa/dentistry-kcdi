@@ -4,22 +4,7 @@ import { Meta, Title } from '@angular/platform-browser';
 import { DownloaderFileService } from '../../services/file-uloader/file-uploader.service';
 import { ModalControllerService, ModalID } from '../../services/modal/modal-controller.component';
 import { map, Subject, takeUntil } from 'rxjs';
-
-/** Файл, как он приходит из API */
-export interface RawApiFile {
-  name: string;      // "Правовая информация::Лицензия на медицинскую деятельность.pdf"
-  url: string;
-  size?: string;
-  icon?: string;
-}
-
-/** Файл для отображения в списке документов раздела */
-export interface LegalFile {
-  name: string;
-  size: string;
-  url: string;
-  icon?: string;
-}
+import { FileDownloadService } from '../../services/download/download.service';
 
 export type SectionBlock =
   | { type: 'text'; value: string }
@@ -38,7 +23,7 @@ export interface LegalSection {
   /** Блочный контент раздела (текст / список / кнопка) */
   blocks?: SectionBlock[];
   /** Список файлов для скачивания (разделы 3, 4, 5, 6) */
-  files?: LegalFile[];
+  files?: any[];
   /** Признак, что раздел — это статья (раздел 6) */
   isArticle?: boolean;
   /** HTML-контент статьи (раздел 6) */
@@ -53,6 +38,7 @@ export interface LegalSection {
 export class InformationPageComponent implements OnInit, OnDestroy {
   public isMobileDevice = false;
   public fileList$ = this.downloaderFileService.getFilelist().pipe(map((data) => data));
+  private fileDownloadService = inject(FileDownloadService);
 
   public modalService = inject(ModalControllerService);
 
@@ -391,7 +377,7 @@ export class InformationPageComponent implements OnInit, OnDestroy {
     return item.id;
   }
 
-  public trackByFile(index: number, item: LegalFile): string {
+  public trackByFile(index: number, item: any): string {
     return `${index}::${item.url}`;
   }
 
@@ -409,8 +395,8 @@ export class InformationPageComponent implements OnInit, OnDestroy {
    * и возвращает список пар { sectionKey, file }.
    * Файлы без разделителя "::" игнорируются.
    */
-  private parseFiles(files: RawApiFile[]): { sectionKey: string; file: LegalFile }[] {
-    const result: { sectionKey: string; file: LegalFile }[] = [];
+  private parseFiles(files: any[]): { sectionKey: string; file: any }[] {
+    const result: { sectionKey: string; file: any }[] = [];
 
     for (const f of files) {
       const rawName = f.name ?? '';
@@ -427,11 +413,13 @@ export class InformationPageComponent implements OnInit, OnDestroy {
         continue;
       }
 
+      console.log(f);
+      
       result.push({
         sectionKey,
         file: {
           name: displayName,
-          url: f.url,
+          url: f.entity[0].file,
           size: f.size ?? '',
           icon: f.icon ?? '📄',
         },
@@ -446,7 +434,7 @@ export class InformationPageComponent implements OnInit, OnDestroy {
    * по совпадению apiKey.
    */
   private applyFilesToSections(files: any): void {
-    const byKey = new Map<string, LegalFile[]>();
+    const byKey = new Map<string, any[]>();
 
     for (const { sectionKey, file } of this.parseFiles(files)) {
       const list = byKey.get(sectionKey) ?? [];
@@ -466,4 +454,16 @@ export class InformationPageComponent implements OnInit, OnDestroy {
       };
     });
   }
+
+  downloadPDF(file: any) {
+    this.fileDownloadService.downloadFile(file.url).subscribe(blob => {
+        const link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
+        link.download = file.name;
+        link.click();
+        window.URL.revokeObjectURL(link.href);
+      }, error => {
+        console.error('Error downloading the file', error);
+      });
+    }
 }
