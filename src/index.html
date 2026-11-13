@@ -376,7 +376,6 @@
 
       function setLinkHref(link, file) {
         file.file.replace("http://", "https://");   
-        console.log(link, file);
         if (!link) return;
         if (file && file.file) {
           link.href = file.file;
@@ -401,7 +400,6 @@
           })
           .then(function (res) {
             var files = res;
-            console.log('[cookie-banner] files:', files);
 
             setLinkHref(consentLink, findByName(files, TARGET_NAMES.consent));
             setLinkHref(policyLink,  findByName(files, TARGET_NAMES.policy));

@@ -412,8 +412,6 @@ export class InformationPageComponent implements OnInit, OnDestroy {
       if (!sectionKey || !displayName) {
         continue;
       }
-
-      console.log(f);
       
       result.push({
         sectionKey,
