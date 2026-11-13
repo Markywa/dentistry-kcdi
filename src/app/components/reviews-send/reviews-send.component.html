@@ -21,7 +21,7 @@
             </div>
         </div>
         <div>
-            <textarea rows="5" formControlName="feedback" placeholder="Текст отзыва..." class="content-controls__input"  type="textarea"></textarea>
+            <textarea rows="2" formControlName="feedback" placeholder="Текст отзыва..." class="content-controls__input"  type="textarea"></textarea>
             <span Class="content-controls__input-required invert-text_color">Необязательное поле</span>
         </div>
         <div class="content-controls__item-rating"> 
@@ -36,6 +36,22 @@
                 (input)="onRatingInput($event)"
             >
         </div>
+
+        <div class="consent">
+            <label for="consent" class="consent__label">
+                <input formControlName="consent" type="checkbox" id="consent">
+                <span class="consent__box"></span>
+                <span class="invert-text_color consent__text">
+                    Я даю согласие на
+                    <ng-container *ngIf="(files$ | async) && (files$ | async)!.length">
+                        <a [href]="(files$ | async)![0].file" target="_blank" rel="noopener noreferrer" class="consent__link">обработку персональных данных</a>
+                        и ознакомлен(а) с
+                        <a [href]="(files$ | async)![1].file" target="_blank" rel="noopener noreferrer" class="consent__link">политикой обработки персональных данных</a>
+                    </ng-container>
+                </span>
+            </label>
+        </div>
+
         <div class="content-controls__input_wrap">
             <button class="content-controls__button" type="submit">Оставить отзыв</button>
         </div>

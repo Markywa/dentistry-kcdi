@@ -356,3 +356,117 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder { /* IE 10+ */
 input:-moz-placeholder, textarea:-moz-placeholder { /* Firefox 18- */
     color: rgba($color: black, $alpha: 0.2);
 }
+
+/* ===== Чекбокс согласия на обработку персональных данных ===== */
+input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    margin: 0;
+    pointer-events: none;
+}
+
+.consent {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+
+    &__label {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        cursor: pointer;
+        width: 100%;
+        /* Минимальная зона касания 44px по высоте */
+        min-height: 44px;
+        padding: 6px 0;
+        -webkit-tap-highlight-color: transparent;
+        user-select: none;
+
+        @media screen and (max-width: 836px) {
+            gap: 12px;
+            padding: 8px 0;
+        }
+    }
+
+    /* Кастомный квадрат чекбокса */
+    &__box {
+        position: relative;
+        display: inline-block;
+        flex-shrink: 0;
+        width: 20px;
+        height: 20px;
+        margin-top: 1px;
+        border: 1px solid var(--primaryInputBorderColor);
+        background-color: #fff;
+        border-radius: 4px;
+        transition: background-color 0.15s ease, border-color 0.15s ease;
+
+        /* Псевдоэлемент-галочка */
+        &::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 45%;
+            width: 6px;
+            height: 11px;
+            border: solid #000;
+            border-width: 0 2px 2px 0;
+            transform: translate(-50%, -50%) rotate(45deg) scale(0);
+            opacity: 0;
+            transition: transform 0.15s ease, opacity 0.15s ease;
+        }
+
+        @media screen and (max-width: 836px) {
+            width: 24px;
+            height: 24px;
+            border-radius: 5px;
+
+            &::after {
+                width: 7px;
+                height: 13px;
+            }
+        }
+    }
+
+    /* Состояние "выбрано" */
+    input[type="checkbox"]:checked + .consent__box {
+        background-color: var(--primaryButtonBgColor);
+        border-color: var(--primaryButtonBgColor);
+
+        &::after {
+            border-color: #fff;
+            transform: translate(-50%, -50%) rotate(45deg) scale(1);
+            opacity: 1;
+        }
+    }
+
+    /* Фокус с клавиатуры */
+    input[type="checkbox"]:focus-visible + .consent__box {
+        outline: 2px solid var(--primaryButtonBgColor);
+        outline-offset: 2px;
+    }
+
+    &__text {
+        font-size: 14px;
+        line-height: 20px;
+        vertical-align: middle;
+
+        @media screen and (max-width: 836px) {
+            font-size: 13px;
+            line-height: 18px;
+        }
+    }
+
+    &__link {
+        color: var(--primaryButtonBgColor);
+        text-decoration: underline;
+        position: relative;
+        z-index: 1;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}

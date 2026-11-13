@@ -6,125 +6,19 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <!-- <link rel="stylesheet" href="https://cdn.reserve-donkin-leads.ru/dentolo/plugin/v2/dentolo.css"> -->
-  <!-- <script src="https://cdn.reserve-donkin-leads.ru/dentolo/plugin/v2/dentolo.js"></script> -->
 </head>
 <body>
-  <!-- <script>
-    document.addEventListener("DOMContentLoaded", function () {
-  var quiz = DentoloQuiz({
-    clientId: '622874a3c50df4042cb58b4b',
-    serviceList: ["implantation", "prosthetics", "veneers", "treatment", "remove", "gums", "crowns", "rem_wisdom", "cleaning"],
-    autopopupTimeout: 0,
-    scenario: "popup"
-  });
-
-  quiz.init();
-
-  quiz.bind("init", function () {
-    var button = document.createElement("button");
-    var buttonStyles = document.createElement("style");
-    buttonStyles.textContent = `
-        @keyframes gradient {
-          0% {
-            background: #2F4CE4;
-            box-shadow: -20rem 0 10rem -5rem #A170F2 inset;
-          }
-
-          25% {
-            background: #A170F2;
-            box-shadow: -20rem 0 10rem -5rem #2F4CE4 inset;
-          }
-          50% {
-            background: #F9781B;
-            box-shadow: -20rem 0 10rem -5rem #FA143E inset;
-          }
-
-          75% {
-            background: #FA143E;
-            box-shadow: -20rem 0 10rem -5rem #F9781B inset;
-          }
-
-          100% {
-            background: #2F4CE4;
-            box-shadow: -20rem 0 10rem -5rem #A170F2 inset;
-          }
-        }
-      `;
-
-    button.textContent = "Узнать цену онлайн";
-    button.setAttribute("style", `
-        position: fixed;
-        right: 30px;
-        bottom: 30px;
-        z-index: 10010;
-        min-width: 260px;
-        height: 60px;
-        overflow: hidden;
-        border: none;
-        font-family: 'Open Sans', sans-serif;
-        font-size: 12px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        text-align: center;
-        background: linear-gradient(254.24deg, #FD6174 -3.42%, #E82044 48.11%);
-        color: #fff;
-        border-radius: 9px;
-        cursor: pointer;
-        transition: .3s ease;
-        padding: 16px;
-        animation: gradient linear 3.5s infinite forwards;
-        box-sizing: border-box !important;
-      `);
-
-    document.body.appendChild(buttonStyles);
-    document.body.appendChild(button);
-
-    button.onclick = function () {
-      quiz.open(1);
-    }
-    
-    function checkScroll() {
-      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      var windowHeight = window.innerHeight;
-      var documentHeight = document.documentElement.scrollHeight;
-      
-      var distanceToBottom = documentHeight - (scrollTop + windowHeight);
-      
-      if (distanceToBottom < 200) {
-        button.style.opacity = '0';
-        button.style.visibility = 'hidden';
-        button.style.transition = 'opacity 0.3s ease, visibility 0.3s ease';
-      } else {
-        button.style.opacity = '1';
-        button.style.visibility = 'visible';
-      }
-    }
-
-    window.addEventListener('scroll', checkScroll);
-    
-    checkScroll();
-  });
-});
-  </script> -->
-  
-  <!-- Yandex.Metrika counter -->
-  <script type="text/javascript">
-      (function(m,e,t,r,i,k,a){
-          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-          m[i].l=1*new Date();
-          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-      })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108538284', 'ym');
-
-      ym(108538284, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-  </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/108538284" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- Yandex.Metrika counter (lazy, loaded only after consent) -->
+  <noscript id="ymNoScript" style="display:none">
+    <div><img src="https://mc.yandex.ru/watch/108538284" style="position:absolute; left:-9999px;" alt="" /></div>
+  </noscript>
   <!-- /Yandex.Metrika counter -->
+
   <app-root></app-root>
- <!-- Cookie consent banner (enhanced) -->
+
+  <!-- Cookie consent banner (enhanced) -->
   <style>
+    /* ===== Cookie banner ===== */
     .cookie-banner {
       position: fixed;
       left: 24px;
@@ -140,6 +34,7 @@
       border-radius: 16px;
       box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
       backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       overflow: hidden;
       opacity: 0;
       transform: translateY(24px) scale(0.96);
@@ -159,7 +54,6 @@
       transform: translateY(24px) scale(0.96);
     }
 
-    /* Декоративный блик */
     .cookie-banner::before {
       content: "";
       position: absolute;
@@ -186,7 +80,7 @@
       display: grid;
       place-items: center;
       border-radius: 12px;
-      background: var(--primaryBackgroundColor);
+      background: var(--primaryBackgroundColor, #e82044);
       font-size: 20px;
       box-shadow: 0 6px 16px rgba(232, 32, 68, 0.35);
       animation: cookiePulse 2.4s ease-in-out infinite;
@@ -205,7 +99,7 @@
 
     .cookie-banner__text {
       color: rgba(255, 255, 255, 0.82);
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     .cookie-banner__text a {
@@ -213,6 +107,60 @@
       text-decoration: underline;
       text-underline-offset: 2px;
     }
+
+    .cookie-banner__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 14px;
+      margin-bottom: 16px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .cookie-banner__link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12.5px;
+      font-weight: 600;
+      line-height: 1.4;
+      color: rgba(255, 255, 255, 0.78);
+      text-decoration: none;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .cookie-banner__link::before {
+      content: "";
+      flex-shrink: 0;
+      width: 14px;
+      height: 14px;
+      background-color: currentColor;
+      -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zM5 5h6V3H3v18h18v-8h-2v6H5V5z'/></svg>") center/contain no-repeat;
+              mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zM5 5h6V3H3v18h18v-8h-2v6H5V5z'/></svg>") center/contain no-repeat;
+      opacity: 0.75;
+      transition: opacity 0.2s ease;
+    }
+
+    .cookie-banner__link:hover,
+    .cookie-banner__link:focus-visible {
+      color: #8fb4ff;
+      outline: none;
+    }
+
+    .cookie-banner__link:hover::before,
+    .cookie-banner__link:focus-visible::before {
+      opacity: 1;
+    }
+
+    .cookie-banner__link:focus-visible {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .cookie-banner__link.is-hidden { display: none; }
 
     .cookie-banner__actions {
       display: flex;
@@ -231,23 +179,24 @@
       font-size: 13px;
       font-weight: 700;
       text-transform: uppercase;
-      background: var(--primaryBackgroundColor);
       letter-spacing: 0.6px;
       cursor: pointer;
-      transition: transform 0.2s ease, opacity 0.2s ease;
+      transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
     }
 
-    .cookie-banner__btn:active {
-      transform: scale(0.97);
+    .cookie-banner__btn:active { transform: scale(0.97); }
+
+    .cookie-banner__btn:focus-visible {
+      outline: 2px solid #8fb4ff;
+      outline-offset: 2px;
     }
 
     .cookie-banner__btn--accept {
-      background: var(--primaryBackgroundColor);
+      background: var(--primaryBackgroundColor, #e82044);
       color: #fff;
       box-shadow: 0 8px 20px rgba(232, 32, 68, 0.35);
     }
 
-    /* Блик, пробегающий по кнопке */
     .cookie-banner__btn--accept::after {
       content: "";
       position: absolute;
@@ -276,14 +225,13 @@
       background: rgba(255, 255, 255, 0.14);
     }
 
-    /* Тонкий прогресс-индикатор «жизни» баннера */
     .cookie-banner__progress {
       position: absolute;
       left: 0;
       bottom: 0;
       height: 3px;
       width: 100%;
-      background: var(--primaryBackgroundColor);
+      background: var(--primaryBackgroundColor, #e82044);
       transform-origin: left center;
       transform: scaleX(0);
       opacity: 0.85;
@@ -306,12 +254,17 @@
         width: auto;
         padding: 18px 16px 16px;
       }
+
+      .cookie-banner__links { gap: 8px 12px; }
+      .cookie-banner__btn { padding: 11px 14px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       .cookie-banner,
       .cookie-banner__icon,
-      .cookie-banner__btn--accept::after {
+      .cookie-banner__btn--accept::after,
+      .cookie-banner__link,
+      .cookie-banner__progress {
         animation: none !important;
         transition: none !important;
       }
@@ -323,23 +276,47 @@
       <div class="cookie-banner__icon" aria-hidden="true">🍪</div>
       <div class="cookie-banner__title">Настройки cookie</div>
     </div>
+
     <div class="cookie-banner__text">
       Мы используем файлы cookie и сервисы аналитики (включая Яндекс.Метрику), чтобы сайт работал корректно
       и был удобнее. Продолжая пользоваться сайтом, вы соглашаетесь с обработкой cookie.
     </div>
+
+    <div class="cookie-banner__links">
+      <a href="#" class="cookie-banner__link" data-doc="consent" target="_blank" rel="noopener noreferrer">Согласие на обработку ПД</a>
+      <a href="#" class="cookie-banner__link" data-doc="policy" target="_blank" rel="noopener noreferrer">Политика ОПД</a>
+    </div>
+
     <div class="cookie-banner__actions">
       <button type="button" class="cookie-banner__btn cookie-banner__btn--accept" id="cookieAccept">Принять</button>
       <button type="button" class="cookie-banner__btn cookie-banner__btn--decline" id="cookieDecline">Только необходимые</button>
     </div>
+
     <div class="cookie-banner__progress" aria-hidden="true"></div>
   </div>
 
   <script>
     (function () {
       var KEY = 'cookie_consent_v1';
+      var YM_ID = 108538284;
+
+      var API_FILE_LIST = 'api/website/file/';
+
+      var TARGET_NAMES = {
+        consent: 'Согласие на обработку персональных данных',
+        policy:  'Правовая информация::Политика ОПД'
+      };
+
+      var HIDE_MISSING = false;
+
+      var ymLoaded = false;
+
       var banner = document.getElementById('cookieBanner');
       var acceptBtn = document.getElementById('cookieAccept');
       var declineBtn = document.getElementById('cookieDecline');
+      var noScript = document.getElementById('ymNoScript');
+      var consentLink = document.querySelector('[data-doc="consent"]');
+      var policyLink = document.querySelector('[data-doc="policy"]');
 
       function readConsent() {
         try { return localStorage.getItem(KEY); } catch (e) { return null; }
@@ -347,6 +324,93 @@
 
       function saveConsent(value) {
         try { localStorage.setItem(KEY, value); } catch (e) {}
+      }
+
+      function loadMetrika() {
+        if (ymLoaded || typeof window === 'undefined') return;
+        ymLoaded = true;
+
+        if (noScript) noScript.style.display = '';
+
+        (function (m, e, t, r, i, k, a) {
+          m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments); };
+          m[i].l = 1 * new Date();
+          for (var j = 0; j < document.scripts.length; j++) {
+            if (document.scripts[j].src === r) { return; }
+          }
+          k = e.createElement(t);
+          a = e.getElementsByTagName(t)[0];
+          k.async = 1;
+          k.src = r;
+          a.parentNode.insertBefore(k, a);
+        })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=' + YM_ID, 'ym');
+
+        window.ym(YM_ID, 'init', {
+          ssr: true,
+          webvisor: true,
+          clickmap: true,
+          ecommerce: 'dataLayer',
+          referrer: document.referrer,
+          url: location.href,
+          accurateTrackBounce: true,
+          trackLinks: true
+        });
+      }
+
+      function normalize(s) {
+        return String(s || '')
+          .toLowerCase()
+          .replace(/ё/g, 'е')
+          .replace(/\.(pdf|docx?|rtf|txt|odt)$/i, '')
+          .replace(/\s+/g, ' ')
+          .trim();
+      }
+
+      function findByName(files, target) {
+        var norm = normalize(target);
+        for (var i = 0; i < files.length; i++) {
+          if (normalize(files[i].name) === norm) return files[i];
+        }
+        return null;
+      }
+
+      function setLinkHref(link, file) {
+        file.file.replace("http://", "https://");   
+        console.log(link, file);
+        if (!link) return;
+        if (file && file.file) {
+          link.href = file.file;
+          link.classList.remove('is-hidden');
+        } else if (HIDE_MISSING) {
+          link.classList.add('is-hidden');
+        }
+      }
+
+      function loadDocuments() {
+        if (!consentLink && !policyLink) return;
+        if (typeof fetch !== 'function') return;
+
+        fetch(API_FILE_LIST, {
+          method: 'GET',
+          headers: { 'Accept': 'application/json' },
+          credentials: 'same-origin'
+        })
+          .then(function (r) {
+            if (!r.ok) throw new Error('HTTP ' + r.status);
+            return r.json();
+          })
+          .then(function (res) {
+            var files = res;
+            console.log('[cookie-banner] files:', files);
+
+            setLinkHref(consentLink, findByName(files, TARGET_NAMES.consent));
+            setLinkHref(policyLink,  findByName(files, TARGET_NAMES.policy));
+          })
+          .catch(function (err) {
+            if (window.console && console.warn) {
+              console.warn('[cookie-banner] Не удалось загрузить список документов:', err);
+            }
+          });
       }
 
       function hideBanner() {
@@ -357,7 +421,12 @@
         }, 450);
       }
 
-      if (!readConsent()) {
+      loadDocuments();
+
+      var saved = readConsent();
+      if (saved === 'accepted') {
+        loadMetrika();
+      } else if (!saved) {
         setTimeout(function () {
           banner.classList.add('is-visible');
         }, 800);
@@ -365,13 +434,13 @@
 
       acceptBtn.addEventListener('click', function () {
         saveConsent('accepted');
+        loadMetrika();
         hideBanner();
-        // Здесь можно инициализировать Яндекс.Метрику, если нужно грузить её только после согласия
-        // window.ym && window.ym(108538284, 'init', {...});
       });
 
       declineBtn.addEventListener('click', function () {
         saveConsent('necessary');
+        loadMetrika();
         hideBanner();
       });
     })();

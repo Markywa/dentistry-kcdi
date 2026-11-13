@@ -5,6 +5,7 @@ import { NotificationType } from "../../shared/utils";
 import { MaskitoOptions } from "@maskito/core";
 import mask from "../../../mask";
 import { ReviewsApiService } from "../../services/reviews/reviews-api.service";
+import { DownloaderFileService } from "../../services/file-uloader/file-uploader.service";
 
 @Component({
     selector: 'app-reviews-send',
@@ -19,18 +20,22 @@ export class ReviewsSendComponent {
         private renderer: Renderer2,
         private reviewsApiService: ReviewsApiService,
         private cdr: ChangeDetectorRef,
+        private downloadFileService: DownloaderFileService
     ) {}
     @Output() public emitClose = new EventEmitter<ModalType>();
     @ViewChild('drawer') drawer!: ElementRef;
     ModalID = ModalID;
     public isSend = false;
     public options: MaskitoOptions = mask;
+    files$ = this.downloadFileService.getFilesByNames$(['Согласие на обработку персональных  данных',
+    'Правовая информация::Политика ОПД']);
 
     public signUpForm: FormGroup = this.fb.group({
         name: ['', Validators.required],
         phone_number: ['', Validators.minLength(17)],
         feedback: ['', Validators.required],
         rating: [5, [Validators.min(1), Validators.max(5), Validators.pattern('[1-5]')]],
+        consent: [false, Validators.requiredTrue],
       });
 
     onRatingInput(event: Event): void {
@@ -44,7 +49,13 @@ export class ReviewsSendComponent {
     }
 
     private clearForm(): void {
-        this.signUpForm.reset();
+        this.signUpForm.reset({
+            name: '',
+            phone_number: '',
+            feedback: '',
+            rating: 5,
+            consent: false,
+        });
         this.cdr.markForCheck();
     }
 

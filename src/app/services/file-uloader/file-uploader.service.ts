@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { map, Observable, shareReplay } from 'rxjs';
 import { API_FILE_DOWNLOAD, API_FILE_LIST } from '../../../environments/urls';
 import { transformFiles } from './transform-files.transrormer';
 
@@ -23,6 +23,15 @@ export class DownloaderFileService {
 
   getFilelist(): Observable<FileEntityTransformed[]> {
     return this.http.get<FileEntity[]>(API_FILE_LIST).pipe(map(res => transformFiles(res)));
+  }
+
+  getFilesByNames$(names: string[]): Observable<FileEntity[]> {
+    const namesSet = new Set(names);
+
+    return this.http.get<FileEntity[]>(API_FILE_LIST).pipe(
+      map(files => files.filter(file => namesSet.has(file.name))),
+      shareReplay({ bufferSize: 1, refCount: true })
+    );
   }
 
   downloadFIle(url: string): Observable<any> {

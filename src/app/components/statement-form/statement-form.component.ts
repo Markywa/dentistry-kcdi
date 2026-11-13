@@ -3,9 +3,11 @@ import { ModalID, ModalType } from '../../services/modal/modal-controller.compon
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReviewsApiService } from '../../services/reviews/reviews-api.service';
 import { StatementService } from '../../services/statement/statement.service';
-import { combineLatest, fromEvent } from 'rxjs';
+import { combineLatest, fromEvent, tap } from 'rxjs';
 import { MaskitoOptions } from '@maskito/core';
 import mask from '../../../mask';
+import { FileDownloadService } from '../../services/download/download.service';
+import { DownloaderFileService } from '../../services/file-uloader/file-uploader.service';
 
 @Component({
   selector: 'app-statement-form',
@@ -18,16 +20,19 @@ export class StatementFormComponent {
     private renderer: Renderer2,
     private cdr: ChangeDetectorRef,
     private statementService: StatementService,
-) {
-}
-@Output() public emitClose = new EventEmitter<ModalType>();
-@ViewChild('drawer') drawer!: ElementRef;
-@ViewChild('dateSelector') dateSelector!: ElementRef;
-ModalID = ModalID;
-public isSend = false;
-public options: MaskitoOptions = mask;
+    private downloadFileService: DownloaderFileService
+  ) {
+  }
+  @Output() public emitClose = new EventEmitter<ModalType>();
+  @ViewChild('drawer') drawer!: ElementRef;
+  @ViewChild('dateSelector') dateSelector!: ElementRef;
+  ModalID = ModalID;
+  public isSend = false;
+  public options: MaskitoOptions = mask;
+  files$ = this.downloadFileService.getFilesByNames$(['Согласие на обработку персональных  данных',
+    'Правовая информация::Политика ОПД']);
 
-public signUpForm: FormGroup = this.fb.group({
+  public signUpForm: FormGroup = this.fb.group({
     name: ['', Validators.required],
     taxpayer_name: '',
     INN: ['', Validators.required],
@@ -35,9 +40,10 @@ public signUpForm: FormGroup = this.fb.group({
     issue_type: ['CLINIC', Validators.required],
     phone_number: ['', Validators.minLength(17)],
     email: '',
+    consent: [false, Validators.requiredTrue],
   });
 
-public changeValidations$ = this.signUpForm.get('issue_type')!.valueChanges.subscribe(value => {
+  public changeValidations$ = this.signUpForm.get('issue_type')!.valueChanges.subscribe(value => {
     const emailControl = this.signUpForm.get('email');
     if (value === 'EMAIL') {
       emailControl!.setValidators([Validators.required, Validators.email]);
@@ -47,12 +53,12 @@ public changeValidations$ = this.signUpForm.get('issue_type')!.valueChanges.subs
     emailControl!.updateValueAndValidity();
   });
 
-public closeModal(): void{
+  public closeModal(): void{
     this.clearForm();
     this.emitClose.emit(ModalID.statement);
-}
+  }
 
-private clearForm(): void {
+  private clearForm(): void {
     this.signUpForm.reset({
         name: '',
         taxpayer_name: '',
@@ -61,11 +67,12 @@ private clearForm(): void {
         issue_type: 'CLINIC',
         phone_number: '',
         email: '',
+        consent: false,
       });
     this.cdr.markForCheck();
-}
+  }
 
-public sendForm(): void{
+  public sendForm(): void{
     if(this.signUpForm.invalid) return;
     this.statementService
         .post({...this.signUpForm.value})

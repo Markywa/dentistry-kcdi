@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild } from "@angular/core";
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, inject, Input, OnInit, Output, Renderer2, ViewChild } from "@angular/core";
 import { MaskitoOptions } from "@maskito/core";
 import mask from "../../../mask";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
@@ -7,6 +7,7 @@ import { EmployeesListService } from "../../services/employees-list/employees-li
 import { SpecialistsResponse } from "../../interfaces/employees.interface";
 import { NotificationType } from "../../shared/utils";
 import { ModalControllerService, ModalID, ModalType } from "../../services/modal/modal-controller.component";
+import { DownloaderFileService } from "../../services/file-uloader/file-uploader.service";
 
 @Component({
     selector: 'app-sign-up-consultation',
@@ -16,10 +17,13 @@ import { ModalControllerService, ModalID, ModalType } from "../../services/modal
 })
 
 export class SignUpConsultationComponent implements OnInit {
+    private downloadFileService = inject(DownloaderFileService);
     @Input() alternate: boolean = false;
     @Input() modal: boolean = false;
     @ViewChild('drawer') drawer!: ElementRef;
     @Output() public emitClose = new EventEmitter<ModalType>();
+    files$ = this.downloadFileService.getFilesByNames$(['Согласие на обработку персональных  данных',
+    'Правовая информация::Политика ОПД']);
 
     readonly options: MaskitoOptions = mask;
     public isSend = false;
@@ -27,7 +31,10 @@ export class SignUpConsultationComponent implements OnInit {
 
     ngOnInit(): void {
         this.employeesListService.getSpecialistsList()
-            .subscribe((response) => this.specialistList = response.filter((item) => !item.not_a_doctor));
+            .subscribe((response) => {
+                this.specialistList = response.filter((item) => !item.not_a_doctor);
+                this.cdr.markForCheck();
+            });
         this.modalControllerService._data$
             .subscribe((data) => {
                 if(!data){
@@ -50,6 +57,7 @@ export class SignUpConsultationComponent implements OnInit {
         client_problem: [''],
         specialist: [''],
         notification_type: [''],
+        consent: [false, Validators.requiredTrue],
       });
 
     constructor(
@@ -63,7 +71,14 @@ export class SignUpConsultationComponent implements OnInit {
 
 
     private clearForm(): void {
-        this.signUpForm.reset();
+        this.signUpForm.reset({
+            name: '',
+            phone_number: '',
+            client_problem: '',
+            specialist: '',
+            notification_type: '',
+            consent: false,
+        });
         this.cdr.markForCheck();
     }
     

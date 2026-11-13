@@ -6,6 +6,7 @@ import { SignUpService } from "../../services/sign-up/sign-up.service";
 import { NotificationType } from "../../shared/utils";
 import { ModalControllerService, ModalID, ModalType } from "../../services/modal/modal-controller.component";
 import { BehaviorSubject, Observable, Subject } from "rxjs";
+import { DownloaderFileService } from "../../services/file-uloader/file-uploader.service";
 
 @Component({
     selector: 'app-callback', 
@@ -17,6 +18,8 @@ import { BehaviorSubject, Observable, Subject } from "rxjs";
 export class CallbackComponent {
     @ViewChild('drawer') drawer!: ElementRef;
     @Output() public emitClose = new EventEmitter<ModalType>();
+    files$ = this.downloadFileService.getFilesByNames$(['Согласие на обработку персональных  данных',
+    'Правовая информация::Политика ОПД']);
 
     readonly options: MaskitoOptions = mask;
     public isSend = false;
@@ -25,17 +28,24 @@ export class CallbackComponent {
         private signUpService: SignUpService,
         private renderer: Renderer2,
         private cdr: ChangeDetectorRef,
-        private modalControllerService: ModalControllerService
+        private modalControllerService: ModalControllerService,
+        private downloadFileService: DownloaderFileService
     ) {}
 
     public signUpForm: FormGroup = this.fb.group({
         name: ['', Validators.required],
         phone_number: ['', Validators.minLength(17)],
         notification_type: NotificationType.CALLBACK,
+        consent: [false, Validators.requiredTrue],
       });
 
     private clearForm(): void {
-        this.signUpForm.reset();
+        this.signUpForm.reset({
+            name: '',
+            phone_number: '',
+            notification_type: NotificationType.CALLBACK,
+            consent: false,
+        });
     }
 
     public closeModal(): void{
